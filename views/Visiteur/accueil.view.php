@@ -1,0 +1,138 @@
+ <link href="<?= URL ?>public/CSS/main.css" rel="stylesheet" />
+ <?php if(!empty($page_css)) : ?>
+ <?php foreach($page_css as $fichier_css) : ?>
+ <link href="<?= URL ?>public/CSS/<?= $fichier_css ?>" rel="stylesheet" />
+ <?php endforeach; ?>
+ <?php endif; ?>
+
+ <div class="container-fluid d-flex align-items-center bg-gradient-red">
+
+       <div class="row d-flex justify-content-center custom-content">
+
+             <div class="col-12">
+                   <h1 class="text-center custom-title">PLAY AND WIN CRYPTO</h1>
+                   <p class="text-center custom-description">Win crypto by playing your favorite games,
+                         on
+                         your favorite platform by betting against other players</p>
+             </div>
+
+             <div class="col-12 text-center">
+                   <img src="../../public/Assets/images/playstation-controller.png" class="img-fluid custom-image"
+                         alt="Responsive image" style="width:500px" ;>
+             </div>
+
+             <div class="col-12 text-center">
+                   <button class="btn btn-outline-dark custom-button">Subscribe now</button>
+             </div>
+
+       </div>
+ </div>
+
+ <!--Party-->
+ <div class="container-fluid d-flex align-items-center custom-informative-section-content">
+       <div class="container">
+             <div
+                   class="row d-flex flex-row justify-content-xl-between justify-content-center align-items-center custom-content">
+
+                   <div class="col-xl-6 d-flex flex-column">
+                         <h2 class="text-center text-xl-start custom-subtitle">PARTY</h2>
+                         <p class="text-center text-xl-start custom-description">Are you still planning of
+                               playing
+                               your game for nothing ?<br>
+                               <br>
+                               Why don't you use some of your skills to earn some crypto while playing your
+                               favorite video game ? Seem like a good deal
+                         </p>
+                         <button class="btn btn-outline-dark align-self-center custom-button">Check available
+                               parties</button>
+                   </div>
+
+                   <div class="col-xl-5 text-center">
+                         <img src="../../public/Assets/images/controller cartoon.png" class="img-fluid custom-image"
+                               alt="Responsive image">
+                   </div>
+
+             </div>
+       </div>
+ </div>
+ <!--Trending-->
+ <div class="container-fluid d-flex align-items-center custom-background-light custom-informative-section-content">
+       <div class="container">
+             <div
+                   class="row d-flex flex-xl-row-reverse justify-content-xl-between justify-content-center align-items-center custom-content">
+
+                   <div class="col-xl-6 d-flex flex-column">
+                         <h2 class="text-center text-xl-start custom-subtitle">TRENDINGS</h2>
+                         <p class="text-center text-xl-start custom-description">
+                               Do you want get special price while playing your favorite game too ?<br>
+                               <br>
+                               If so, challenge everyone to be the number one on the scoreboard at the end of
+                               the
+                               month
+                         </p>
+                         <button class="btn btn-outline-dark align-self-center custom-button">Check others
+                               profile</button>
+                   </div>
+
+                   <div class="col-xl-5 text-center">
+                         <img src="../../public/Assets/images/heart cartoon.png" class="img-fluid custom-image"
+                               alt="Responsive image">
+                   </div>
+
+             </div>
+       </div>
+ </div>
+
+ <!--About Us-->
+ <div class="container-fluid d-flex align-items-center custom-informative-section-content">
+       <div class="container">
+             <div
+                   class="row d-flex flex-row justify-content-xl-between justify-content-center align-items-center custom-content">
+
+                   <div class="col-xl-6 d-flex flex-column">
+                         <h2 class="text-center text-xl-start custom-subtitle">ABOUT US</h2>
+                         <p class="text-center text-xl-start custom-description">Are you still planning of
+                               playing
+                               your game for nothing ?<br>
+                               <br>
+                               If so, you can find out who we are, what motivated us to create this site, our
+                               goals
+                               and for what we stand for
+                         </p>
+                         <button class="btn btn-outline-dark align-self-center custom-button">Check who
+                               we're</button>
+                   </div>
+
+                   <div class="col-xl-5 text-center">
+                         <img src="../../public/Assets/images/information cartoon.png" class="img-fluid custom-image"
+                               alt="Responsive image">
+                   </div>
+
+             </div>
+       </div>
+ </div>
+ <!--CTA-->
+ <div class="container-fluid d-flex align-items-center custom-background-light ">
+       <div class="container">
+             <div class="row d-flex justify-content-center custom-content">
+
+                   <div class="col-12">
+                         <h1 class="text-center custom-subtitle">A PLACE TO SAFELY BET ON YOUR FAVORITE GAMES
+                         </h1>
+                         <p class="text-center custom-description">Here you can try earning some crypto by
+                               betting
+                               and playing your favorite game against poeple like you</p>
+                   </div>
+
+                   <div class="col-12 text-center">
+                         <img src="../../public/Assets/images/bitcoin cartoon.png" class="img-fluid custom-image"
+                               alt="Responsive image" style="width:400px" ;>
+                   </div>
+
+                   <div class="col-12 text-center">
+                         <button class="btn btn-outline-danger custom-button">Subscribe now</button>
+                   </div>
+
+             </div>
+       </div>
+ </div>
