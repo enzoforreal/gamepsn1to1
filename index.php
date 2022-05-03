@@ -67,6 +67,8 @@ try {
                 switch($url[1]){
                     case "profil" : $utilisateurController->profil();
                     break;
+                    case "partie" : $utilisateurController->partie();
+                    break;
                     case "deconnexion" : $utilisateurController->deconnexion();
                     break;
                     case "validation_modificationMail" : $utilisateurController->validation_modificationMail(Securite::secureHTML($_POST['mail']));

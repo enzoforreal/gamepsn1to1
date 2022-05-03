@@ -48,6 +48,10 @@
                                                 </li>
                                           </ul>
                                     </li>
+                                    <?php elseif(Securite::estConnecte()) :?>
+                                    <li class="nav-item">
+                                          <a class="nav-link" aria-current="page" href="<?= URL; ?>partie">Party</a>
+                                    </li>
                                     <?php endif; ?>
                               </ul>
                         </div>
