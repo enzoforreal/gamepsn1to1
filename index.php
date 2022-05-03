@@ -67,8 +67,6 @@ try {
                 switch($url[1]){
                     case "profil" : $utilisateurController->profil();
                     break;
-                    case "partie" : $utilisateurController->partie();
-                    break;
                     case "deconnexion" : $utilisateurController->deconnexion();
                     break;
                     case "validation_modificationMail" : $utilisateurController->validation_modificationMail(Securite::secureHTML($_POST['mail']));
@@ -100,6 +98,8 @@ try {
                 }
             }
         break;
+        case "partie" : $utilisateurController->partie();
+                    break;
         case "administration" :
             if(!Securite::estConnecte()) {
                 Toolbox::ajouterMessageAlerte("Veuillez vous connecter !",Toolbox::COULEUR_ROUGE);
