@@ -32,6 +32,9 @@
                                                 href="<?= URL; ?>compte/profil">Profil</a>
                                     </li>
                                     <li class="nav-item">
+                                          <a class="nav-link" aria-current="page" href="<?= URL; ?>partie">Party</a>
+                                    </li>
+                                    <li class="nav-item">
                                           <a class="nav-link" aria-current="page"
                                                 href="<?= URL; ?>compte/deconnexion">Se déconnecter</a>
                                     </li>
