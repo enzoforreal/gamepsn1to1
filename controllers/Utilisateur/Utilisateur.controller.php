@@ -47,6 +47,21 @@ class UtilisateurController extends MainController{
         ];
         $this->genererPage($data_page);
     }
+    public function partie(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page partie",
+            "page_title" => "Page partie",
+            "utilisateur" => $datas,
+            "page_javascript" => ['partie.js'],
+            "view" => "views/Utilisateur/partie.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+
+    }
     public function deconnexion(){
         Toolbox::ajouterMessageAlerte("La deconnexion est effectuée",Toolbox::COULEUR_VERTE);
         unset($_SESSION['profil']);

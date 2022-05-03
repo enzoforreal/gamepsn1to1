@@ -96,8 +96,11 @@ try {
                     break;
                     default : throw new Exception("La page n'existe pas");
                 }
+
             }
         break;
+         case "partie" : $utilisateurController->partie();
+                    break;
         case "administration" :
             if(!Securite::estConnecte()) {
                 Toolbox::ajouterMessageAlerte("Veuillez vous connecter !",Toolbox::COULEUR_ROUGE);
