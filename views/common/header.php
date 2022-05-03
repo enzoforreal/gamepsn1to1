@@ -32,6 +32,9 @@
                                                 href="<?= URL; ?>compte/profil">Profil</a>
                                     </li>
                                     <li class="nav-item">
+                                          <a class="nav-link" aria-current="page" href="<?= URL; ?>partie">Party</a>
+                                    </li>
+                                    <li class="nav-item">
                                           <a class="nav-link" aria-current="page"
                                                 href="<?= URL; ?>compte/deconnexion">Se déconnecter</a>
                                     </li>
@@ -47,10 +50,6 @@
                                                             href="<?= URL; ?>administration/droits">Gérer les droits</a>
                                                 </li>
                                           </ul>
-                                    </li>
-                                    <?php elseif(Securite::estConnecte()) :?>
-                                    <li class="nav-item">
-                                          <a class="nav-link" aria-current="page" href="<?= URL; ?>partie">Party</a>
                                     </li>
                                     <?php endif; ?>
                               </ul>
