@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div class="container-fluid p-0">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -50,11 +51,59 @@
                                                             href="<?= URL; ?>administration/droits">Gérer les droits</a>
                                                 </li>
                                           </ul>
+=======
+<header class="container-fluid bg-dark">
+    <nav class="container">
+        <div class="row d-flex flex-row align-items-center justify-content-center justify-content-md-between">
+
+            <!--Logo-->
+            <a href="#" class="col-12 col-lg-3 text-lg-start text-center"><img src="<?= URL; ?>public/Assets/images/logo.svg" width="150" alt="logo du site" /></a>
+
+            <!--Liens-->
+            <ul class="nav col-12 col-lg-auto justify-content-center">
+
+                  <li >
+                        <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>accueil">Home</a>
+                  </li>
+
+                  <?php if(!Securite::estConnecte()) : ?>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>login">Login</a>
+                        </li>
+
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>creerCompte">Register</a>
+                        </li>
+                  <?php else : ?>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>compte/profil">Profil</a>
+                        </li>
+
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>partie">Party</a>
+                        </li>
+
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>compte/deconnexion">Logout</a>
+                        </li>
+                  <?php endif; ?>
+
+                  <?php if(Securite::estConnecte() && Securite::estAdministrateur()) : ?>
+                        <li class="nav-item dropdown">
+                              <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Administration
+                              </a>
+
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>administration/droits">Manage the rights</a>
+>>>>>>> Stashed changes
                                     </li>
-                                    <?php endif; ?>
                               </ul>
-                        </div>
-                  </div>
-            </nav>
-      </header>
-</div>
+                        </li>
+                  <?php endif; ?>
+            </ul>
+
+        </div>
+    </nav>
+</header>

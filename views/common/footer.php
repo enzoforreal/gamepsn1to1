@@ -1,49 +1,97 @@
-<div class="container-fluid p-0">
-      <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="row">
-                  <div class="col-12 col-md">
-                        <img src="<?= URL; ?>public/Assets/images/logostrong.png" width="150px" alt="logo du site" />
-                        <small class="d-block mb-3 text-muted">&copy; 2022</small>
+<footer class="container-fluid bg-dark">   
+      <div class="container">
+            <div class="row p-0">
+
+                  <!--Informations-->
+                  <div class="row mt-5 d-flex flex-row justify-content-between">
+                        
+                        <!--Formulaire de message-->
+                        <div class="col-lg-4 col-12">
+                              <h5 class="text-center text-light fw-bold">Message</h5>
+
+                              <form action="" method="">
+                                    <div class="form-group">
+                                          <label class="text-light mb-1">Lastname</label>
+                                          <input type="text" class="form-control mb-3" name="lastname" placeholder="Votre Nom">
+                                    </div>
+
+                                    <div class="form-group">
+                                          <label class="text-light mb-1">Email</label>
+                                          <input type="email" class="form-control mb-3" name="email" placeholder="Votre Adresse mail">
+                                    </div>
+
+                                    <div class="form-group">
+                                          <label class="text-light mb-1">Message</label>
+                                          <textarea class="form-control mb-3" name="message" rows="3" placeholder="Votre Message"></textarea>
+                                    </div>
+
+                                    <div class="text-center">
+                                          <button type="submit" class="btn btn-danger custom-button">Submit</button>
+                                    </div>
+                              </form>
+                        </div>
+
+                        <!--Liens de navigation-->
+                        <div class="nav col-lg-3 col-12 d-flex flex-column align-items-center">
+                              <h5 class="text-center text-light fw-bold">Sitemap</h5>
+
+                              <li>
+                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>accueil">Home</a>
+                              </li>
+
+                              <?php if(!Securite::estConnecte()) : ?>
+                                    <li>
+                                          <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>login">Login</a>
+                                    </li>
+
+                                    <li>
+                                          <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>creerCompte">Register</a>
+                                    </li>
+                              <?php else : ?>
+                                    <li>
+                                          <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>compte/profil">Profil</a>
+                                    </li>
+
+                                    <li>
+                                          <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>partie">Party</a>
+                                    </li>
+
+                                    <li>
+                                          <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>compte/deconnexion">Logout</a>
+                                    </li>
+                              <?php endif; ?>
+
+                              <?php if(Securite::estConnecte() && Securite::estAdministrateur()) : ?>
+                                    <li class="nav-item dropdown">
+                                          <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">Administration
+                                          </a>
+
+                                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li>
+                                                      <a class="dropdown-item" href="<?= URL; ?>administration/droits">Manage the rights</a>
+                                                </li>
+                                          </ul>
+                                    </li>
+                              <?php endif; ?>
+                        </div>
+
+                        <!--Coordonnées-->
+                        <div class="col-lg-3 col-12 text-light">
+                              <h5 class="text-center text-light fw-bold">Contact</h5>
+                              <p class="text-center text-light"><i class="bi bi-map custom-icon"></i>New York, NY 10012, US</p>
+                              <p class="text-center text-light"><i class="bi bi-envelope custom-icon"></i>info@example.com</p>
+                              <p class="text-center text-light"><i class="bi bi-phone custom-icon"></i>+ 01 234 567 88</p>
+                        </div>
                   </div>
-                  <div class="col-6 col-md">
-                        <h5>Features</h5>
-                        <ul class="list-unstyled text-small">
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a>
-                              </li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random
-                                          feature</a></li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a>
-                              </li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for
-                                          developers</a></li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a>
-                              </li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a>
-                              </li>
-                        </ul>
+                  
+                  <!--Copyright-->
+                  <div class="my-3 p-0">
+                        <hr class="w-100 bg-light">
+
+                        <p class="col-12 text-center text-light">© 2022 GAMEPSN1TO1. All rights reserved.</p>
                   </div>
-                  <div class="col-6 col-md">
-                        <h5>Resources</h5>
-                        <ul class="list-unstyled text-small">
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a>
-                              </li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another
-                                          resource</a></li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final
-                                          resource</a></li>
-                        </ul>
-                  </div>
-                  <div class="col-6 col-md">
-                        <h5>About</h5>
-                        <ul class="list-unstyled text-small">
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a>
-                              </li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-                              <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
-                        </ul>
-                  </div>
+
             </div>
-      </footer>
-</div>
+      </div>
+</footer>
