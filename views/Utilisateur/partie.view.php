@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
       <div class="row">
 
             <!--Zone dédié aux filtres-->
@@ -85,7 +86,7 @@
                   <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
                         <div class="col">
                               <div class="card">
-                                    <img src="https://picsum.photos/350" class="card-img-top" alt="...">
+                                    <img src="../../public/Assets/images/fortnitepc.png" class="card-img-top" alt="...">
                                     <div class="card-body">
 
                                           <h5 class="card-title fw-bold">Jeux: Fortnite</h5>
