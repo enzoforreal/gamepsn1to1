@@ -17,7 +17,7 @@
              </div>
 
              <div class="col-12 text-center">
-                   <img src="../../public/Assets/images/playstation-controller.png" class="img-fluid custom-image"
+                   <img src="public/Assets/images/playstation-controller.png" class="img-fluid custom-image"
                          alt="Responsive image" style="width:500px" ;>
              </div>
 
@@ -48,7 +48,7 @@
                    </div>
 
                    <div class="col-xl-5 text-center">
-                         <img src="../../public/Assets/images/controller cartoon.png" class="img-fluid custom-image"
+                         <img src="public/Assets/images/controller cartoon.png" class="img-fluid custom-image"
                                alt="Responsive image">
                    </div>
 
@@ -75,7 +75,7 @@
                    </div>
 
                    <div class="col-xl-5 text-center">
-                         <img src="../../public/Assets/images/heart cartoon.png" class="img-fluid custom-image"
+                         <img src="public/Assets/images/heart cartoon.png" class="img-fluid custom-image"
                                alt="Responsive image">
                    </div>
 
@@ -104,7 +104,7 @@
                    </div>
 
                    <div class="col-xl-5 text-center">
-                         <img src="../../public/Assets/images/information cartoon.png" class="img-fluid custom-image"
+                         <img src="public/Assets/images/information cartoon.png" class="img-fluid custom-image"
                                alt="Responsive image">
                    </div>
 
@@ -125,7 +125,7 @@
                    </div>
 
                    <div class="col-12 text-center">
-                         <img src="../../public/Assets/images/bitcoin cartoon.png" class="img-fluid custom-image"
+                         <img src="public/Assets/images/bitcoin cartoon.png" class="img-fluid custom-image"
                                alt="Responsive image" style="width:400px" ;>
                    </div>
 
