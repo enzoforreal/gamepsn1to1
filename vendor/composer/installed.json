@@ -1,0 +1,43 @@
+{
+    "packages": [
+        {
+            "name": "explorer-cash/api-php",
+            "version": "1.9.3",
+            "version_normalized": "1.9.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/explorer-cash/api-php.git",
+                "reference": "39ebe6690a560134639ca64e6ce36180f833290d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/explorer-cash/api-php/zipball/39ebe6690a560134639ca64e6ce36180f833290d",
+                "reference": "39ebe6690a560134639ca64e6ce36180f833290d",
+                "shasum": ""
+            },
+            "time": "2020-09-06T14:37:42+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-0": {
+                    "ExplorerCash": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "explorer.cash",
+                    "email": "support@explorer.cash"
+                }
+            ],
+            "description": "PHP API binding for explorer.cash Blockchain API service",
+            "support": {
+                "issues": "https://github.com/explorer-cash/api-php/issues",
+                "source": "https://github.com/explorer-cash/api-php/tree/1.9.3"
+            },
+            "install-path": "../explorer-cash/api-php"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}
