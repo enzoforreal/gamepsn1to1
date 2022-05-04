@@ -5,28 +5,43 @@
  <?php endforeach; ?>
  <?php endif; ?>
 
- <div class="container-fluid d-flex align-items-center bg-gradient-red">
+ <div class="container-fluid p-0">
+      <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel" style="height: 100vh; position: absolute; z-index: -2;">
+            <div class="carousel-inner h-100">
+                  <div class="carousel-item active" data-bs-interval="4000">
+                        <img src="public/Assets/images/vr.jpg" class="d-block w-100" alt="..." style="object-fit: cover; width: 1920px; height: 1300px; background-position: center; filter: blur(8px);">
+                  </div>
 
-       <div class="row d-flex justify-content-center custom-content">
+                  <div class="carousel-item" data-bs-interval="4000">
+                        <img src="public/Assets/images/playstation.jpg" class="d-block w-100" alt="..." style="object-fit: cover; width: 1920px; height: 1300px; background-position: center; filter: blur(8px);">
+                  </div>
 
-             <div class="col-12">
-                   <h1 class="text-center custom-title">PLAY AND WIN CRYPTO</h1>
-                   <p class="text-center custom-description">Win crypto by playing your favorite games,
-                         on
-                         your favorite platform by betting against other players</p>
-             </div>
+                  <div class="carousel-item" data-bs-interval="4000">
+                        <img src="public/Assets/images/pc setup.jpg" class="d-block w-100" alt="..." style="object-fit: cover; width: 1920px; height: 1300px; background-position: center; filter: blur(8px);">
+                  </div>
+            </div>
+      </div>
 
-             <div class="col-12 text-center">
-                   <img src="public/Assets/images/playstation-controller.png" class="img-fluid custom-image"
-                         alt="Responsive image" style="width:500px" ;>
-             </div>
+      <div class="container custom-content" style="height: 100vh;">
+            <div class="row">
+                  <div class="col-12">
+                        <h1 class="text-center custom-title">PLAY AND WIN CRYPTO</h1>
+                        <p class="text-center custom-description">Win crypto by playing your favorite games, on your favorite platform by betting against other players</p>
+                  </div>
 
-             <div class="col-12 text-center">
-                   <button class="btn btn-outline-dark custom-button">Subscribe now</button>
-             </div>
+                  <div class="col-12 text-center">
+                        <img src="public/Assets/images/playstation-controller.png" class="img-fluid custom-image" alt="Responsive image">
+                  </div>
 
-       </div>
+                  <div class="col-12 text-center">
+                        <button class="btn btn-outline-dark custom-button">Subscribe now</button>
+                  </div>
+            </div>
+      </div>
  </div>
+
+
+</header>
 
  <!--Party-->
  <div class="container-fluid d-flex align-items-center custom-informative-section-content">

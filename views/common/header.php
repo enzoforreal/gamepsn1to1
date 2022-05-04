@@ -3,8 +3,15 @@
             <div class="row d-flex flex-row align-items-center justify-content-center justify-content-md-between">
 
                   <!--Logo-->
+<<<<<<< Updated upstream
                   <a href="#" class="col-12 col-lg-3 text-lg-start text-center"><img
                               src="<?= URL; ?>public/Assets/images/logo.svg" width="150" alt="logo du site" /></a>
+=======
+                  <a href="#" class="col-12 col-lg-3 text-lg-start text-center d-flex flex-row align-items-center" style="text-decoration: blink;">
+                        <img src="<?= URL; ?>public/Assets/images/logo.svg" width="70px" alt="logo du site" />
+                        <p class="text-danger d-inline fw-bold mb-0 ms-2" style="font-size: 20px;">Game1To1</p>
+                  </a>
+>>>>>>> Stashed changes
 
                   <!--Liens-->
                   <ul class="nav col-12 col-lg-auto justify-content-center">
