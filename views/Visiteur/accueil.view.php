@@ -5,6 +5,7 @@
  <?php endforeach; ?>
  <?php endif; ?>
 
+
  <div class="container-fluid p-0" style="height: 100vh">
       <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel" style="height: 100%; position: absolute; z-index: -2;">
             <div class="carousel-inner h-100">
