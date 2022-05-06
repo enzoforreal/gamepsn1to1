@@ -6,7 +6,7 @@
                   <div class="row mt-5 d-flex flex-row justify-content-between">
                         
                         <!--Formulaire de message-->
-                        <div class="col-lg-4 col-12">
+                        <div class="col-lg-4 col-12 mb-5">
                               <h5 class="text-center text-light fw-bold">Message</h5>
 
                               <form action="" method="">
@@ -32,37 +32,37 @@
                         </div>
 
                         <!--Liens de navigation-->
-                        <div class="nav col-lg-3 col-12 d-flex flex-column align-items-center">
-                              <h5 class="text-center text-light fw-bold">Sitemap</h5>
+                        <div class="nav col-lg-3 col-12 mb-5 p-0">
+                              <h5 class="text-center text-light fw-bold w-100">Sitemap</h5>
 
-                              <li>
-                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>accueil">Home</a>
+                              <li class="w-100">
+                                    <a class="nav-link text-light text-center" aria-current="page" href="<?= URL; ?>accueil">Home</a>
                               </li>
 
                               <?php if(!Securite::estConnecte()) : ?>
-                                    <li>
+                                    <li class="w-100 text-center">
                                           <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>login">Login</a>
                                     </li>
 
-                                    <li>
+                                    <li class="w-100 text-center">
                                           <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>creerCompte">Register</a>
                                     </li>
                               <?php else : ?>
-                                    <li>
+                                    <li class="w-100 text-center">
                                           <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>compte/profil">Profil</a>
                                     </li>
 
-                                    <li>
+                                    <li class="w-100 text-center">
                                           <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>partie">Party</a>
                                     </li>
 
-                                    <li>
+                                    <li class="w-100 text-center">
                                           <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>compte/deconnexion">Logout</a>
                                     </li>
                               <?php endif; ?>
 
                               <?php if(Securite::estConnecte() && Securite::estAdministrateur()) : ?>
-                                    <li class="nav-item dropdown">
+                                    <li class="nav-item dropdown w-100 text-center">
                                           <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false">Administration
                                           </a>
