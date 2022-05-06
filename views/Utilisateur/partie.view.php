@@ -76,7 +76,7 @@
                         <button class="btn btn-outline-danger" type="submit">Search</button>
                   </form>
 
-                  <a href="Nathan/party-create.html" class="d-block">
+                  <a href="<?= URL; ?>creerPartie" class="d-block">
                         <button class="btn btn-danger w-100">Créer une partie</button>
                   </a>
             </aside>
