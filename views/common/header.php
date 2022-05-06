@@ -3,18 +3,10 @@
             <div class="row d-flex flex-row align-items-center justify-content-center justify-content-md-between">
 
                   <!--Logo-->
-
-                  <a href="<?= URL; ?>accueil" class="col-12 col-lg-3 text-lg-start text-center "
-                        style="text-decoration: blink;">
-                        <object data="<?= URL; ?>../../public/Assets/images/logo.svg" width="70px" type="image/svg+xml">
-
-                              <!—solution de secours, si SVG ne se charge pas -->
-                        </object>
-                        <!--<img src="<?= URL; ?>public/Assets/images/logo.svg" width="70px" alt="logo du site" />-->
-                        <!--<p class="text-danger d-inline fw-bold mb-0 ms-2" style="font-size: 20px;">Game1To1</p>-->
-
+                  <a href="#" class="col-12 col-lg-3 text-lg-start text-center " style="text-decoration: blink;">
+                        <img src="<?= URL; ?>public/Assets/images/logo.svg" width="70px" alt="logo du site" />
+                        <p class="text-danger d-inline fw-bold mb-0 ms-2" style="font-size: 20px;">Game1To1</p>
                   </a>
-
 
                   <!--Liens-->
                   <ul class="nav col-12 col-lg-auto justify-content-center">

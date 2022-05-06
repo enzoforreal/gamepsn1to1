@@ -3,9 +3,8 @@
             <div class="d-flex flex-column align-items-center">
 
                   <div class="m-5">
-                        <object data="../../public/Assets/images/logo.svg" width="200px" type="image/svg+xml">
-                              <!—solution de secours, si SVG ne se charge pas -->
-                        </object>
+                        <img class="mx-auto d-block mb-3" src="../../public/Assets/images/logo.svg" alt="Logo"
+                              width="200px" style=" object-fit: cover;">
                         <h1 class="text-center fw-bold">Login</h1>
                         <p class="text-center">Connect to your account</p>
                   </div>
