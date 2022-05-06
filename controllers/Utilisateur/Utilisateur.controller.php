@@ -47,6 +47,7 @@ class UtilisateurController extends MainController{
         ];
         $this->genererPage($data_page);
     }
+
     public function partie(){
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
         $_SESSION['profil']["role"] = $datas['role'];

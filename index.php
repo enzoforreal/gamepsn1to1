@@ -99,7 +99,7 @@ try {
 
             }
         break;
-         case "partie" : $utilisateurController->partie();
+        case "partie" : $utilisateurController->partie();
                     break;
         case "administration" :
             if(!Securite::estConnecte()) {
