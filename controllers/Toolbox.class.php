@@ -12,7 +12,7 @@ class Toolbox {
     }
 
     public static function sendMail($destinataire, $sujet, $message){
-        $headers = "From: gamepsn1to1@gmail.com";
+        $headers = "From: nathan.evrarddacunha@gmail.com";
         if(mail($destinataire,$sujet,$message,$headers)){
             self::ajouterMessageAlerte("Mail envoyé", self::COULEUR_VERTE);
         } else {
@@ -36,7 +36,7 @@ class Toolbox {
             throw new Exception("L'extension du fichier n'est pas reconnu");
         if(file_exists($target_file))
             throw new Exception("Le fichier existe déjà");
-        if($file['size'] > 5000000000)
+        if($file['size'] > 5000000)
             throw new Exception("Le fichier est trop gros");
         if(!move_uploaded_file($file['tmp_name'], $target_file))
             throw new Exception("l'ajout de l'image n'a pas fonctionné");

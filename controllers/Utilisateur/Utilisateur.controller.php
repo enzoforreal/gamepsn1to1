@@ -47,6 +47,7 @@ class UtilisateurController extends MainController{
         ];
         $this->genererPage($data_page);
     }
+
     public function partie(){
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
         $_SESSION['profil']["role"] = $datas['role'];
@@ -57,6 +58,22 @@ class UtilisateurController extends MainController{
             "utilisateur" => $datas,
             "page_javascript" => ['partie.js'],
             "view" => "views/Utilisateur/partie.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+
+    }
+
+    public function afficherPageCreerPartie(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page de création partie",
+            "page_title" => "Page de création partie",
+            "utilisateur" => $datas,
+            "page_javascript" => ['creerPartie.js'],
+            "view" => "views/Utilisateur/creerPartie.view.php",
             "template" => "views/common/template.php"
         ];
         $this->genererPage($data_page);

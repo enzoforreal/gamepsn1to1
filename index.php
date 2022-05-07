@@ -99,8 +99,10 @@ try {
 
             }
         break;
-         case "partie" : $utilisateurController->partie();
-                    break;
+        case "partie" : $utilisateurController->partie();
+        break;
+        case "creerPartie" : $utilisateurController->afficherPageCreerPartie();
+        break;
         case "administration" :
             if(!Securite::estConnecte()) {
                 Toolbox::ajouterMessageAlerte("Veuillez vous connecter !",Toolbox::COULEUR_ROUGE);
