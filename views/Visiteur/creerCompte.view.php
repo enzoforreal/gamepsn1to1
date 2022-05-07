@@ -41,8 +41,19 @@
                     <label for="mail">Email</label>
                     <input type="mail" name="mail" id="mail" class="form-control" placeholder="Your email" require="required">
                 </div>
+                <h6 class="title">Captcha puzzle</h6>
+                <table width="225" border="0" cellspacing="0" cellpadding="0" height="225">
+                    <tr>
+                        <td id="image1" name="image2" class="i6" onclick="clickImage('image1')"></td>
+                        <td id="image2" name="image3" class="i2" onclick="clickImage('image2')"></td>
+                    </tr>
+                    <tr>
+                        <td id="image3" name="image1" class="i5" onclick="clickImage('image3')"></td>
+                        <td id="image4" name="image4" class="i1" onclick="clickImage('image4')"></td>
+                    </tr>
+                </table>
 
-                <button type="submit" class="btn btn-primary w-100">Create</button>
+                <button disabled="True" id="button" type="submit" class="btn btn-primary w-100">Create</button>
             </form>
 
         </div>
