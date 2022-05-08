@@ -21,8 +21,8 @@
                         </li>
 
                         <li>
-                              <a class="nav-link text-light" aria-current="page"
-                                    href="<?= URL; ?>creerCompte">Register</a>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>creerCompte">Sign
+                                    up</a>
                         </li>
                         <?php else : ?>
                         <li>
