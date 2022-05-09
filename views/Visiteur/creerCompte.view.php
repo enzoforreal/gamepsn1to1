@@ -40,9 +40,12 @@
                                     <td id="image4" name="image4" class="i1" onclick="clickImage('image4')"></td>
                               </tr>
                         </table>
+                        <div class="text-center">
+                              <button disabled="True" id="button" type="submit"
+                                    class="btn btn-success btn-sm  mt-4">Create an
+                                    account</button>
+                        </div>
 
-                        <button disabled="True" id="button" type="submit" class="btn btn-success btn-sm"
-                              style="position:absolute;top: 500px; right: 140px;">Create an account</button>
                   </form>
 
             </div>
