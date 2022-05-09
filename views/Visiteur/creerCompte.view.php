@@ -30,7 +30,7 @@
                               <input type="mail" name="mail" id="mail" class="form-control" placeholder="Your email"
                                     require="required">
                         </div>
-                        <table class="captcha" width="225" border="0" cellspacing="0" cellpadding="0" height="225">
+                        <table class="captcha" width="350" border="0" cellspacing="0" cellpadding="0" height="225">
                               <tr>
                                     <td id="image1" name="image2" class="i6" onclick="clickImage('image1')"></td>
                                     <td id="image2" name="image3" class="i2" onclick="clickImage('image2')"></td>
