@@ -35,10 +35,11 @@
                                     <td id="image4" name="image4" class="i1" onclick="clickImage('image4')"></td>
                               </tr>
                         </table>
-
-                        <button style="position:absolute;top: 800px; right: 860px;" disabled="True" id="button"
-                              type="submit" class="btn btn-success btn-sm">Connect to your
-                              account</button>
+                        <div class="text-center">
+                              <button disabled="True" id="button" type="submit"
+                                    class="btn btn-success btn-sm mt-4">Connect to your
+                                    account</button>
+                        </div>
                   </form>
 
             </div>
