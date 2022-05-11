@@ -100,10 +100,10 @@ try {
             }
         break;
         case "partie" : $utilisateurController->partie();
+        case "creerPartie" : $utilisateurController->afficherPageCreerPartie();
+        case "roomParty": $utilisateurController->afficherPageRoomPartie();
         break;
         case "showGames": $utilisateurController->afficherPageShowGames();
-        break;
-        case "creerPartie" : $utilisateurController->afficherPageCreerPartie();
         break;
         case "administration" :
             if(!Securite::estConnecte()) {
