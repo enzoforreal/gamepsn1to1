@@ -100,6 +100,7 @@ try {
             }
         break;
         case "partie" : $utilisateurController->partie();
+        case "roomParty": $utilisateurController->afficherPageRoomPartie();
         break;
         case "showGames": $utilisateurController->afficherPageShowGames();
         break;
