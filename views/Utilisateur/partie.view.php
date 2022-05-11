@@ -98,7 +98,7 @@
                                           <p class="card-text">Statut partie: privée (entre ami)</p>
                                           <p class="card-text">Identifiant partie: #47013</p>
 
-                                          <a href="party-room.html">
+                                          <a href="<?= URL ?>roomParty">
                                                 <button class="btn btn-danger w-100">Join</button>
                                           </a>
                                     </div>

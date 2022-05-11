@@ -79,7 +79,20 @@ public function afficherPageShowGames(){
 
     }
 
+    public function afficherPageRoomPartie(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
 
+         $data_page = [
+            "page_description" => "Page salle partie",
+            "page_title" => "Page salle partie",
+            "utilisateur" => $datas,
+            "page_javascript" => ['roomParty.js'],
+            "view" => "views/Utilisateur/roomParty.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
 
     public function afficherPageCreerPartie(){
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
