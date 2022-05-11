@@ -35,6 +35,11 @@
                         </li>
 
                         <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>showGames">Show
+                                    games</a>
+                        </li>
+
+                        <li>
                               <a class="nav-link text-light" aria-current="page"
                                     href="<?= URL; ?>compte/deconnexion">Logout</a>
                         </li>
