@@ -48,6 +48,21 @@ class UtilisateurController extends MainController{
         $this->genererPage($data_page);
     }
 
+public function afficherPageShowGames(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page des jeux",
+            "page_title" => "Page des jeux",
+            "utilisateur" => $datas,
+            "page_javascript" => ['showGames.js'],
+            "view" => "views/Utilisateur/showGames.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
     public function partie(){
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
         $_SESSION['profil']["role"] = $datas['role'];
@@ -63,6 +78,8 @@ class UtilisateurController extends MainController{
         $this->genererPage($data_page);
 
     }
+
+
 
     public function afficherPageCreerPartie(){
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);

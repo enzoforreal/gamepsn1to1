@@ -101,6 +101,8 @@ try {
         break;
         case "partie" : $utilisateurController->partie();
         break;
+        case "showGames": $utilisateurController->afficherPageShowGames();
+        break;
         case "creerPartie" : $utilisateurController->afficherPageCreerPartie();
         break;
         case "administration" :
