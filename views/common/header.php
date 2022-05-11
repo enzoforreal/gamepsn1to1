@@ -33,7 +33,9 @@
                         <li>
                               <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>partie">Party</a>
                         </li>
-
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>chat">Chat</a>
+                        </li>
                         <li>
                               <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>showGames">Show
                                     games</a>
