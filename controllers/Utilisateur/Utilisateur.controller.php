@@ -5,8 +5,11 @@ require_once("./models/Utilisateur/Utilisateur.model.php");
 class UtilisateurController extends MainController{
     private $utilisateurManager;
 
+   
+
     public function __construct(){
         $this->utilisateurManager = new UtilisateurManager();
+     
     }
 
     public function validation_login($login,$password){
@@ -64,6 +67,7 @@ public function afficherPageShowGames(){
     }
 
     public function partie(){
+       
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
         $_SESSION['profil']["role"] = $datas['role'];
 
@@ -115,11 +119,11 @@ public function afficherPageShowGames(){
         setcookie(Securite::COOKIE_NAME,"",time() - 3600);
         header("Location: ".URL."accueil");
     }
-    public function validation_creerCompte($login,$password,$mail){
+    public function validation_creerCompte($login,$password,$mail,$birthdate,$telephone,$country){
         if($this->utilisateurManager->verifLoginDisponible($login)){
             $passwordCrypte = password_hash($password,PASSWORD_DEFAULT);
             $clef = rand(0,9999);
-            if($this->utilisateurManager->bdCreerCompte($login,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur")){
+            if($this->utilisateurManager->bdCreerCompte($login,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur",$birthdate,$telephone,$country)){
                 $this->sendMailValidation($login,$mail,$clef);
                 Toolbox::ajouterMessageAlerte("La compte a été créé, Un mail de validation vous a été envoyé !", Toolbox::COULEUR_VERTE);
                 header("Location: ".URL."login");
