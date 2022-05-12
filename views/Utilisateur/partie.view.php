@@ -90,6 +90,7 @@
                               <div class="card">
                                     <img src="../../public/Assets/images/fortnitepc.png" class="card-img-top"
                                           alt="image game">
+
                                     <div class="card-body">
 
                                           <h5 class="card-title fw-bold">Jeux: Fortnite</h5>
@@ -103,6 +104,7 @@
                                           </a>
                                     </div>
                               </div>
+
                         </div>
                   </div>
 
