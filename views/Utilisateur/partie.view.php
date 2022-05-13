@@ -104,7 +104,7 @@ $partyManager = new PartyManager;
                                           <p class="card-text fw-bold">Mise: 20$</p>
                                           <p class="card-text">Plateforme: PC</p>
                                           <p class="card-text">Statut partie: privée (entre ami)</p>
-                                          <p class="card-text">Identifiant partie: <?= $partie['login'] ?></p>
+                                          <p class="card-text">Identifiant partie: #45566</p>
 
                                           <a href="<?= URL ?>roomParty">
                                                 <button class="btn btn-danger w-100">Join</button>
