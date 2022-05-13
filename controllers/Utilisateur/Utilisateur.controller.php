@@ -52,6 +52,97 @@ class UtilisateurController extends MainController{
     }
 
   
+    public function afficherPageTrending(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page tendance",
+            "page_title" => "Page tendance",
+            "utilisateur" => $datas,
+            "page_javascript" => ['trending.js'],
+            "view" => "views/Utilisateur/trending.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function afficherPageRanking(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page classement",
+            "page_title" => "Page classement",
+            "utilisateur" => $datas,
+            "page_javascript" => ['ranking.js'],
+            "view" => "views/Utilisateur/ranking.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function afficherPageShowGames(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page des jeux",
+            "page_title" => "Page des jeux",
+            "utilisateur" => $datas,
+            "page_javascript" => ['showGames.js'],
+            "view" => "views/Utilisateur/showGames.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function partie(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page partie",
+            "page_title" => "Page partie",
+            "utilisateur" => $datas,
+            "page_javascript" => ['partie.js'],
+            "view" => "views/Utilisateur/partie.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+
+    }
+
+    public function afficherPageRoomPartie(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page salle partie",
+            "page_title" => "Page salle partie",
+            "utilisateur" => $datas,
+            "page_javascript" => ['roomParty.js'],
+            "view" => "views/Utilisateur/roomParty.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function afficherPageCreerPartie(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page de création partie",
+            "page_title" => "Page de création partie",
+            "utilisateur" => $datas,
+            "page_javascript" => ['creerPartie.js'],
+            "view" => "views/Utilisateur/creerPartie.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+
+    }
     public function deconnexion(){
         Toolbox::ajouterMessageAlerte("La deconnexion est effectuée",Toolbox::COULEUR_VERTE);
         unset($_SESSION['profil']);

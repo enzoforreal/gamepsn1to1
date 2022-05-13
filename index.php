@@ -108,7 +108,15 @@ try {
         break;
         case "partie" : $partyController->partie();
         break;
+        case "showGames": $utilisateurController->afficherPageShowGames();
+        break;
         case "creerPartie" : $partyController->afficherPageCreerPartie();
+        break;
+        case "trending": $utilisateurController->afficherPageTrending();
+        break;
+        case "ranking": $utilisateurController->afficherPageRanking();
+        break;
+        case "showGames": $utilisateurController->afficherPageShowGames();
         break;
         case "ValidationCreerParty" :  if(!empty($_POST['login']) 
         ){
