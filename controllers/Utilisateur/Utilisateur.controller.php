@@ -48,7 +48,37 @@ class UtilisateurController extends MainController{
         $this->genererPage($data_page);
     }
 
-public function afficherPageShowGames(){
+    public function afficherPageTrending(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page tendance",
+            "page_title" => "Page tendance",
+            "utilisateur" => $datas,
+            "page_javascript" => ['trending.js'],
+            "view" => "views/Utilisateur/trending.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function afficherPageRanking(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page classement",
+            "page_title" => "Page classement",
+            "utilisateur" => $datas,
+            "page_javascript" => ['ranking.js'],
+            "view" => "views/Utilisateur/ranking.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function afficherPageShowGames(){
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
         $_SESSION['profil']["role"] = $datas['role'];
 
