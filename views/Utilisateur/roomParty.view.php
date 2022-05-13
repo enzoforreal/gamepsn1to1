@@ -14,7 +14,7 @@
                         <p class="chat-date">11:22</p>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate voluptatibus laboriosam ex 
+                <p class="chat-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate voluptatibus laboriosam ex 
                     officia excepturi magni, explicabo magnam. Similique odit maxime exercitationem aliquid reiciendis 
                     atque, consequatur aut ipsa possimus suscipit eaque!</p>
             </div>
@@ -27,13 +27,13 @@
                         <p class="chat-date">11:22</p>
                     </div>
                 </div>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate voluptatibus laboriosam ex 
+                <p class="chat-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate voluptatibus laboriosam ex 
                     officia excepturi magni, explicabo magnam. Similique odit maxime exercitationem aliquid reiciendis 
                     atque, consequatur aut ipsa possimus suscipit eaque!</p>
             </div>
         </div>
 
-        <form class="d-flex flex-row">
+        <form class="d-flex flex-row chat-input-container">
             <input class="input-field-left" type="text" placeholder="Your message">
             <button class="button-right-red">Send</button>
         </form>

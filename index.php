@@ -102,6 +102,10 @@ try {
         case "partie" : $utilisateurController->partie();
         case "roomParty": $utilisateurController->afficherPageRoomPartie();
         break;
+        case "trending": $utilisateurController->afficherPageTrending();
+        break;
+        case "ranking": $utilisateurController->afficherPageRanking();
+        break;
         case "showGames": $utilisateurController->afficherPageShowGames();
         break;
         case "creerPartie" : $utilisateurController->afficherPageCreerPartie();
