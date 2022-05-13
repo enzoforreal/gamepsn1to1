@@ -62,10 +62,10 @@
 
                         <div class="row">
                             <a class="col-12 col-sm-6" href="">
-                                <button class="card-button">Send message</button>
+                                <button class="card-button">Message</button>
                             </a>
                             <a class="col-12 col-sm-6" href="">
-                                <button class="card-button">Send request</button>
+                                <button class="card-button">Follow</button>
                             </a>
                         </div>
 
