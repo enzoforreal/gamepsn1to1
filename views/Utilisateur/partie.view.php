@@ -1,9 +1,3 @@
-<?php
-require_once("./controllers/Utilisateur/Party.controller.php");
-$partyManager = new PartyManager;
- $party =$partyManager->getPartieInformation($_SESSION['party']['id']);
-//   error_reporting (E_ALL ^ E_NOTICE); 
-?>
 <div class="container-fluid">
       <div class="row">
 

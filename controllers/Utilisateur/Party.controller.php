@@ -14,8 +14,8 @@ class PartyController extends mainController{
 
        public function partie(){
        
-        $datas = $this->partyManager->getPartieInformation($_SESSION['party']['id']);
-        $_SESSION['party']["statut"] = $datas['statut'];
+       $datas = $this->partyManager->getUserInformation($_SESSION['profil']['login']);
+           $_SESSION['profil']["role"] = $datas['role'];
         
 
          $data_page = [
@@ -32,7 +32,7 @@ class PartyController extends mainController{
 
 
       public function afficherPageCreerPartie(){
-        $datas = $this->partyManager->getPartieInformation($_SESSION['party']['id']);
+        $datas = $this->partyManager->getUserInformation($_SESSION['profil']['login']);
         $_SESSION['profil']["role"] = $datas['role'];
 
          $data_page = [
