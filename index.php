@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//  error_reporting (E_ALL ^ E_NOTICE); 
 define("URL", str_replace("index.php","",(isset($_SERVER['HTTPS'])? "https" : "http").
 "://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
 
@@ -8,9 +8,11 @@ require_once("./controllers/Toolbox.class.php");
 require_once("./controllers/Securite.class.php");
 require_once("./controllers/Visiteur/Visiteur.controller.php");
 require_once("./controllers/Utilisateur/Utilisateur.controller.php");
+require_once("./controllers/Utilisateur/Party.controller.php");
 require_once("./controllers/Administrateur/Administrateur.controller.php");
 $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateurController();
+$partyController = new PartyController();
 $administrateurController = new AdministrateurController();
 
 try {
@@ -39,13 +41,18 @@ try {
         case "creerCompte" : $visiteurController->creerCompte();
         break;
         case "validation_creerCompte" : 
-            if(!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['mail'])){
+            if(!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['mail']) && !empty($_POST['birthdate']) 
+            && !empty($_POST['telephone']) && !empty($_POST['country'])){
                 $login = Securite::secureHTML($_POST['login']);
                 $password = Securite::secureHTML($_POST['password']);
                 $mail = Securite::secureHTML($_POST['mail']);
-                $utilisateurController->validation_creerCompte($login,$password,$mail);
+                $birthdate = $_POST['birthdate'];
+                $telephone = Securite::secureHTML($_POST['telephone']);
+                $country = $_POST['country'];
+
+                $utilisateurController->validation_creerCompte($login,$password,$mail,$birthdate,$telephone,$country);
             } else {
-                Toolbox::ajouterMessageAlerte("Les 3 informations sont obligatoires !", Toolbox::COULEUR_ROUGE);
+                Toolbox::ajouterMessageAlerte("Les 6 informations sont obligatoires !", Toolbox::COULEUR_ROUGE);
                 header("Location: ".URL."creerCompte");
             }
         break;
@@ -99,17 +106,35 @@ try {
 
             }
         break;
-        case "partie" : $utilisateurController->partie();
-        case "roomParty": $utilisateurController->afficherPageRoomPartie();
+        case "partie" : $partyController->partie();
         break;
+        case "showGames": $utilisateurController->afficherPageShowGames();
+        break;
+        case "creerPartie" : $partyController->afficherPageCreerPartie();
         case "trending": $utilisateurController->afficherPageTrending();
         break;
         case "ranking": $utilisateurController->afficherPageRanking();
         break;
         case "showGames": $utilisateurController->afficherPageShowGames();
         break;
-        case "creerPartie" : $utilisateurController->afficherPageCreerPartie();
+        case "ValidationCreerParty" :  if(!empty($_POST['login']) 
+        ){
+                        $login = Securite::secureHTML($_POST['login']);
+                        $partyController->validationCreerParty($login);
+                        Toolbox::ajouterMessageAlerte("votre partie a été crée avec succès",Toolbox::COULEUR_VERTE);
+                             header("Location: ".URL."roomParty");
+                        }else{
+                        Toolbox::ajouterMessageAlerte("votre partie n'a pas pu etre crée",Toolbox::COULEUR_ROUGE);
+                            header("Location: ".URL."creerPartie");
+                        }
+                    break;
+                                    
+        case "roomParty": $partyController->afficherPageRoomPartie();
         break;
+        case "showGames": $partyController->afficherPageShowGames();
+        break;
+
+        
         case "administration" :
             if(!Securite::estConnecte()) {
                 Toolbox::ajouterMessageAlerte("Veuillez vous connecter !",Toolbox::COULEUR_ROUGE);
