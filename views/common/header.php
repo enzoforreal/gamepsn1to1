@@ -34,7 +34,10 @@
                               <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>partie">Party</a>
                         </li>
                         <li>
-                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>chat">Chat</a>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>trending">Social</a>
+                        </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>ranking">Ranking</a>
                         </li>
                         <li>
                               <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>showGames">Show

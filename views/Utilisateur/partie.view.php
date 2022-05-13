@@ -86,23 +86,26 @@
 
                   <!--Insérer template carte-->
                   <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+
                         <div class="col">
                               <div class="card">
                                     <img src="../../public/Assets/images/fortnitepc.png" class="card-img-top"
                                           alt="image game">
+
                                     <div class="card-body">
 
                                           <h5 class="card-title fw-bold">Jeux: Fortnite</h5>
                                           <p class="card-text fw-bold">Mise: 20$</p>
                                           <p class="card-text">Plateforme: PC</p>
                                           <p class="card-text">Statut partie: privée (entre ami)</p>
-                                          <p class="card-text">Identifiant partie: #47013</p>
+                                          <p class="card-text">Identifiant partie: #45566</p>
 
                                           <a href="<?= URL ?>roomParty">
                                                 <button class="btn btn-danger w-100">Join</button>
                                           </a>
                                     </div>
                               </div>
+
                         </div>
                   </div>
 
