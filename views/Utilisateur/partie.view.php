@@ -92,9 +92,7 @@ $partyManager = new PartyManager;
 
                   <!--Insérer template carte-->
                   <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-                        <?php
-                        while( $party = $resultat ) {
-                        ?>
+
                         <div class="col">
                               <div class="card">
                                     <img src="../../public/Assets/images/fortnitepc.png" class="card-img-top"
@@ -113,7 +111,7 @@ $partyManager = new PartyManager;
                                           </a>
                                     </div>
                               </div>
-                              <?php } ?>
+
                         </div>
                   </div>
 
