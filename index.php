@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//  error_reporting (E_ALL ^ E_NOTICE); 
 define("URL", str_replace("index.php","",(isset($_SERVER['HTTPS'])? "https" : "http").
 "://".$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"]));
 
@@ -106,9 +106,9 @@ try {
 
             }
         break;
-        case "partie" : $utilisateurController->partie();
+        case "partie" : $partyController->partie();
         break;
-        case "creerPartie" : $utilisateurController->afficherPageCreerPartie();
+        case "creerPartie" : $partyController->afficherPageCreerPartie();
         break;
         case "ValidationCreerParty" :  if(!empty($_POST['login']) 
         ){
@@ -122,9 +122,9 @@ try {
                         }
                     break;
                                     
-        case "roomParty": $utilisateurController->afficherPageRoomPartie();
+        case "roomParty": $partyController->afficherPageRoomPartie();
         break;
-        case "showGames": $utilisateurController->afficherPageShowGames();
+        case "showGames": $partyController->afficherPageShowGames();
         break;
 
         

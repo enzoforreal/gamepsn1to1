@@ -17,11 +17,20 @@ class PartyManager extends MainManager {
             return $estcrée;
       }
 
+      public function getUserInformation($login){
+        $req = "SELECT * FROM utilisateur WHERE login = :login";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":login",$login,PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
       
-      public function getPartieInformation($login_1){
-            $req = "SELECT  login_1 FROM party WHERE login_1 = 'disponible' ";
+      public function getPartieInformation($id){
+            $req = "SELECT  * FROM party WHERE id = :id ";
             $stmt = $this->getBdd()->prepare($req);
-            $stmt->bindValue(":login",$login_1,PDO::PARAM_STR);
+            $stmt->bindValue(":id",$id,PDO::PARAM_STR);
             $stmt->execute();
             $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
             $stmt->closeCursor();
@@ -45,14 +54,14 @@ class PartyManager extends MainManager {
          return false;   
             }
       }
-      public function getPartiesById($id){
-        $req = "SELECT * FROM party WHERE id = :id";
-        $stmt = $this->getBdd()->prepare($req);
-        $stmt->bindValue(":id",$id,PDO::PARAM_INT);
-        $stmt->execute();
-        $parties = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $parties;
-      }
+      // public function getPartiesById($id){
+      //   $req = "SELECT * FROM party WHERE id = :id";
+      //   $stmt = $this->getBdd()->prepare($req);
+      //   $stmt->bindValue(":id",$id,PDO::PARAM_INT);
+      //   $stmt->execute();
+      //   $resultat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      //   $stmt->closeCursor();
+      //   return $resultat;
+      // }
 
 }
