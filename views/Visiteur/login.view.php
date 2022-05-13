@@ -14,9 +14,9 @@
                   <form method="POST" action="<?= URL ?>validation_login" class="d-flew flew-column"
                         style="width: 400px">
                         <div class="mb-3">
-                              <label for="login">Lastname</label>
-                              <input type="text" name="login" id="login" class="form-control"
-                                    placeholder="Your lastname" require="required">
+                              <label for="login">Login</label>
+                              <input type="text" name="login" id="login" class="form-control" placeholder="Your login"
+                                    require="required">
                         </div>
 
                         <div class="mb-3">
@@ -25,7 +25,7 @@
                                     placeholder="Your password" require="required">
                         </div>
 
-                        <table class="captcha" width="225" border="0" cellspacing="0" cellpadding="0" height="225">
+                        <table class="captcha" width="300" border="0" cellspacing="0" cellpadding="0" height="170">
                               <tr>
                                     <td id="image1" name="image2" class="i6" onclick="clickImage('image1')"></td>
                                     <td id="image2" name="image3" class="i2" onclick="clickImage('image2')"></td>
