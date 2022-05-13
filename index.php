@@ -111,6 +111,7 @@ try {
         case "showGames": $utilisateurController->afficherPageShowGames();
         break;
         case "creerPartie" : $partyController->afficherPageCreerPartie();
+        break;
         case "trending": $utilisateurController->afficherPageTrending();
         break;
         case "ranking": $utilisateurController->afficherPageRanking();
