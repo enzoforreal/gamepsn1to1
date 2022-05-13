@@ -7,10 +7,9 @@ class PartyManager extends MainManager {
       public function bdcreePartie($login){
           
 
-            $req = "INSERT INTO party (login,login_1,score,statut) VALUES (:login , :login_1 , '?-?',0)";
+            $req = "INSERT INTO party (login,login_1,score) VALUES( :login ,'en_attente_joueur','?-?');";
             $stmt = $this->getBdd()->prepare($req);
             $stmt->bindValue(":login",$login,PDO::PARAM_STR);
-            $stmt->bindValue(":login_1",$login,PDO::PARAM_STR);
             $stmt->execute();
             $estcrée = ($stmt->rowCount() > 0);
             $stmt->closeCursor();
@@ -37,15 +36,15 @@ class PartyManager extends MainManager {
             return $resultat;
       }
 
-      public function bdjoinPartie($login_1)
+      public function bdjoinPartie($login)
       {
 
-      $userB = $this->getPartieInformation($login_1);
+      $userB = $this->getPartieInformation($login);
       if($userB == "disponible"){
                   // requete SQL POUR INSERER le userB(login_1)
                   $req = "INSERT INTO party (login_1)VALUES (:login)";
                   $stmt = $this->getBdd()->prepare($req);
-                  $stmt->bindValue(":login_1",$login_1,PDO::PARAM_STR);
+                  $stmt->bindValue(":login",$login,PDO::PARAM_STR);
                   $stmt->execute();
                   $join = ($stmt->rowCount() > 0);
                   $stmt->closeCursor();
