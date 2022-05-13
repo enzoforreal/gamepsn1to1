@@ -92,9 +92,7 @@ $partyManager = new PartyManager;
 
                   <!--Insérer template carte-->
                   <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-                        <?php
-                        while( $party = $resultat ) {
-                        ?>
+
                         <div class="col">
                               <div class="card">
                                     <img src="../../public/Assets/images/fortnitepc.png" class="card-img-top"
@@ -106,14 +104,14 @@ $partyManager = new PartyManager;
                                           <p class="card-text fw-bold">Mise: 20$</p>
                                           <p class="card-text">Plateforme: PC</p>
                                           <p class="card-text">Statut partie: privée (entre ami)</p>
-                                          <p class="card-text">Identifiant partie: <?= $partie['login'] ?></p>
+                                          <p class="card-text">Identifiant partie: #45566</p>
 
                                           <a href="<?= URL ?>roomParty">
                                                 <button class="btn btn-danger w-100">Join</button>
                                           </a>
                                     </div>
                               </div>
-                              <?php } ?>
+
                         </div>
                   </div>
 
