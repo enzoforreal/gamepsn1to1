@@ -181,9 +181,19 @@ p, h1, h2, h3, h4, h5, h6, a{
         color: var(--bg-grey-color);
     }
 
+    .chat-nickname-black{
+        font-weight: bold;
+        color: var(--bg-black-color);
+    }
+
     .chat-date{
         font-size: var(--typo-sm);
         color: var(--bg-grey-color);
+    }
+
+    .chat-date-black{
+        font-size: var(--typo-sm);
+        color: var(--bg-black-color);
     }
 
     .chat-text{
