@@ -14,14 +14,14 @@ class PartyController extends mainController{
 
        public function partie(){
        
-       $datas = $this->partyManager->getUserInformation($_SESSION['profil']['login']);
-           $_SESSION['profil']["role"] = $datas['role'];
+           $parties = $this->partyManager->getParties();
+ 
         
 
          $data_page = [
             "page_description" => "Page partie",
             "page_title" => "Page partie",
-            "party" => $datas,
+            "party" => $parties,
             "page_javascript" => ['partie.js'],
             "view" => "views/Utilisateur/partie.view.php",
             "template" => "views/common/template.php"
@@ -84,7 +84,7 @@ public function afficherPageShowGames(){
       
       }
 
-     public function displayParties($id){
-           $this->partyManager->getPartieInformation($id);
+     public function displayParties(){
+           $this->partyManager->getParties();
      }
 }
