@@ -4,7 +4,7 @@
 
                   <!--Logo-->
                   <a href="#" class="col-12 col-lg-3 text-lg-start text-center " style="text-decoration: blink;">
-                        <img src="<?= URL; ?>public/Assets/images/logo.svg" width="70px" alt="logo du site" />
+                        <img src="<?= URL; ?>public/Assets/images/logo.png" width="70px" alt="logo du site" />
                         <p class="text-danger d-inline fw-bold mb-0 ms-2" style="font-size: 20px;">Game1To1</p>
                   </a>
 
@@ -32,6 +32,16 @@
 
                         <li>
                               <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>partie">Party</a>
+                        </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>trending">Social</a>
+                        </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>ranking">Ranking</a>
+                        </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>showGames">Show
+                                    games</a>
                         </li>
 
                         <li>

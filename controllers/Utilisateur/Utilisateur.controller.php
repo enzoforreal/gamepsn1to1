@@ -5,8 +5,11 @@ require_once("./models/Utilisateur/Utilisateur.model.php");
 class UtilisateurController extends MainController{
     private $utilisateurManager;
 
+   
+
     public function __construct(){
         $this->utilisateurManager = new UtilisateurManager();
+     
     }
 
     public function validation_login($login,$password){
@@ -48,6 +51,52 @@ class UtilisateurController extends MainController{
         $this->genererPage($data_page);
     }
 
+  
+    public function afficherPageTrending(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page tendance",
+            "page_title" => "Page tendance",
+            "utilisateur" => $datas,
+            "page_javascript" => ['trending.js'],
+            "view" => "views/Utilisateur/trending.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function afficherPageRanking(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page classement",
+            "page_title" => "Page classement",
+            "utilisateur" => $datas,
+            "page_javascript" => ['ranking.js'],
+            "view" => "views/Utilisateur/ranking.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function afficherPageShowGames(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page des jeux",
+            "page_title" => "Page des jeux",
+            "utilisateur" => $datas,
+            "page_javascript" => ['showGames.js'],
+            "view" => "views/Utilisateur/showGames.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
     public function partie(){
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
         $_SESSION['profil']["role"] = $datas['role'];
@@ -62,6 +111,21 @@ class UtilisateurController extends MainController{
         ];
         $this->genererPage($data_page);
 
+    }
+
+    public function afficherPageRoomPartie(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+         $data_page = [
+            "page_description" => "Page salle partie",
+            "page_title" => "Page salle partie",
+            "utilisateur" => $datas,
+            "page_javascript" => ['roomParty.js'],
+            "view" => "views/Utilisateur/roomParty.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
     }
 
     public function afficherPageCreerPartie(){
@@ -85,11 +149,11 @@ class UtilisateurController extends MainController{
         setcookie(Securite::COOKIE_NAME,"",time() - 3600);
         header("Location: ".URL."accueil");
     }
-    public function validation_creerCompte($login,$password,$mail){
+    public function validation_creerCompte($login,$password,$mail,$birthdate,$telephone,$country){
         if($this->utilisateurManager->verifLoginDisponible($login)){
             $passwordCrypte = password_hash($password,PASSWORD_DEFAULT);
             $clef = rand(0,9999);
-            if($this->utilisateurManager->bdCreerCompte($login,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur")){
+            if($this->utilisateurManager->bdCreerCompte($login,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur",$birthdate,$telephone,$country)){
                 $this->sendMailValidation($login,$mail,$clef);
                 Toolbox::ajouterMessageAlerte("La compte a été créé, Un mail de validation vous a été envoyé !", Toolbox::COULEUR_VERTE);
                 header("Location: ".URL."login");

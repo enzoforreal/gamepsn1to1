@@ -74,10 +74,13 @@
                         <label for="rangeMiseMax" class="form-label mb-1">Mise maximum</label>
                         <input type="range" class="form-range" id="rangeMiseMax">
                   </div>
+                  <form method="POST" action="ValidationCreerParty">
+                        <input id="login" name="login" type="hidden" value="<?= $utilisateur['login'] ?>">
+                        <div class="col-12 text-center">
+                              <button type="submit" class="btn btn-danger">Create</button>
+                        </div>
+                  </form>
 
-                  <div class="col-12 text-center">
-                        <button class="btn btn-danger">Create</button>
-                  </div>
 
             </div>
 

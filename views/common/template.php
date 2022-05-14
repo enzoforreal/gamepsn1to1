@@ -11,7 +11,7 @@
 
 
 
-      <link href="<?= URL ?>public/CSS/main.css" rel="stylesheet" />
+      <link href="<?= URL ?>public/CSS/component.css" rel="stylesheet" />
       <?php if(!empty($page_css)) : ?>
       <?php foreach($page_css as $fichier_css) : ?>
       <link href="<?= URL ?>public/CSS/<?= $fichier_css ?>" rel="stylesheet" />
@@ -22,7 +22,7 @@
 <body>
       <?php require_once("views/common/header.php"); ?>
 
-      <div class="container-fluid p-0">
+      <div>
             <?php 
             if(!empty($_SESSION['alert'])) {
                 foreach($_SESSION['alert'] as $alert){

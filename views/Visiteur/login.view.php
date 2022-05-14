@@ -14,9 +14,9 @@
                   <form method="POST" action="<?= URL ?>validation_login" class="d-flew flew-column"
                         style="width: 400px">
                         <div class="mb-3">
-                              <label for="login">Lastname</label>
-                              <input type="text" name="login" id="login" class="form-control"
-                                    placeholder="Your lastname" require="required">
+                              <label for="login">Login</label>
+                              <input type="text" name="login" id="login" class="form-control" placeholder="Your login"
+                                    require="required">
                         </div>
 
                         <div class="mb-3">
@@ -25,7 +25,7 @@
                                     placeholder="Your password" require="required">
                         </div>
 
-                        <table class="captcha" width="225" border="0" cellspacing="0" cellpadding="0" height="225">
+                        <table class="captcha" width="300" border="0" cellspacing="0" cellpadding="0" height="170">
                               <tr>
                                     <td id="image1" name="image2" class="i6" onclick="clickImage('image1')"></td>
                                     <td id="image2" name="image3" class="i2" onclick="clickImage('image2')"></td>
@@ -35,10 +35,11 @@
                                     <td id="image4" name="image4" class="i1" onclick="clickImage('image4')"></td>
                               </tr>
                         </table>
-
-                        <button style="position:absolute;top: 800px; right: 860px;" disabled="True" id="button"
-                              type="submit" class="btn btn-success btn-sm">Connect to your
-                              account</button>
+                        <div class="text-center">
+                              <button disabled="True" id="button" type="submit"
+                                    class="btn btn-success btn-sm mt-4">Connect to your
+                                    account</button>
+                        </div>
                   </form>
 
             </div>
