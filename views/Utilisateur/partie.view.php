@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="col custom-card-container">
       <div class="row">
 
             <!--Zone dédié aux filtres-->
@@ -85,26 +85,37 @@
             <main class="col-12 col-sm-6 col-md-8 col-xl-9 custom-content">
 
                   <!--Insérer template carte-->
-                  <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-                        <div class="col">
-                              <div class="card">
+
+                  <blockquote class="blockquote mb-0 card-body">
+
+                        <div class="card-container" style="width: 300px">
+                              <?php foreach ($party as $datas) : ?>
+                              <div class="card border-dark mb-3">
                                     <img src="../../public/Assets/images/fortnitepc.png" class="card-img-top"
                                           alt="image game">
+
                                     <div class="card-body">
 
-                                          <h5 class="card-title fw-bold">Jeux: Fortnite</h5>
-                                          <p class="card-text fw-bold">Mise: 20$</p>
-                                          <p class="card-text">Plateforme: PC</p>
-                                          <p class="card-text">Statut partie: privée (entre ami)</p>
-                                          <p class="card-text">Identifiant partie: #47013</p>
+                                          <h5 class="card-title fw-bold"><?php echo $datas['game']; ?></h5>
+                                          <p class="card-text fw-bold">Bet: 20$</p>
+                                          <p class="card-text">Plateform : <?php echo $datas['platform']; ?></p>
+                                          <p class="card-text">Score : <?php echo $datas['score']; ?></p>
+                                          <p class="card-text"> Number of room : <?php echo $datas['idParty']; ?>
+                                          </p>
+                                          <p class="card-text">Statut : <?php echo $datas['statut']; ?></p>
 
                                           <a href="<?= URL ?>roomParty">
                                                 <button class="btn btn-danger w-100">Join</button>
                                           </a>
                                     </div>
                               </div>
+                              <?php endforeach ; ?>
                         </div>
-                  </div>
+
+                  </blockquote>
+
+
+
 
             </main>
 
