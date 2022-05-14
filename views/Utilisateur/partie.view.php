@@ -84,10 +84,36 @@
             <!--Zone dédié aux parties-->
             <main class="col-12 col-sm-6 col-md-8 col-xl-9 custom-content">
 
-                  <!--Insérer template carte-->
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4 justify-content-center ">
+                  
+                        <!--Template profil-->
+                        <?php foreach ($party as $datas) : ?>
+                        <div class="col custom-card-item" style="width: 300px">
+                              <div class="card" >
+                                    <img src="../../public/Assets/images/fortnitepc.png" class="card-img-top" alt="image game">
+                                    <div class="custom-card-body">
+                                          <h5 class="card-title fw-bold"><?php echo $datas['game']; ?></h5>
+                                          <p class="card-text fw-bold">Bet: 20$</p>
+                                          <p class="card-text">Plateform : <?php echo $datas['platform']; ?></p>
+                                          <p class="card-text">Score : <?php echo $datas['score']; ?></p>
+                                          <p class="card-text"> Number of room : <?php echo $datas['idParty']; ?>
+                                          </p>
+                                          <p class="card-text">Statut : <?php echo $datas['statut']; ?></p>
 
-                  <blockquote class="blockquote mb-0 card-body">
+                                          <a href="<?= URL ?>roomParty">
+                                                <button class="btn btn-danger w-100">Join</button>
+                                          </a>
+                                    </div>
+                              </div>
 
+                        </div>
+                        <?php endforeach ; ?>
+                  </div>
+                  
+
+            </div>
+
+                  <!--<blockquote class="blockquote mb-0 card-body">
                         <div class="card-container" style="width: 300px">
                               <?php foreach ($party as $datas) : ?>
                               <div class="card border-dark mb-3">
@@ -111,8 +137,7 @@
                               </div>
                               <?php endforeach ; ?>
                         </div>
-
-                  </blockquote>
+                  </blockquote>-->
 
 
 
