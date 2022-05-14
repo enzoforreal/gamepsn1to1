@@ -131,6 +131,7 @@ try {
                     break;
                                     
         case "roomParty": $partyController->afficherPageRoomPartie();
+        // traiter l'accès a la room partie par son idParty
         break;
         case "showGames": $partyController->afficherPageShowGames();
         break;
