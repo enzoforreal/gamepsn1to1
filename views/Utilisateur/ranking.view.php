@@ -10,9 +10,9 @@
                               <div class="custom-card-body">
                                     <h5 class="custom-card-title text-center">Nom site: Marie</h5>
                                     <hr>
-                                    <p class="custom-card-subtitle">Pseudo: ZharksLeGrand</p>
+                                    <p class="custom-card-subtitle">Pseudo platform: ZharksLeGrand</p>
                                     <hr>
-                                    <p class="custom-card-text">Rang: 462ème</p>
+                                    <p class="custom-card-text">level: 462ème</p>
                                     <hr>
                                     <div class="row">
                                           <a class="col-12 col-sm-6" href="">
