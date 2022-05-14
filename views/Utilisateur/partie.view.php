@@ -103,6 +103,7 @@
                                           <p class="card-text"> Number of room : <?php echo $datas['idParty']; ?>
                                           </p>
                                           <p class="card-text">Statut : <?php echo $datas['statut']; ?></p>
+                                          <p class="card-text">player : <?php echo $datas['login']; ?></p>
 
                                           <a href="<?= URL ?>roomParty">
                                                 <button class="btn btn-danger w-100">Join</button>
