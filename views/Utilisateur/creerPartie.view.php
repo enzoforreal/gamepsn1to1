@@ -10,7 +10,7 @@
             <div class="col-12 col-md-7 p-5 row">
 
                   <div class="col-12 text-center mb-5">
-                        <p class="fw-bold">CODE SALLE: XXXXX</p>
+                        <p class="fw-bold">Click your options then validate the creation of your part</p>
                   </div>
 
                   <div class="col-12 col-md-6 mb-5">
@@ -18,20 +18,23 @@
                               aria-expanded="false" aria-controls="collapseExample">
                               Games
                         </a>
+                        <form method="POST" action="ValidationCreerParty">
                         <div class="collapse" id="collapseGames">
                               <div class="card card-body">
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Jeux 1</p>
-                                    </a>
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Jeux 2</p>
-                                    </a>
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Jeux 3</p>
-                                    </a>
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Jeux 4</p>
-                                    </a>
+                                      <select name="game">
+                                    <option value="FIFA 22" selected>FIFA 22</option>
+                                    <option value="CALL OF DUTY">CALL OF DUTY</option>
+                                    <option value="WARZONE">WARZONE</option>
+                                    <option value="NBA2K">NBA2K</option>
+                                    <option value="GRAN TURISMO 7">GRAN TURISMO 7</option>
+                                    <option value="FORZA HORIZON">FORZA HORIZON</option>
+                                    <option value="WWE 2K22">WWE 2K22</option>
+                                    <option value="MOTO GP 22">MOTO GP 22</option>
+                                    <option value="FAR CRY 6">FAR CRY 6</option>
+                                    <option value="SPLATOON 2">SPLATOON 2</option>
+                                    <option value="E-FOOTBALL 2022">E-FOOTBALL 2022</option>
+                                    <option value="LEAGUE OF LEGENDS">LEAGUE OF LEGENDS</option>
+                              </select>
                               </div>
                         </div>
                   </div>
@@ -43,39 +46,25 @@
                         </a>
                         <div class="collapse" id="collapsePlateform">
                               <div class="card card-body">
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Playstation 5</p>
-                                    </a>
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Playstation 4</p>
-                                    </a>
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Xbox Series X</p>
-                                    </a>
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Xbox One</p>
-                                    </a>
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Computer</p>
-                                    </a>
-                                    <a href="#">
-                                          <p class="card-text fw-bold mb-2">Switch</p>
-                                    </a>
+                                   <select name="platform">
+                                    <option value="ps5" selected>Playstation 5</option>
+                                    <option value="ps4">Playstation 4</option>
+                                    <option value="xbox_series_x">Xbox Series X</option>
+                                    <option value="xbox_one">Xbox One</option>
+                                    <option value="pc">Computer</option>
+                                    <option value="switch">Switch</option>
+                              </select>
                               </div>
                         </div>
                   </div>
-
-                  <div class="col-12 col-md-6 mb-5">
-                        <label for="rangeMiseMin" class="form-label mb-1">Mise minimum</label>
-                        <input type="range" class="form-range w-100" id="rangeMiseMin">
+                  
+                  <div style="position:relative; margin:auto; width:90%">
+                  <span style="position:absolute; color:#D92344; border:1px; min-width:100px;">
+                  <span id="myValue"></span>
+                  </span>
+                  <input type="range" id="myRange"  name="bet" min="5" max="100" style="width:90%">  
                   </div>
-
-                  <div class="col-12 col-md-6 mb-5">
-                        <label for="rangeMiseMax" class="form-label mb-1">Mise maximum</label>
-                        <input type="range" class="form-range" id="rangeMiseMax">
-                  </div>
-                  <form method="POST" action="ValidationCreerParty">
-                        <input id="login" name="login" type="hidden" value="<?= $utilisateur['login'] ?>">
+                        <input id="login" name="login" type="hidden" value="<?= $utilisateur['login'] ?>"><br>
                         <div class="col-12 text-center">
                               <button type="submit" class="btn btn-danger">Create</button>
                         </div>

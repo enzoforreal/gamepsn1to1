@@ -17,18 +17,3 @@ myRange.oninput = function () {
   myValue.innerHTML = myRange.value + " " + myUnits;
   myValue.parentElement.style.left = px + "px";
 };
-
-function getPartyList() {
-  const req = new XMLHttpRequest();
-  req.onreadystatechange = function () {
-    if (req.readyState === 4) {
-      const div = document.getElementById("party-list");
-
-      const result = req.responseText;
-
-      div.innerHTML = result;
-    }
-  };
-  req.open("GET", "party.view.php");
-  req.send();
-}
