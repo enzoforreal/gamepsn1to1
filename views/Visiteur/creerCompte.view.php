@@ -45,6 +45,11 @@
                               <input type="Text" name="country" id="country" class="form-control"
                                     placeholder="Your Country" require="required">
                         </div>
+                        <div class="mb-3">
+                              <label for="country">Pseudo platform</label>
+                              <input type="Text" name="pseudoPlatform" id="country" class="form-control"
+                                    placeholder="Your Country" require="required">
+                        </div>
                         <table class="captcha" width="300" border="0" cellspacing="0" cellpadding="0" height="170">
                               <tr>
                                     <td id="image1" name="image2" class="i6" onclick="clickImage('image1')"></td>

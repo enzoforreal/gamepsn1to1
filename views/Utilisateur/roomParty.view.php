@@ -1,5 +1,4 @@
 <div class="row">
-
       <!--Chat privée-->
       <aside class="chat-container">
             <h3 class="chat-title">CHAT PRIVEE</h3>
@@ -53,7 +52,7 @@
                         <div class="d-flex flex-row custom-playerList-item">
                               <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
                               <div class="d-flex flex-column">
-                                    <p class="chat-nickname-black">ZharksLeGrand #7593</p>
+                                    <p class="chat-nickname-black"><?= $party["login"] ?></p>
                                     <p class="chat-date-black">Ready</p>
                               </div>
 
@@ -65,7 +64,7 @@
                         <div class="d-flex flex-row custom-playerList-item">
                               <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
                               <div class="d-flex flex-column">
-                                    <p class="chat-nickname-black">ZharksLeGrand #7593</p>
+                                    <p class="chat-nickname-black"><?= $party["login_1"] ?></p>
                                     <p class="chat-date-black">Not ready</p>
                               </div>
 

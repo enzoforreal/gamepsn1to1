@@ -18,17 +18,49 @@ myRange.oninput = function () {
   myValue.parentElement.style.left = px + "px";
 };
 
-function getPartyList() {
+function getPartyList(e) {
   const req = new XMLHttpRequest();
-  req.onreadystatechange = function () {
+  let formData = new FormData();
+  console.log(e.value);
+  formData.append("filterKey", e.value);
+  req.onreadystatechange = function (e) {
     if (req.readyState === 4) {
-      const div = document.getElementById("party-list");
+      let response = JSON.parse(this.response);
+      if (response["error"] === false) {
+        document.getElementById("listParty").innerHTML = "";
+        if (response["msg"] != "") {
+          for (data of response["msg"]) {
+            document.getElementById("listParty").innerHTML += `
+              <div class="col custom-card-item" style="width: 300px" id="party-list">
+                  <div class="card">
+                        <img src="../../public/Assets/images/party1.jpg" class="card-img-top"
+                              alt="image game">
+                        <div class="custom-card-body">
+                              <h5 class="card-title fw-bold">${data["game"]}</h5>
+                              <p class="card-text fw-bold">Bet: 20$</p>
+                              <p class="card-text">Plateform : ${data["platform"]}</p>
+                              <p class="card-text">Score : ${data["score"]}</p>
+                              <p class="card-text"> Number of room : ${data["idParty"]}
+                              </p>
+                              <p class="card-text">Statut : ${data["statut"]}</p>
 
-      const result = req.responseText;
+                              <a class="btn btn-danger"
+                                    href="<?= URL ?>roomParty&idParty=${data["idParty"]}">
+                              </a>
+                        </div>
+                  </div>
 
-      div.innerHTML = result;
+              </div>
+            `;
+          }
+        } else {
+          console.log("ok");
+          document.getElementById("listParty").innerHTML =
+            "Aucune partie trouvée";
+        }
+      }
     }
   };
-  req.open("GET", "party.view.php");
-  req.send();
+  req.open("POST", "/roomFilter");
+  req.send(formData);
 }

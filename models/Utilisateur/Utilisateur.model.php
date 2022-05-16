@@ -38,7 +38,7 @@ class UtilisateurManager extends MainManager{
         return $resultat;
     }
 
-    public function bdCreerCompte($login,$passwordCrypte,$mail,$clef,$image,$role, $birthdate ,$telephone,$country){
+    public function bdCreerCompte($login,$passwordCrypte,$mail,$clef,$image,$role, $birthdate ,$telephone,$country,$pseudoPlatform){
         $req = "INSERT INTO utilisateur (login, password, mail, est_valide, role, clef, image, 
         numberOfBans , numberOfConnections, totalPoints , numberOfWins,numberOfDefeats, numberOfDraws, birthdate, telephone, country ,nbFollowers, isBanned)
         VALUES (:login, :password, :mail, 0, :role, :clef, :image , 0, 0, 0, 0, 0, 0, :birthdate , :telephone, :country, 0, 0)";
@@ -52,6 +52,7 @@ class UtilisateurManager extends MainManager{
         $stmt->bindValue(":birthdate",$birthdate,PDO::PARAM_STR);
         $stmt->bindValue(":telephone",$telephone,PDO::PARAM_STR);
         $stmt->bindValue(":country",$country,PDO::PARAM_STR);
+        $stmt->bindValue(":pseudoPlatform",$pseudoPlatform,PDO::PARAM_STR);
 
         $stmt->execute();
         $estModifier = ($stmt->rowCount() > 0);

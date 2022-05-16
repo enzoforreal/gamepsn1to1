@@ -27,11 +27,33 @@ class PartyManager extends MainManager {
     }
       
       public function getParties(){
-        $req = $this->getBdd()->prepare("SELECT * FROM party");
+        $req = $this->getBdd()->prepare("SELECT * FROM party" );
         $req->execute();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         return $datas;
+      }
+
+       public function getPartyById($idParty){
+        $req = $this->getBdd()->prepare("SELECT * FROM party WHERE idParty = ?" );
+        $req->execute([
+            intval(htmlspecialchars($idParty))
+        ]);
+        $datas = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+      }
+      
+
+      public function getRoomByFilter($filter) {
+            
+            $req = $this->getBdd()->prepare('SELECT * FROM party WHERE game LIKE :filter_key');
+            $req->execute([
+                  ':filter_key' => '%'.htmlspecialchars($filter).'%'
+            ]);
+
+            $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $datas;
       }
 
       public function bdjoinPartie($login)

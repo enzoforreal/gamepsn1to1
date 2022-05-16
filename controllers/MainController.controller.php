@@ -11,7 +11,7 @@ abstract class MainController{
         require_once($template);
     }
 
-    protected function pageErreur($msg){
+    protected function pageErreur($msg, $statusCode){
         $data_page = [
             "page_description" => "Page permettant de gérer les erreurs",
             "page_title" => "Page d'erreur",
@@ -19,6 +19,7 @@ abstract class MainController{
             "view" => "./views/erreur.view.php",
             "template" => "views/common/template.php"
         ];
+        http_response_code($statusCode);
         $this->genererPage($data_page);
     }
 }

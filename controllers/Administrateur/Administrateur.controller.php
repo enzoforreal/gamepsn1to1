@@ -31,7 +31,4 @@ class AdministrateurController extends MainController{
         header("Location: ".URL."administration/droits");
     }
 
-    public function pageErreur($msg){
-        parent::pageErreur($msg);
-    }
 }

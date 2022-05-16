@@ -15,7 +15,7 @@ class PartyController extends mainController{
        public function partie(){
        
            $parties = $this->partyManager->getParties();
- 
+  
         
 
          $data_page = [
@@ -28,6 +28,17 @@ class PartyController extends mainController{
         ];
         $this->genererPage($data_page);
 
+    }
+
+    public function getRoomByFilter($filterKey) {
+        if(!isset($filterKey) && empty($filterKey)) {
+            echo json_encode(["msg" => "Query empty", "error"=>true]);
+            return;
+        }
+
+        $datas = $this->partyManager->getRoomByFilter($filterKey);
+        echo json_encode(["msg" => $datas, "error" => false]);
+        return;
     }
 
 
@@ -47,19 +58,23 @@ class PartyController extends mainController{
 
     }
 
-public function afficherPageRoomPartie(){
-        $datas = $this->partyManager->getUserInformation($_SESSION['profil']['login']);
-        $_SESSION['profil']["role"] = $datas['role'];
-
-         $data_page = [
-            "page_description" => "Page salle partie",
-            "page_title" => "Page salle partie",
-            "party" => $datas,
-            "page_javascript" => ['roomParty.js'],
-            "view" => "views/Utilisateur/roomParty.view.php",
-            "template" => "views/common/template.php"
-        ];
-        $this->genererPage($data_page);
+public function afficherPageRoomPartie($idParty){
+        $datas = $this->partyManager->getPartyById($idParty);
+        
+        if(!empty($datas['idParty']) && isset($datas['idParty'])) {
+            $data_page = [
+                "page_description" => "Page salle partie",
+                "page_title" => "Page salle partie",
+                "party" => $datas,
+                "page_javascript" => ['roomParty.js'],
+                "view" => "views/Utilisateur/roomParty.view.php",
+                "template" => "views/common/template.php"
+            ];
+            $this->genererPage($data_page);
+        } else {
+            parent::pageErreur("Aucune party trouvée !", 404);
+        }
+         
     }
 
 public function afficherPageShowGames(){
@@ -84,7 +99,5 @@ public function afficherPageShowGames(){
       
       }
 
-     public function displayParties(){
-           $this->partyManager->getParties();
-     }
+     
 }

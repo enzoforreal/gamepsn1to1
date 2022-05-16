@@ -4,7 +4,7 @@ class Securite{
     public const COOKIE_NAME="timers";
 
     public static function secureHTML($chaine){
-        return htmlentities($chaine);
+        return htmlspecialchars($chaine);
     }
     public static function estConnecte(){
         return (!empty($_SESSION['profil']));

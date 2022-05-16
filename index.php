@@ -49,8 +49,9 @@ try {
                 $birthdate = $_POST['birthdate'];
                 $telephone = Securite::secureHTML($_POST['telephone']);
                 $country = $_POST['country'];
+                $pseudoPlatform = $_POST['pseudoPlatform'];
 
-                $utilisateurController->validation_creerCompte($login,$password,$mail,$birthdate,$telephone,$country);
+                $utilisateurController->validation_creerCompte($login,$password,$mail,$birthdate,$telephone,$country,$pseudoPlatform);
             } else {
                 Toolbox::ajouterMessageAlerte("Les 6 informations sont obligatoires !", Toolbox::COULEUR_ROUGE);
                 header("Location: ".URL."creerCompte");
@@ -108,6 +109,9 @@ try {
         break;
         case "partie" : $partyController->partie();
         break;
+        case "roomFilter":
+            $partyController->getRoomByFilter($_POST['filterKey']);
+        break;
         case "showGames": $utilisateurController->afficherPageShowGames();
         break;
         case "creerPartie" : $partyController->afficherPageCreerPartie();
@@ -130,8 +134,9 @@ try {
                         }
                     break;
                                     
-        case "roomParty": $partyController->afficherPageRoomPartie();
-        // traiter l'accès a la room partie par son idParty
+        case "roomParty": 
+            $partyController->afficherPageRoomPartie($_GET['idParty']);
+     
         break;
         case "showGames": $partyController->afficherPageShowGames();
         break;
@@ -157,5 +162,5 @@ try {
         default : throw new Exception("La page n'existe pas");
     }
 } catch (Exception $e){
-    $visiteurController->pageErreur($e->getMessage());
+    $visiteurController->pageError($e->getMessage(), 403);
 }

@@ -40,8 +40,8 @@ class VisiteurController extends MainController{
         ];
         $this->genererPage($data_page);
     }
-
-    public function pageErreur($msg){
-        parent::pageErreur($msg);
+    
+    public function pageError($msg, $statusCode) {
+        return parent::pageErreur($msg,$statusCode);
     }
 }
