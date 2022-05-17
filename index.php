@@ -41,19 +41,20 @@ try {
         case "creerCompte" : $visiteurController->creerCompte();
         break;
         case "validation_creerCompte" : 
-            if(!empty($_POST['login']) && !empty($_POST['password']) && !empty($_POST['mail']) && !empty($_POST['birthdate']) 
+            if(!empty($_POST['login']) && !empty($_POST['pseudoPlatform']) && !empty($_POST['password']) && !empty($_POST['mail']) && !empty($_POST['birthdate']) 
             && !empty($_POST['telephone']) && !empty($_POST['country'])){
                 $login = Securite::secureHTML($_POST['login']);
+                $pseudoPlatform = securite::secureHTML($_POST['pseudoPlatform']);
                 $password = Securite::secureHTML($_POST['password']);
                 $mail = Securite::secureHTML($_POST['mail']);
                 $birthdate = $_POST['birthdate'];
                 $telephone = Securite::secureHTML($_POST['telephone']);
                 $country = $_POST['country'];
-                $pseudoPlatform = $_POST['pseudoPlatform'];
+                
 
-                $utilisateurController->validation_creerCompte($login,$password,$mail,$birthdate,$telephone,$country,$pseudoPlatform);
+                $utilisateurController->validation_creerCompte($login,$pseudoPlatform,$password,$mail,$birthdate,$telephone,$country);
             } else {
-                Toolbox::ajouterMessageAlerte("Les 6 informations sont obligatoires !", Toolbox::COULEUR_ROUGE);
+                Toolbox::ajouterMessageAlerte("Les 7 informations sont obligatoires !", Toolbox::COULEUR_ROUGE);
                 header("Location: ".URL."creerCompte");
             }
         break;
@@ -122,21 +123,29 @@ try {
         break;
         case "showGames": $utilisateurController->afficherPageShowGames();
         break;
-        case "ValidationCreerParty" :  if(!empty($_POST['login']) 
-        ){
-                        $login = Securite::secureHTML($_POST['login']);
-                        $partyController->validationCreerParty($login);
-                        Toolbox::ajouterMessageAlerte("votre partie a été crée avec succès",Toolbox::COULEUR_VERTE);
-                             header("Location: ".URL."roomParty");
+        case "ValidationCreerParty" :  if(!empty($_POST['login']) ){                              
+                       
+                            $login = Securite::secureHTML($_POST['login']);
+                            $partyCreateStatus = $partyController->validationCreerParty($login);
+                            if(!$partyCreateStatus) {
+                                Toolbox::ajouterMessageAlerte("Your part could not be created, you already have a part in progress, please finish your party in progress before creating another one  ",Toolbox::COULEUR_ROUGE);
+                                header("Location: ".URL."creerPartie");
+                            } else {
+                                Toolbox::ajouterMessageAlerte("Your party was be created with a success",Toolbox::COULEUR_VERTE);
+                                header("Location: ".URL."partie");
+                            }
                         }else{
-                        Toolbox::ajouterMessageAlerte("votre partie n'a pas pu etre crée",Toolbox::COULEUR_ROUGE);
+                            Toolbox::ajouterMessageAlerte("Your party could not be created, Contact our support",Toolbox::COULEUR_ROUGE);
                             header("Location: ".URL."creerPartie");
                         }
                     break;
                                     
         case "roomParty": 
-            $partyController->afficherPageRoomPartie($_GET['idParty']);
-     
+            
+            
+                 $partyController->afficherPageRoomPartie($_GET['idParty']);
+                    
+           
         break;
         case "showGames": $partyController->afficherPageShowGames();
         break;
@@ -155,10 +164,12 @@ try {
                     break;
                     case "validation_modificationRole" : $administrateurController->validation_modificationRole($_POST['login'],$_POST['role']);
                     break;
+                    case"logs" : $administrateurController->loadLogs();
                     default : throw new Exception("La page n'existe pas");
                 }
             }
         break;
+        
         default : throw new Exception("La page n'existe pas");
     }
 } catch (Exception $e){
