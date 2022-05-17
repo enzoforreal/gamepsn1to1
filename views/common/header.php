@@ -62,6 +62,11 @@
                                                 rights</a>
 
                                     </li>
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>administration/logs">Manage the
+                                                logs</a>
+
+                                    </li>
                               </ul>
                         </li>
                         <?php endif; ?>

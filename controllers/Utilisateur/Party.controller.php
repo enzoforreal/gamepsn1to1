@@ -58,6 +58,15 @@ class PartyController extends mainController{
 
     }
 
+    public function validationCreerParty($login){
+       
+       $checkisCreated = ($this->partyManager->verifyIFpartyExist($login) > 0 ? false : 
+        $this->partyManager->bdcreePartie($login));
+
+                  return $checkisCreated ;
+      
+      }
+
 public function afficherPageRoomPartie($idParty){
         $datas = $this->partyManager->getPartyById($idParty);
         
@@ -93,11 +102,7 @@ public function afficherPageShowGames(){
     }
 
 
-      public function validationCreerParty($login){
-       
-      $this->partyManager->bdcreePartie($login);
       
-      }
 
      
 }

@@ -4,9 +4,19 @@ require_once("./models/Utilisateur/Utilisateur.model.php");
 
 class PartyManager extends MainManager {
 
-      public function bdcreePartie($login){
-          
 
+      public function verifyIFpartyExist($login){
+            $verifyParty = $this->getBdd()->prepare('SELECT * FROM party WHERE login = ? ');
+            $verifyParty->execute([
+                 $login
+                  
+            ]);
+            $datas = $verifyParty->fetch(PDO::FETCH_ASSOC);
+            return $datas;
+      }
+
+      public function bdcreePartie($login){
+            
             $req = "INSERT INTO party (login,login_1,score) VALUES( :login ,'en_attente_joueur','?-?');";
             $stmt = $this->getBdd()->prepare($req);
             $stmt->bindValue(":login",$login,PDO::PARAM_STR);
@@ -14,7 +24,11 @@ class PartyManager extends MainManager {
             $estcrée = ($stmt->rowCount() > 0);
             $stmt->closeCursor();
             return $estcrée;
+            
+           return false;
       }
+
+    
 
       public function getUserInformation($login){
         $req = "SELECT * FROM utilisateur WHERE login = :login";
