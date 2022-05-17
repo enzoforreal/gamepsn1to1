@@ -35,4 +35,14 @@ class MainManager extends Model
         $stmt->execute();
         $stmt->closeCursor();
     }
+
+    public function bdGetLogs()
+    {
+        $req = "SELECT * FROM logs";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->execute();
+        $resultat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
 }

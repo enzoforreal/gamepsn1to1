@@ -1,10 +1,10 @@
-<footer class="container-fluid bg-dark">   
+<footer class="container-fluid bg-dark">
       <div class="container">
             <div class="row p-0">
 
                   <!--Informations-->
                   <div class="row mt-5 d-flex flex-row justify-content-between">
-                        
+
                         <!--Formulaire de message-->
                         <div class="col-lg-4 col-12 mb-5">
                               <h5 class="text-center text-light fw-bold">Message</h5>
@@ -39,7 +39,7 @@
                                     <a class="nav-link text-light text-center" aria-current="page" href="<?= URL; ?>accueil">Home</a>
                               </li>
 
-                              <?php if(!Securite::estConnecte()) : ?>
+                              <?php if (!Securite::estConnecte()) : ?>
                                     <li class="w-100 text-center">
                                           <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>login">Login</a>
                                     </li>
@@ -61,15 +61,15 @@
                                     </li>
                               <?php endif; ?>
 
-                              <?php if(Securite::estConnecte() && Securite::estAdministrateur()) : ?>
+                              <?php if (Securite::estConnecte() && Securite::estAdministrateur()) : ?>
                                     <li class="nav-item dropdown w-100 text-center">
-                                          <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false">Administration
+                                          <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administration
                                           </a>
 
                                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                 <li>
                                                       <a class="dropdown-item" href="<?= URL; ?>administration/droits">Manage the rights</a>
+                                                      <a class="dropdown-item" href="<?= URL; ?>administration/logs">Logs</a>
                                                 </li>
                                           </ul>
                                     </li>
@@ -84,7 +84,10 @@
                               <p class="text-center text-light"><i class="bi bi-phone custom-icon"></i>+ 01 234 567 88</p>
                         </div>
                   </div>
-                  
+
+                  <p><?php $utilisateurManager = new UtilisateurManager;
+                        echo "Actifs : " .  $utilisateurManager->bdGetUsersActive();
+                        ?></p>
                   <!--Copyright-->
                   <div class="my-3 p-0">
                         <hr class="w-100 bg-light">
