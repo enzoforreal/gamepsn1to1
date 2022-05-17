@@ -31,4 +31,17 @@ class AdministrateurController extends MainController{
         header("Location: ".URL."administration/droits");
     }
 
+    public function loadLogs(){
+        $logs = $this->administrateurManager->getLogs();
+
+         $data_page = [
+            "page_description" => "Gestion des logs",
+            "page_title" => "Gestion des logs",
+            "logs" => $logs,
+            "view" => "views/Administrateur/logs.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
 }
