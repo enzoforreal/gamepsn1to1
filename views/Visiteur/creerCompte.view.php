@@ -20,6 +20,12 @@
                         </div>
 
                         <div class="mb-3">
+                              <label for="pseudoPlatform">Pseudo platform</label>
+                              <input type="Text" name="pseudoPlatform" id="pseudoPlatform" class="form-control"
+                                    placeholder="pseudoPlatform" require="required">
+                        </div>
+
+                        <div class="mb-3">
                               <label for="password">Password</label>
                               <input type="password" name="password" id="password" class="form-control"
                                     placeholder="Your password" require="required">
@@ -45,11 +51,8 @@
                               <input type="Text" name="country" id="country" class="form-control"
                                     placeholder="Your Country" require="required">
                         </div>
-                        <div class="mb-3">
-                              <label for="country">Pseudo platform</label>
-                              <input type="Text" name="pseudoPlatform" id="country" class="form-control"
-                                    placeholder="Your Country" require="required">
-                        </div>
+
+
                         <table class="captcha" width="300" border="0" cellspacing="0" cellpadding="0" height="170">
                               <tr>
                                     <td id="image1" name="image2" class="i6" onclick="clickImage('image1')"></td>
