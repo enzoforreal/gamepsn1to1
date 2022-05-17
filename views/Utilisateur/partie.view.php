@@ -1,4 +1,4 @@
-<div class="col custom-card-container">
+<div id="gm-partie-v-container" class="col custom-card-container" gm-data-url="<?=URL?>">
       <div class="row">
 
             <!--Zone dédié aux filtres-->
@@ -13,7 +13,7 @@
                               <div class="collapse" id="collapseGames">
                                     <div class="card card-body">
                                           <select id="gameFilter" onInput='getPartyList(this)' name="game">
-                                                <option value="fifa_22" selected>FIFA 22</option>
+                                                <option value="fifa22" selected>FIFA 22</option>
                                                 <option value="CALL OF DUTY">CALL OF DUTY</option>
                                                 <option value="WARZONE">WARZONE</option>
                                                 <option value="NBA2K">NBA2K</option>
@@ -51,8 +51,7 @@
                         </div>
                         <!--Filtre Recherche Id partie-->
                         <div class="mb-4 d-block d-flex flex-row">
-                              <button class="btn btn-outline-danger" type="submit"
-                                    onclick="getPartyList()">Search</button>
+
 
                         </div>
 
@@ -77,6 +76,7 @@
                                     <div class="custom-card-body">
                                           <h5 class="card-title fw-bold"><?php echo $datas['game']; ?></h5>
                                           <p class="card-text fw-bold">Bet: 20$</p>
+                                          <p class="card-text fw-bold">Create by: <?php echo $datas['login']; ?></p>
                                           <p class="card-text">Plateform : <?php echo $datas['platform']; ?></p>
                                           <p class="card-text">Score : <?php echo $datas['score']; ?></p>
                                           <p class="card-text"> Number of room : <?php echo $datas['idParty']; ?>
@@ -84,8 +84,7 @@
                                           <p class="card-text">Statut : <?php echo $datas['statut']; ?></p>
 
                                           <a class="btn btn-danger"
-                                                href="<?= URL ?>roomParty&idParty=<?= $datas['idParty'] ?>">
-                                          </a>
+                                                href="<?= URL ?>roomParty&idParty=<?= $datas['idParty'] ?>">Join</a>
                                     </div>
                               </div>
 
