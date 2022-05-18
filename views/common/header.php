@@ -63,8 +63,7 @@
 
                                     </li>
                                     <li>
-                                          <a class="dropdown-item" href="<?= URL; ?>administration/logs">Manage the
-                                                logs</a>
+                                          <a class="dropdown-item" href="<?= URL; ?>administration/logs">logs</a>
 
                                     </li>
                               </ul>

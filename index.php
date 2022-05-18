@@ -162,6 +162,9 @@ try {
                 switch($url[1]){
                     case "droits" : $administrateurController->droits();
                     break;
+                    case "logs":
+                        $administrateurController->logs();
+                        break;
                     case "validation_modificationRole" : $administrateurController->validation_modificationRole($_POST['login'],$_POST['role']);
                     break;
                    
