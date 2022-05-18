@@ -70,12 +70,23 @@ class PartyManager extends MainManager {
             return $datas;
       }
 
-      public function bdjoinPartie($login)
+
+       public function dbGetLogin_1Partie($login){
+                  $req = $this->getBdd()->prepare("SELECT * FROM party WHERE login_1 = ?" );
+            $req->execute([
+            intval(htmlspecialchars($login))
+            ]);
+            $datas = $req->fetch(PDO::FETCH_ASSOC);
+            $req->closeCursor();
+            return $datas;
+            }     
+
+      public function dbUserBjoinPartie($login)
       {
 
-      $userB = $this->getParties($login);
-      if($userB == "disponible"){
-                  // requete SQL POUR INSERER le userB(login_1)
+      $result = $this->dbGetLogin_1Partie($login);
+      if($result == "en_attente_joueur"){
+                  $login = $this->getUserInformation($login);
                   $req = "INSERT INTO party (login_1)VALUES (:login)";
                   $stmt = $this->getBdd()->prepare($req);
                   $stmt->bindValue(":login",$login,PDO::PARAM_STR);

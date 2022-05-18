@@ -142,11 +142,10 @@ try {
                     break;
                                     
         case "roomParty": 
-            
-            
                  $partyController->afficherPageRoomPartie($_GET['idParty']);
-                    
-           
+        break;
+        case "user2JoinParty" : $partyController->joinParty($_GET['login']);
+        header("Location: ".URL."roomParty");
         break;
         case "showGames": $partyController->afficherPageShowGames();
         break;
