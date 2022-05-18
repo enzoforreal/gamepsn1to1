@@ -21,12 +21,4 @@ class AdministrateurManager extends MainManager{
         return $estModifier;
     }
 
-    public function getLogs(){
-            $req = "SELECT * FROM logs ";
-            $req = $this->getBdd()->prepare($req);
-            $req->execute();
-            $logs = $req->fetch(PDO::FETCH_ASSOC);
-            $req->closeCursor();
-            return $logs;
-    }
 }
