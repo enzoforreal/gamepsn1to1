@@ -301,6 +301,8 @@ class UtilisateurController extends MainController
             unlink("public/Assets/images/" . $ancienneImage);
         }
     }
-
+ public function pageError($msg, $statusCode) {
+        return parent::pageErreur($msg,$statusCode);
+    }
     
 }
