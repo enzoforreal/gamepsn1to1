@@ -24,6 +24,15 @@
                               <input type="Text" name="pseudoPlatform" id="pseudoPlatform" class="form-control"
                                     placeholder="pseudoPlatform" require="required">
                         </div>
+                        <div class="mb-3">
+                              <select name="platform" class="form-control">
+                                    <option value="ps5" selected>ps5</option>
+                                    <option value="ps4">ps4</option>
+                                    <option value="xbox">xbox</option>
+                                    <option value="pc">pc</option>
+                                    <option value="switch">switch</option>
+                              </select>
+                        </div>
 
                         <div class="mb-3">
                               <label for="password">Password</label>

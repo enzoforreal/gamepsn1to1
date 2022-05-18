@@ -45,6 +45,7 @@ try {
             && !empty($_POST['telephone']) && !empty($_POST['country'])){
                 $login = Securite::secureHTML($_POST['login']);
                 $pseudoPlatform = securite::secureHTML($_POST['pseudoPlatform']);
+                $platform = $_POST['platform'];
                 $password = Securite::secureHTML($_POST['password']);
                 $mail = Securite::secureHTML($_POST['mail']);
                 $birthdate = $_POST['birthdate'];
@@ -52,7 +53,7 @@ try {
                 $country = $_POST['country'];
                 
 
-                $utilisateurController->validation_creerCompte($login,$pseudoPlatform,$password,$mail,$birthdate,$telephone,$country);
+                $utilisateurController->validation_creerCompte($login,$pseudoPlatform,$platform,$password,$mail,$birthdate,$telephone,$country);
             } else {
                 Toolbox::ajouterMessageAlerte("Les 7 informations sont obligatoires !", Toolbox::COULEUR_ROUGE);
                 header("Location: ".URL."creerCompte");

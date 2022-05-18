@@ -157,11 +157,11 @@ class UtilisateurController extends MainController
         setcookie(Securite::COOKIE_NAME, "", time() - 3600);
         header("Location: " . URL . "accueil");
     }
-    public function validation_creerCompte($login,$pseudoPlatform,$password,$mail,$birthdate,$telephone,$country){
+    public function validation_creerCompte($login,$pseudoPlatform,$platform,$password,$mail,$birthdate,$telephone,$country){
         if($this->utilisateurManager->verifLoginDisponible($login)){
             $passwordCrypte = password_hash($password,PASSWORD_DEFAULT);
             $clef = rand(0,9999);
-            if($this->utilisateurManager->bdCreerCompte($login,$pseudoPlatform,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur",$birthdate,$telephone,$country)){
+            if($this->utilisateurManager->bdCreerCompte($login,$pseudoPlatform,$platform,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur",$birthdate,$telephone,$country)){
                 $this->sendMailValidation($login,$mail,$clef);
                 Toolbox::ajouterMessageAlerte("La compte a été créé, Un mail de validation vous a été envoyé !", Toolbox::COULEUR_VERTE);
                 header("Location: " . URL . "login");

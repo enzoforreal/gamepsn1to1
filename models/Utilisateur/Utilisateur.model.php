@@ -43,14 +43,15 @@ class UtilisateurManager extends MainManager
         return $resultat;
     }
 
-    public function bdCreerCompte($login,$pseudoPlatform, $passwordCrypte, $mail, $clef, $image, $role, $birthdate, $telephone, $country)
+    public function bdCreerCompte($login,$pseudoPlatform,$platform, $passwordCrypte, $mail, $clef, $image, $role, $birthdate, $telephone, $country)
     {
-        $req = "INSERT INTO utilisateur (login,pseudoPlatform, password, mail, est_valide, role, clef, image, 
+        $req = "INSERT INTO utilisateur (login,pseudoPlatform,platform, password, mail, est_valide, role, clef, image, 
         numberOfBans , numberOfConnections, totalPoints , numberOfWins,numberOfDefeats, numberOfDraws, birthdate, telephone, country ,nbFollowers, isBanned)
-        VALUES (:login, :pseudoPlatform, :password, :mail, 0, :role, :clef, :image , 0, 0, 0, 0, 0, 0, :birthdate , :telephone, :country, 0, 0)";
+        VALUES (:login, :pseudoPlatform, :platform, :password, :mail, 0, :role, :clef, :image , 0, 0, 0, 0, 0, 0, :birthdate , :telephone, :country, 0, 0)";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->bindValue(":login", $login, PDO::PARAM_STR);
         $stmt->bindValue(":pseudoPlatform", $pseudoPlatform, PDO::PARAM_STR);
+        $stmt->bindValue(":platform", $platform, PDO::PARAM_STR);
         $stmt->bindValue(":password", $passwordCrypte, PDO::PARAM_STR);
         $stmt->bindValue(":mail", $mail, PDO::PARAM_STR);
         $stmt->bindValue(":clef", $clef, PDO::PARAM_INT);
