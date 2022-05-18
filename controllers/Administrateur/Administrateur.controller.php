@@ -4,9 +4,11 @@ require_once("./models/Administrateur/Administrateur.model.php");
 
 class AdministrateurController extends MainController{
     private $administrateurManager;
+    private $MainManager;
 
     public function __construct(){
         $this->administrateurManager = new AdministrateurManager();
+        $this->MainManager = new MainManager;
     } 
 
     public function droits(){
