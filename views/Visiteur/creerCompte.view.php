@@ -6,7 +6,7 @@
 
                   <div class="m-5">
                         <h1 class="text-center fw-bold">Sign up</h1>
-                        <img class="mx-auto d-block mb-3" src="../../public/Assets/images/logo.svg" alt="Logo"
+                        <img class="mx-auto d-block mb-3" src="../../public/Assets/images/logo.png" alt="Logo"
                               width="100px" style=" object-fit: cover ;  ">
                         <p class="text-center"></p>
                   </div>

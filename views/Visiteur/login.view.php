@@ -5,7 +5,7 @@
             <div class="d-flex flex-column align-items-center">
 
                   <div class="m-5">
-                        <img class="mx-auto d-block mb-3" src="../../public/Assets/images/logo.svg" alt="Logo"
+                        <img class="mx-auto d-block mb-3" src="../../public/Assets/images/logo.png" alt="Logo"
                               width="100px" style=" object-fit: cover;">
                         <h1 class="text-center fw-bold">Login</h1>
 
