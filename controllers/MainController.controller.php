@@ -7,13 +7,19 @@ abstract class MainController
     protected function logTraffic($data)
     {
         $MainManager = new MainManager;
+        $utilisateurManager = new UtilisateurManager;
+        $isConnected = Securite::estConnecte();
         if (!$MainManager->bdIsRoutePresent($data['view'])) {
             $MainManager->bdInsertLog($data['view']);
         } else {
-            $MainManager->bdAddLog($data['view'], Securite::estConnecte());
+            $MainManager->bdAddLog($data['view'], $isConnected);
+        }
+        if ($isConnected) {
+            $infos = $utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+            $utilisateurManager->bdSetIp($infos['login'], $_SERVER['REMOTE_ADDR']);
+            $utilisateurManager->bdUpdateLastSeen($infos['login']);
         }
     }
-
     protected function genererPage($data)
     {
         extract($data);
