@@ -164,7 +164,7 @@ try {
                     break;
                     case "validation_modificationRole" : $administrateurController->validation_modificationRole($_POST['login'],$_POST['role']);
                     break;
-                    case"logs" : $administrateurController->loadLogs();
+                   
                     default : throw new Exception("La page n'existe pas");
                 }
             }
