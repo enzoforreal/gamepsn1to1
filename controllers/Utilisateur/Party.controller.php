@@ -87,9 +87,7 @@ public function afficherPageRoomPartie($idParty){
     }
 
 
-    public function joinParty($login){
-        $datas = $this->partyManager->dbUserBjoinPartie($login);
-    }
+ 
 
 public function afficherPageShowGames(){
         $datas = $this->partyManager->getUserInformation($_SESSION['profil']['login']);
