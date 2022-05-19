@@ -36,8 +36,8 @@
                    </div>
 
                    <div class="col-12 text-center">
-                         <img src="public/Assets/images/playstation-controller.png" class="img-fluid mt-5 mb-5"
-                               style="max-height: 400px;" alt="Responsive image">
+                         <img src="public/Assets/images/logo.png" class="img-fluid mt-5 mb-5" style="max-height: 300px;"
+                               alt="Responsive image">
                    </div>
 
                    <div class="col-12 text-center">
