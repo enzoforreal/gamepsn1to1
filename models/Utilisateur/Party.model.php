@@ -32,18 +32,18 @@ class PartyManager extends MainManager {
       } 
 
 
-       public function userJoinParty($login,$idParty){
+       public function userJoinParty($login){
              
-            $playerWaiting = $this->getBdd()->prepare('SELECT * FROM party WHERE login_1 =:login_1 ');
-            $playerWaiting->execute(["login_1"=>$login]);
+            $playerWaiting = $this->getBdd()->prepare("SELECT login_1 FROM party WHERE idParty = ? ");
+            $playerWaiting->execute();
             $stmt = $playerWaiting->fetch(PDO::FETCH_ASSOC);
 
             if($stmt == "en_attente_joueur"){
 
                    $query =$this->getBdd()->prepare('UPDATE party SET login_1 =:login  WHERE idParty =:idParty');
                    $query->execute([
-                         "login_1"=>$login,
-                         "idParty"=>$idParty
+                         "login_1"=>$login
+                         
                   ]);
                   $Userjoin = $query->fetch(PDO::FETCH_ASSOC);
                   

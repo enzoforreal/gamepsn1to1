@@ -67,11 +67,15 @@
                                     <p class="chat-nickname-black"><?= $party["login_1"] ?></p>
                                     <p class="chat-date-black">Not ready</p>
                               </div>
-
-                              <div class="ms-auto">
-                                    <button class="button-outline-red">Kick</button>
-                              </div>
+                              <form method="POST" action="userJoin">
+                                    <div class="ms-auto">
+                                          <input id="login_1" name="login_1" type="hidden"
+                                                value="<?= $utilisateur['login'] ?>"><br>
+                                          <button type="submit" class="button-outline-red">Kick</button>
+                                    </div>
+                              </form>
                         </div>
+
                   </div>
 
 

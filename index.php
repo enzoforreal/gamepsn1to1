@@ -124,7 +124,8 @@ try {
         break;
         case "showGames": $utilisateurController->afficherPageShowGames();
         break;
-        case "ValidationCreerParty" :  if(!empty($_POST['login']) && !empty($_POST['bet']) && !empty($_POST['platform']) && !empty($_POST['game']) ){                              
+        case "ValidationCreerParty" :  if(!empty($_POST['login']) && !empty($_POST['bet']) && 
+        !empty($_POST['platform']) && !empty($_POST['game']) ){                              
                        
                             $login = Securite::secureHTML($_POST['login']);
                             $bet =  intval(securite::secureHTML($_POST['bet']));
@@ -147,6 +148,20 @@ try {
         case "roomParty": 
                  $partyController->afficherPageRoomPartie($_GET['idParty']);
         break;
+        case "userJoin" :  if(!empty($_POST['login'])){
+            $login = Securite::secureHTML($_POST['login']);
+            
+            $partyJoinStatus =  $partyController->JoinParty($login);
+            if(!$partyJoinStatus){
+                 Toolbox::ajouterMessageAlerte("Error !! retry again or contact admin",Toolbox::COULEUR_ROUGE);
+                         
+            }else{
+                Toolbox::ajouterMessageAlerte("congrats!! you can speak with author of this party before start the game !",Toolbox::COULEUR_VERTE);
+                         
+            }
+        }   
+        die(print_r($_POST));
+            break;
         case "showGames": $partyController->afficherPageShowGames();
         break;
 
