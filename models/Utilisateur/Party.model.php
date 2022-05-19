@@ -26,10 +26,27 @@ class PartyManager extends MainManager {
             return $estcrée;
             
            return false;
+      } 
+
+
+       public function userJoinParty($login){
+             
+            $playerWaiting = $this->getBdd()->prepare('SELECT * FROM party WHERE login_1 = ? ');
+            $playerWaiting->execute([$login]);
+            $stmt = $playerWaiting->fetch(PDO::FETCH_ASSOC);
+            if($stmt == "en_attente_joueur"){
+                  $query =$this->getBdd()->prepare('UPDATE party SET login_1 = ?  WHERE idParty = ?');
+                   $query->execute([$login]);
+                  $Userjoin = $query->fetch(PDO::FETCH_ASSOC);
+                  
+                   return $Userjoin;
+            }else{
+                  return false;
+            }    
+           
       }
 
     
-
       public function getUserInformation($login){
         $req = "SELECT * FROM utilisateur WHERE login = :login";
         $stmt = $this->getBdd()->prepare($req);
