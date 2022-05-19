@@ -15,11 +15,14 @@ class PartyManager extends MainManager {
             return $datas;
       }
 
-      public function bdcreePartie($login){
+      public function bdcreePartie($login,$bet,$platform,$game){
             
-            $req = "INSERT INTO party (login,login_1,score) VALUES( :login ,'en_attente_joueur','?-?');";
+            $req = "INSERT INTO party (login,bet,platform,game,login_1,score) VALUES( :login , :bet ,:platform,:game,'en_attente_joueur','?-?');";
             $stmt = $this->getBdd()->prepare($req);
             $stmt->bindValue(":login",$login,PDO::PARAM_STR);
+            $stmt->bindValue(":bet",$bet,PDO::PARAM_INT);
+            $stmt->bindValue(":platform",$platform,PDO::PARAM_STR);
+            $stmt->bindValue(":game",$game,PDO::PARAM_STR);
             $stmt->execute();
             $estcrée = ($stmt->rowCount() > 0);
             $stmt->closeCursor();
@@ -29,14 +32,19 @@ class PartyManager extends MainManager {
       } 
 
 
-       public function userJoinParty($login){
+       public function userJoinParty($login,$idParty){
              
-            $playerWaiting = $this->getBdd()->prepare('SELECT * FROM party WHERE login_1 = ? ');
-            $playerWaiting->execute([$login]);
+            $playerWaiting = $this->getBdd()->prepare('SELECT * FROM party WHERE login_1 =:login_1 ');
+            $playerWaiting->execute(["login_1"=>$login]);
             $stmt = $playerWaiting->fetch(PDO::FETCH_ASSOC);
+
             if($stmt == "en_attente_joueur"){
-                  $query =$this->getBdd()->prepare('UPDATE party SET login_1 = ?  WHERE idParty = ?');
-                   $query->execute([$login]);
+
+                   $query =$this->getBdd()->prepare('UPDATE party SET login_1 =:login  WHERE idParty =:idParty');
+                   $query->execute([
+                         "login_1"=>$login,
+                         "idParty"=>$idParty
+                  ]);
                   $Userjoin = $query->fetch(PDO::FETCH_ASSOC);
                   
                    return $Userjoin;

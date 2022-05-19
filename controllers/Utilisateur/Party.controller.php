@@ -58,10 +58,10 @@ class PartyController extends mainController{
 
     }
 
-    public function validationCreerParty($login){
+    public function validationCreerParty($login,$bet,$platform,$game){
        
        $checkisCreated = ($this->partyManager->verifyIFpartyExist($login) > 0 ? false : 
-        $this->partyManager->bdcreePartie($login));
+        $this->partyManager->bdcreePartie($login,$bet,$platform,$game));
 
                   return $checkisCreated ;
       

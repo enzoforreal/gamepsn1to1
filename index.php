@@ -124,10 +124,13 @@ try {
         break;
         case "showGames": $utilisateurController->afficherPageShowGames();
         break;
-        case "ValidationCreerParty" :  if(!empty($_POST['login']) ){                              
+        case "ValidationCreerParty" :  if(!empty($_POST['login']) && !empty($_POST['bet']) && !empty($_POST['platform']) && !empty($_POST['game']) ){                              
                        
                             $login = Securite::secureHTML($_POST['login']);
-                            $partyCreateStatus = $partyController->validationCreerParty($login);
+                            $bet =  intval(securite::secureHTML($_POST['bet']));
+                            $platform = Securite::secureHTML($_POST['platform']);
+                            $game = Securite::secureHTML($_POST['game']);
+                            $partyCreateStatus = $partyController->validationCreerParty($login,$bet,$platform,$game);
                             if(!$partyCreateStatus) {
                                 Toolbox::ajouterMessageAlerte("Your part could not be created, you already have a part in progress, please finish your party in progress before creating another one  ",Toolbox::COULEUR_ROUGE);
                                 header("Location: ".URL."creerPartie");
