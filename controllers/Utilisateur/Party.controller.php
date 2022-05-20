@@ -89,8 +89,8 @@ public function afficherPageRoomPartie($idParty){
          
     }
 
-    public function JoinParty($login){
-                 $utilisateur = $this->partyManager->userJoinParty($login);
+    public function JoinParty($idParty,$login){
+                 $utilisateur = $this->partyManager->userJoinParty($idParty,$login);
                  return $utilisateur;    
     }
 

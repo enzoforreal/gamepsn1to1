@@ -148,20 +148,28 @@ try {
         case "roomParty": 
                  $partyController->afficherPageRoomPartie($_GET['idParty']);
         break;
-        case "userJoin" :  if(!empty($_POST['login'])){
-            $login = Securite::secureHTML($_POST['login']);
+        case "userJoin" :  if(!empty($_POST['login_1'])){
+            $login = Securite::secureHTML($_POST['login_1']);
+            $idParty = Securite::secureHTML($_POST['idParty']);
             
-            $partyJoinStatus =  $partyController->JoinParty($login);
-            if(!$partyJoinStatus){
-                 Toolbox::ajouterMessageAlerte("Error !! retry again or contact admin",Toolbox::COULEUR_ROUGE);
-                         
-            }else{
-                Toolbox::ajouterMessageAlerte("congrats!! you can speak with author of this party before start the game !",Toolbox::COULEUR_VERTE);
-                         
-            }
+            $partyJoinStatus =  $partyController->JoinParty($idParty,$login);
+           
+           if($partyJoinStatus == 3){
+                Toolbox::ajouterMessageAlerte("the room is full !",Toolbox::COULEUR_ROUGE);
+                 header("Location: ".URL."roomParty&idParty=".$idParty);
+           }else if($partyJoinStatus == 2){
+                 Toolbox::ajouterMessageAlerte(" You already join on this room !",Toolbox::COULEUR_ROUGE);
+                 header("Location: ".URL."roomParty&idParty=".$idParty);
+           }else if($partyJoinStatus == 1){
+               
+                    Toolbox::ajouterMessageAlerte(" success !",Toolbox::COULEUR_VERTE);
+                 header("Location: ".URL."roomParty&idParty=".$idParty);
+           } else if($partyJoinStatus === 4) {
+               Toolbox::ajouterMessageAlerte("You are already on the party", Toolbox::COULEUR_ROUGE);
+               header("Location: ".URL."roomParty&idParty=".$idParty);
+           }
         }   
-        die(print_r($_POST));
-            break;
+          break;
         case "showGames": $partyController->afficherPageShowGames();
         break;
 

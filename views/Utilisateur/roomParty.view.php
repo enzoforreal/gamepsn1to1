@@ -71,7 +71,8 @@
                                     <div class="ms-auto">
                                           <input id="login_1" name="login_1" type="hidden"
                                                 value="<?= $utilisateur['login'] ?>"><br>
-                                          <button type="submit" class="button-outline-red">Kick</button>
+                                          <input name="idParty" type="hidden" value="<?= $party['idParty'] ?>"><br>
+                                          <button type="submit" class="button-outline-red">join</button>
                                     </div>
                               </form>
                         </div>
