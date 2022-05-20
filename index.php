@@ -75,8 +75,15 @@ try {
             }else {
                 Securite::genererCookieConnexion();//regénération du cookie
                 switch($url[1]){
-                    case "profil" : $utilisateurController->profil();
+                    case "profil" : 
+                        $utilisateurController->profil();
                     break;
+                    case "myParties" : if($_SESSION['profil']['login']){
+                        $login = $_SESSION['profil']['login'];
+                    
+                        $partyController->getMyParties($login);
+                        break ;
+                    }
                     case "deconnexion" : $utilisateurController->deconnexion();
                     break;
                     case "validation_modificationMail" : $utilisateurController->validation_modificationMail(Securite::secureHTML($_POST['mail']));

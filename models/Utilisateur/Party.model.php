@@ -93,6 +93,13 @@ class PartyManager extends MainManager {
         return $datas;
       }
       
+      public function getMyPartiesBy($login){
+             $req = $this->getBdd()->prepare("SELECT * FROM party WHERE login = ?" );
+             $req->execute([$login]);
+             $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+             $req->closeCursor();
+            return $datas;
+      }
 
       public function getRoomByFilter($filter) {
             
