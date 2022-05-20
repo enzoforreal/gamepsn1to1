@@ -25,9 +25,23 @@
                                     up</a>
                         </li>
                         <?php else : ?>
-                        <li>
-                              <a class="nav-link text-light" aria-current="page"
-                                    href="<?= URL; ?>compte/profil">Profil</a>
+                        <li class="nav-item dropdown">
+
+                              <a class="nav-link text-light dropdown-toggle" href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" href="v-link text-light"
+                                    aria-current="page" href="#">Account
+                              </a>
+
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>compte/profil">Profil</a>
+
+                                    </li>
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>compte/myParties">My parties</a>
+
+                                    </li>
+                              </ul>
                         </li>
 
                         <li>

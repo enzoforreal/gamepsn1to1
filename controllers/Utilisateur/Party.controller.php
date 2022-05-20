@@ -30,6 +30,25 @@ class PartyController extends mainController{
 
     }
 
+
+    public function getMyParties($login){
+       
+           $parties = $this->partyManager->getMyPartiesBy($login);
+  
+        
+
+         $data_page = [
+            "page_description" => "Page partie",
+            "page_title" => "Page partie",
+            "party" => $parties,
+            "page_javascript" => ['myParties.js'],
+            "view" => "views/Utilisateur/myParties.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+
+    }
+
     public function getRoomByFilter($filterKey) {
         if(!isset($filterKey) && empty($filterKey)) {
             echo json_encode(["msg" => "Query empty", "error"=>true]);
