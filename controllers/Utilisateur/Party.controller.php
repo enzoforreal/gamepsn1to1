@@ -69,12 +69,15 @@ class PartyController extends mainController{
 
 public function afficherPageRoomPartie($idParty){
         $datas = $this->partyManager->getPartyById($idParty);
+        $utilisateur = $this->partyManager->getUserInformation($_SESSION['profil']['login']);
+                
         
         if(!empty($datas['idParty']) && isset($datas['idParty'])) {
             $data_page = [
                 "page_description" => "Page salle partie",
                 "page_title" => "Page salle partie",
                 "party" => $datas,
+                "utilisateur" => $utilisateur,
                 "page_javascript" => ['roomParty.js'],
                 "view" => "views/Utilisateur/roomParty.view.php",
                 "template" => "views/common/template.php"
@@ -84,6 +87,11 @@ public function afficherPageRoomPartie($idParty){
             parent::pageErreur("Aucune party trouvée !", 404);
         }
          
+    }
+
+    public function JoinParty($login){
+                 $utilisateur = $this->partyManager->userJoinParty($login);
+                 return $utilisateur;    
     }
 
 
