@@ -1,0 +1,45 @@
+/* #signUp{
+ position: absolute; 
+ top: 200px;
+ margin-left: auto;
+  margin-right: auto;
+} */
+
+/* #button {
+  position: absolute;
+  top: 880px;
+  right: 850px;
+} */
+
+
+
+.captcha{
+  
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#form{
+    position: absolute;
+    top: 320px;
+ 
+}
+
+
+
+.i5 {
+  background: url(/public/Assets/images/manette.png) no-repeat left top;
+  border: 1px solid;
+}
+
+.i1 { background: url(/public/Assets/images/manette.png) no-repeat right top;
+  border: 1px solid;
+ }
+
+
+.i2 { background: url(/public/Assets/images/manette.png) no-repeat right bottom;
+  border: 1px solid;
+}
+.i6 { background: url(/public/Assets/images/manette.png) no-repeat left bottom;
+  border: 1px solid;
+}
