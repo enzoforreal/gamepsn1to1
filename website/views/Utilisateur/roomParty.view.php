@@ -84,11 +84,11 @@
                   <div class="custom-infoList-container">
                         <hr class="w-100 custom-infoList-item">
                         <h2 class="custom-infoList-title">Informations</h2>
-                        <h4 class="custom-infoList-item">Jeux: Fortnite</h4>
-                        <h4 class="custom-infoList-item">Mise: 20 euros</h4>
-                        <h4 class="custom-infoList-item">Plateforme: PC</h4>
-                        <h4 class="custom-infoList-item">Statut partie: privée (entre ami)</h4>
-                        <h4 class="custom-infoList-item">Identifiant partie: #47013</h4>
+                        <h4 class="custom-infoList-item"><?= $party['game'] ?></h4>
+                        <h4 class="custom-infoList-item"><?= $party['bet'] ?></h4>
+                        <h4 class="custom-infoList-item"><?= $party['platform'] ?></h4>
+                        <h4 class="custom-infoList-item"><?= $party['statut'] ?></h4>
+                        <h4 class="custom-infoList-item"><?= $party['idParty'] ?></h4>
                   </div>
 
 
