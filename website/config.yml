@@ -1,0 +1,6 @@
+dbHost: 127.0.0.1
+dbLogin: root
+dbPassword: root
+dbName: game1to1bis
+dbPort: 3306
+JWTSecret: ThisIsAVeryVeryLongsecret1234

@@ -22,6 +22,7 @@ class UtilisateurController extends MainController
                     "login" => $login,
                 ];
                 Securite::genererCookieConnexion();
+                Securite::genererTokenJWT();
                 echo $_SESSION['profil'][Securite::COOKIE_NAME];
                 echo "<br />";
                 echo $_COOKIE[Securite::COOKIE_NAME];
@@ -157,12 +158,13 @@ class UtilisateurController extends MainController
         setcookie(Securite::COOKIE_NAME, "", time() - 3600);
         header("Location: " . URL . "accueil");
     }
-    public function validation_creerCompte($login,$pseudoPlatform,$platform,$password,$mail,$birthdate,$telephone,$country){
-        if($this->utilisateurManager->verifLoginDisponible($login)){
-            $passwordCrypte = password_hash($password,PASSWORD_DEFAULT);
-            $clef = rand(0,9999);
-            if($this->utilisateurManager->bdCreerCompte($login,$pseudoPlatform,$platform,$passwordCrypte,$mail,$clef,"profils/profil.png","utilisateur",$birthdate,$telephone,$country)){
-                $this->sendMailValidation($login,$mail,$clef);
+    public function validation_creerCompte($login, $pseudoPlatform, $platform, $password, $mail, $birthdate, $telephone, $country)
+    {
+        if ($this->utilisateurManager->verifLoginDisponible($login)) {
+            $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
+            $clef = rand(0, 9999);
+            if ($this->utilisateurManager->bdCreerCompte($login, $pseudoPlatform, $platform, $passwordCrypte, $mail, $clef, "profils/profil.png", "utilisateur", $birthdate, $telephone, $country)) {
+                $this->sendMailValidation($login, $mail, $clef);
                 Toolbox::ajouterMessageAlerte("La compte a été créé, Un mail de validation vous a été envoyé !", Toolbox::COULEUR_VERTE);
                 header("Location: " . URL . "login");
             } else {
@@ -301,8 +303,8 @@ class UtilisateurController extends MainController
             unlink("public/Assets/images/" . $ancienneImage);
         }
     }
- public function pageError($msg, $statusCode) {
-        return parent::pageErreur($msg,$statusCode);
+    public function pageError($msg, $statusCode)
+    {
+        return parent::pageErreur($msg, $statusCode);
     }
-    
 }
