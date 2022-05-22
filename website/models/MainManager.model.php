@@ -1,5 +1,5 @@
 <?php
-require_once("Model.class.php");
+require_once("./models/Model.class.php");
 
 class MainManager extends Model
 {
