@@ -1,4 +1,4 @@
-<script src="../../public/Javascript/captcha.js" charset="utf-8"></script>
+<script src="public/JavaScript/captcha.js" charset="utf-8"></script>
 <link href="<?= URL ?>../../public/CSS/captcha.css" rel="stylesheet" type="text/css" />
 <main class="container-fluid bg-light" style="height: 100vh">
       <div class="container">
