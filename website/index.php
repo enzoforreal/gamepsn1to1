@@ -140,7 +140,7 @@ try {
                             $game = Securite::secureHTML($_POST['game']);
                             $partyCreateStatus = $partyController->validationCreerParty($login,$bet,$platform,$game);
                             if(!$partyCreateStatus) {
-                                Toolbox::ajouterMessageAlerte("Your part could not be created, you already have a part in progress, please finish your party in progress before creating another one  ",Toolbox::COULEUR_ROUGE);
+                                Toolbox::ajouterMessageAlerte("Your room could not be created, you already have a room in progress, please finish your current game before creating a new room ",Toolbox::COULEUR_ROUGE);
                                 header("Location: ".URL."creerPartie");
                             } else {
                                 Toolbox::ajouterMessageAlerte("Your party was be created with a success",Toolbox::COULEUR_VERTE);
@@ -173,6 +173,9 @@ try {
                  header("Location: ".URL."roomParty&idParty=".$idParty);
            } else if($partyJoinStatus === 4) {
                Toolbox::ajouterMessageAlerte("You are already on the party", Toolbox::COULEUR_ROUGE);
+               header("Location: ".URL."roomParty&idParty=".$idParty);
+           }else if($partyJoinStatus === 5){
+                Toolbox::ajouterMessageAlerte("You are already  on the party ", Toolbox::COULEUR_ROUGE);
                header("Location: ".URL."roomParty&idParty=".$idParty);
            }
         }   
