@@ -11,7 +11,7 @@ class MainManager extends Model
         $stmt->execute();
         $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
-        return ($resultat['COUNT(1)'] === "1");
+        return ($resultat['COUNT(1)'] === 1);
     }
 
     public function bdInsertLog($route)
@@ -36,7 +36,7 @@ class MainManager extends Model
         $stmt->closeCursor();
     }
 
-    
+
     public function bdGetLogs()
     {
         $req = "SELECT * FROM logs";
