@@ -1,12 +1,12 @@
- <link href="<?= URL ?>public/CSS/main.css" rel="stylesheet" />
+ <link href="<?= URL ?>public/CSS/main.css" rel="stylesheet" type="text/css" />
  <?php if(!empty($page_css)) : ?>
  <?php foreach($page_css as $fichier_css) : ?>
- <link href="<?= URL ?>public/CSS/<?= $fichier_css ?>" rel="stylesheet" />
+ <link href="<?= URL ?>public/CSS/<?= $fichier_css ?>" rel="stylesheet" type="text/css" />
  <?php endforeach; ?>
  <?php endif; ?>
 
 
- <div class="container-fluid p-0" style="height: 100vh">
+ <div class=" container-fluid p-0" style="height: 100vh">
        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel"
              style="height: 100%; position: absolute; z-index: -2;">
              <div class="carousel-inner h-100">
