@@ -6,8 +6,9 @@ class PartyManager extends MainManager {
 
 
       public function verifyIFpartyExist($login){
-            $verifyParty = $this->getBdd()->prepare('SELECT * FROM party WHERE login = ? ');
+            $verifyParty = $this->getBdd()->prepare('SELECT * FROM party WHERE (login = ? OR login_1 = ?)');
             $verifyParty->execute([
+                 $login,
                  $login
                   
             ]);
@@ -40,6 +41,14 @@ class PartyManager extends MainManager {
             ]);
             if($lol->rowCount() > 0) {
                   return 4;
+            }
+
+            $verify = $this->getBdd()->prepare("SELECT * FROM party WHERE login = ?");
+            $verify->execute([
+                  $login
+            ]);
+            if($verify->rowCount() > 0) {
+                  return 5;
             }
             
             $verifyParty = $this->getBdd()->prepare('SELECT * FROM party WHERE idParty = ? ');
