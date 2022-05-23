@@ -38,6 +38,7 @@ class VisiteurController extends MainController{
             "view" => "views/Visiteur/creerCompte.view.php",
             "template" => "views/common/template.php"
         ];
+        Toolbox::sendMail('gamepsn1to1@gmail.com', 'test', 'body');
         $this->genererPage($data_page);
     }
     

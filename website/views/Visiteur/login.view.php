@@ -1,5 +1,5 @@
 <script src="public/JavaScript/captcha.js" charset="utf-8"></script>
-<link href="<?= URL ?>../../public/CSS/captcha.css" rel="stylesheet" type="text/css" />
+<link href="<?= URL ?>../../public/CSS/captcha.css" rel="stylesheet" />
 <main class="container-fluid bg-light" style="height: 100vh">
       <div class="container">
             <div class="d-flex flex-column align-items-center">
