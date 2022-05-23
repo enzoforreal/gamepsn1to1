@@ -120,6 +120,12 @@ class UtilisateurController extends MainController
         $this->genererPage($data_page);
     }
 
+    public function getToken()
+    {
+        echo $_SESSION['profil']["token"];
+        die();
+    }
+
     public function afficherPageRoomPartie()
     {
         $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);

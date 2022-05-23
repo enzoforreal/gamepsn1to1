@@ -5,7 +5,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteRule ^(.*)$ index.php?page=$1
 
-php_value auto_prepend_file prepend.php
 Options -Indexes 
 
 <Files "config.yml">  
