@@ -1,7 +1,7 @@
 <div class="row">
       <!--Chat privée-->
       <aside class="chat-container">
-            <h3 class="chat-title">CHAT PRIVEE</h3>
+            <h2 class="chat-title">CHAT PRIVATE</h2>
 
             <div class="d-flex flex-column">
                   <div class="speech-bubble speech-other">
@@ -84,24 +84,24 @@
                   <div class="custom-infoList-container">
                         <hr class="w-100 custom-infoList-item">
                         <h2 class="custom-infoList-title">Informations</h2>
-                        <h4 class="custom-infoList-item"><?= $party['game'] ?></h4>
-                        <h4 class="custom-infoList-item"><?= $party['bet'] ?></h4>
-                        <h4 class="custom-infoList-item"><?= $party['platform'] ?></h4>
-                        <h4 class="custom-infoList-item"><?= $party['statut'] ?></h4>
-                        <h4 class="custom-infoList-item"><?= $party['idParty'] ?></h4>
+                        <h4 class="custom-infoList-item">game: <?= $party['game'] ?></h4>
+                        <h4 class="custom-infoList-item">bet : <?= $party['bet'] ?>€</h4>
+                        <h4 class="custom-infoList-item">platform : <?= $party['platform'] ?></h4>
+                        <h4 class="custom-infoList-item">status : <?=  $party['statut'] ?></h4>
+                        <h4 class="custom-infoList-item"> Room Id : #<?= $party['idParty'] ?></h4>
                   </div>
 
 
                   <!--Score-->
                   <form class="row">
                         <div class="col-12 col-lg-4">
-                              <label for="" class="label">Your score</label>
-                              <input class="input-field" type="text" placeholder="0">
+                              <label for="" class="label"></label>
+                              <input class="input-field" type="text" placeholder="score of <?= $party['login'] ?>">
                         </div>
 
                         <div class="col-12 col-lg-4">
-                              <label for="" class="label">Enemy score</label>
-                              <input class="input-field" type="text" placeholder="0">
+                              <label for="" class="label"></label>
+                              <input class="input-field" type="text" placeholder="score of <?= $party['login_1'] ?>">
                         </div>
 
                         <div class="col-12 col-lg-4">

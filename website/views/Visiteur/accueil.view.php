@@ -1,4 +1,4 @@
- <link href="<?= URL ?>public/CSS/main.css" rel="stylesheet" type="text/css" />
+ <link href="<?= URL ?>public/CSS/" rel="stylesheet" type="text/css" />
  <?php if(!empty($page_css)) : ?>
  <?php foreach($page_css as $fichier_css) : ?>
  <link href="<?= URL ?>public/CSS/<?= $fichier_css ?>" rel="stylesheet" type="text/css" />
