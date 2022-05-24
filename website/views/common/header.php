@@ -12,7 +12,7 @@
                   <ul class="nav col-12 col-lg-auto justify-content-center">
 
                         <li>
-                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>accueil">Home</a>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>accueil">Home page</a>
                         </li>
 
                         <?php if(!Securite::estConnecte()) : ?>
