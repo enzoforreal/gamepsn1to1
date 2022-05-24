@@ -27,10 +27,13 @@ class Room
     }
     public function sendMsgToAll(string $msg, User $from)
     {
+        if (!$this->isMember($from))
+            return;
         foreach ($this->users as $user) {
             $user->getCon()->send(json_encode(array(
                 "command" => "msg",
-                "content" => $from->getLogin()
+                "content" => $msg,
+                "from" => $from->getLogin(),
             )));
         }
     }

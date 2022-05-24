@@ -34,7 +34,7 @@ function sendMsg() {
   conn.send(
     JSON.stringify({
       command: "msg",
-      channel: "public",
+      room: "public",
       content: msg,
     })
   );
