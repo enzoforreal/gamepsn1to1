@@ -2,21 +2,17 @@ var token = "";
 var conn = new WebSocket("ws://localhost:9000");
 
 window.onload = function () {
-  console.log("Requesting user token");
+  console.log("Connecting to chat");
   var xmlhttp = new XMLHttpRequest();
 
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == XMLHttpRequest.DONE) {
       // XMLHttpRequest.DONE == 4
       if (xmlhttp.status == 200) {
-        console.log("Token " + xmlhttp.responseText);
         token = xmlhttp.responseText;
-        connect();
         login();
-      } else if (xmlhttp.status == 400) {
-        alert("There was an error 400");
       } else {
-        alert("something else other than 200 was returned");
+        alert("Could not connect to the server");
       }
     }
   };
@@ -25,17 +21,48 @@ window.onload = function () {
   xmlhttp.send();
 };
 
-function connect() {
-  conn.onopen = function (e) {
-    console.log("Websocket connection established");
-  };
+conn.onopen = function (e) {
+  console.log("Websocket connection established");
+};
+
+function sendMsg() {
+  var chat = document.getElementById("chatMsg");
+  var msg = chat.value;
+  chat.value = "";
+
+  console.log("Sending msg to server");
+  conn.send(
+    JSON.stringify({
+      command: "msg",
+      channel: "public",
+      content: msg,
+    })
+  );
 }
+
+conn.addEventListener("message", function (event) {
+  var data = JSON.parse(event.data);
+  if (data["command"] == "auth" && data["status"] == 1) {
+    console.log("Successfully connected");
+  } else if (data["command"] == "msg") {
+    var msg = data["content"];
+    var from = data["from"];
+    console.log("New message from " + from + " : " + msg);
+  }
+});
 
 function login() {
   conn.send(
     JSON.stringify({
       command: "connect",
       token: token,
+    })
+  );
+
+  conn.send(
+    JSON.stringify({
+      command: "join",
+      name: "public",
     })
   );
 }
