@@ -63,7 +63,9 @@
     <main class="col">
         <div class="d-flex flex-column align-items-center mx-auto" style="margin: 96px; max-width: 700px">
 
-            <img class="profil-avatar-full" src="<?= URL; ?>public/Assets/images/<?= $utilisateur['image'] ?>" alt="Avatar">
+            <div class="card">
+                <img class="profil-avatar-full" src="<?= URL; ?>public/Assets/images/<?= $utilisateur['image'] ?>" alt="Avatar">
+            </div>
 
             <!--
             <form method="POST" action="<?= URL ?>compte/validation_modificationImage" enctype="multipart/form-data">
@@ -282,6 +284,7 @@
                     </div>
 
                     <button id="btnSupCompte" class="card-button-outline">Supprimer son compte</button>
+                    
                     <div id="suppressionCompte" class="d-none m-2">
                         <div class="alert alert-danger">
                             Veuillez confirmer la suppression du compte.

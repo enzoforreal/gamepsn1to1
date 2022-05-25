@@ -42,7 +42,7 @@
 
                    
                    <div class="col-12 text-center">
-                         <button class="btn btn-outline-dark rounded-pill btn-lg">Subscribe now</button>
+                         <a href="<?= URL; ?>login" class="btn btn-outline-dark rounded-pill btn-lg">Subscribe now</a>
                    </div>
              </div>
        </div>
@@ -169,7 +169,7 @@
                    </div>
 
                    <div class="col-12 text-center">
-                         <button class="btn btn-outline-danger rounded-pill btn-lg">Subscribe now</button>
+                        <a href="<?= URL; ?>login" class="btn btn-outline-dark rounded-pill btn-lg">Subscribe now</a>
                    </div>
 
              </div>
