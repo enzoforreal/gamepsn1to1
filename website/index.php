@@ -118,6 +118,8 @@ try {
         break;
         case "partie" : $partyController->partie();
         break;
+        case "apropos" : $visiteurController->afficherPageAPropos();
+        break;
         case "roomFilter":
             $partyController->getRoomByFilter($_POST['filterKey']);
         break;
