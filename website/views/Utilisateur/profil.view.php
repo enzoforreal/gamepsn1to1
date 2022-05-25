@@ -38,7 +38,6 @@
 
     <div>
         <a href="<?= URL ?>compte/modificationPassword" class="btn btn-warning">Changer le mot de passe</a>
-        <button id="btnSupCompte" class="btn btn-danger">Supprimer son compte</button>
     </div>
     
 </div>
@@ -283,15 +282,20 @@
                         <button class="card-button mb-3" type="submit" form="profilForm">Save the Changes</button>
                     </div>
 
+                    <!--
                     <button id="btnSupCompte" class="card-button-outline">Supprimer son compte</button>
+                    <button id="btnSupCompte" class="btn btn-danger">Supprimer son compte</button>-->
                     
+                    <a href="<?= URL ?>compte/suppressionCompte" class="card-button-outline w-100">Supprimer son compte</a>
+
+                    <!--
                     <div id="suppressionCompte" class="d-none m-2">
                         <div class="alert alert-danger">
                             Veuillez confirmer la suppression du compte.
                             <br />
                             <a href="<?= URL ?>compte/suppressionCompte" class="btn btn-danger">Je Souhaite supprimer mon compte définitivement !</a>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </form>
         </div>
