@@ -15,6 +15,10 @@
                               <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>accueil">Home page</a>
                         </li>
 
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>apropos">About Us</a>
+                        </li>
+
                         <?php if(!Securite::estConnecte()) : ?>
                         <li>
                               <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>login">Login</a>

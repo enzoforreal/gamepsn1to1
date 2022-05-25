@@ -1,11 +1,10 @@
 {
   "autoload": {
     "psr-4": {
-      "MyApp\\": "src"
+      "MyApp\\": "."
     }
   },
   "require": {
-    "cboden/ratchet": "^0.4.4",
     "firebase/php-jwt": "^6.2"
   }
 }

@@ -36,7 +36,7 @@ class MainManager extends Model
         $stmt->closeCursor();
     }
 
-    
+
     public function bdGetLogs()
     {
         $req = "SELECT * FROM logs";
