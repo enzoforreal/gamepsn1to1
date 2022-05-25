@@ -7,25 +7,7 @@
     background: radial-gradient(circle, rgba(249,123,123,1) 0%, rgba(255,109,109,1) 7%, rgba(244,34,34,1) 68%, rgba(121,4,4,1) 100%);
   }
   
-@font-face {
-  font-family: "Energy";
-  src: url("../fonts/LTEnergy.ttf") format("truetype")
-}
 
-@font-face {
-  font-family: "Titling Bold";
-  src: url("../fonts/built\ titling\ bd.ttf") format("truetype")
-}
-
-@font-face {
-  font-family: "Titling Regular";
-  src: url("../fonts/built\ titling\ rg.ttf") format("truetype")
-}
-
-@font-face {
-  font-family: "Clemente Regular";
-  src: url("../fonts/ClementePDai-Regular.ttf") format("truetype")
-}
 
 
 /* Section de contenu */

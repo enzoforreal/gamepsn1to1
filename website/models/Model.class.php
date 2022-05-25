@@ -6,7 +6,7 @@ abstract class Model
 
     private static function setBdd()
     {
-        $pathConf = "../config.yml";
+        $pathConf = "config.yml";
 
         $config = yaml_parse_file($pathConf);
 

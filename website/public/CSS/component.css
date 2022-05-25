@@ -11,7 +11,6 @@
     --lg: 992px;
     --xl: 1200px;
 
-    --container-default: 0px;
     --container-sm: 8px;
     --container-md: 16px;
     --container-lg: 24px;
@@ -19,6 +18,7 @@
     --button-round: 8px;
 
     --border-weight: 1px;
+    --border-radius: 8px;
 
     --typo-sm: 12px;
     --type-md: 18px;
@@ -35,6 +35,162 @@ p, h1, h2, h3, h4, h5, h6, a{
     color: var(--bg-black-color);
 }
 
+/* CONTAINER */
+
+    /* GENERAL */
+    .custom-container-fluid{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .custom-container-fluid-white{
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--bg-white-color);
+    }
+
+    .custom-container-fluid-grey{
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--bg-grey-color);
+    }
+
+    .custom-container-fluid-black{
+        padding: 0px;
+        margin: 0px;
+        background-color: var(--bg-black-color);
+    }
+
+/* PROFIL */
+
+    .profil-avatar-full{
+        border-radius: var(--border-radius);
+        margin-bottom: var(--container-sm);
+        width: 200px;
+        height: 200px;
+    }
+
+    .profil-nickname{
+        font-size: var(--typo-xl);
+        font-weight: bold;
+        margin-bottom: var(--container-md);
+    }
+
+    /* COUNTER */
+    .custom-counter-item{
+        background-color: var(--bg-white-color);
+        margin-left: var(--container-md);
+        margin-right: var(--container-md);
+        margin-top: var(--container-sm);
+        margin-bottom: var(--container-sm);
+        padding: 0px;
+        width: 200px;
+    }
+
+    .custom-counter{
+        border: var(--border-weight) solid var(--bg-red-color);
+        border-radius: var(--border-radius);
+    }
+
+    .custom-counter-avatar{
+        height: 75px; 
+        width: 75px; 
+        margin: var(--container-md);
+        border-radius: var(--border-radius);
+    }
+
+    .custom-counter-avatar-container{
+        text-align: center;
+        background-color: var(--bg-red-color);
+    }
+
+    .custom-counter-body{
+        padding-top: var(--container-sm);
+        padding-bottom: var(--container-sm);
+        padding-left: var(--container-md);
+        padding-right: var(--container-md);
+    }
+
+    .custom-counter-title{
+        font-size: var(--typo-xl);
+        font-weight: bold;
+        margin-bottom: var(--container-sm);
+    }
+
+    .custom-counter-subtitle{
+        font-size: var(--typo-mg);
+        font-weight: bold;
+        margin-top: var(--container-sm);
+        margin-bottom: var(--container-default);
+    }
+
+    /* SIDEBAR */
+    .profil-sidebar-container{
+        background-color: var(--bg-darkRed-color);
+        padding: var(--container-md);
+        width: 100%;
+    }
+
+    @media (min-width: 992px){
+        .profil-sidebar-container{
+            background-color: var(--bg-darkRed-color);
+            width: 450px;
+        }
+    }
+
+    .profil-sidebar-title{
+        font-size: var(--typo-lg);
+        font-weight: bold;
+        text-align: center;
+        color: var(--bg-white-color);
+        margin-bottom: var(--container-lg);
+    }
+
+    .profil-sidebar-list-group{
+        list-style: none;
+    }
+
+    .profil-sidebar-list-item{
+        text-decoration: none;
+        font-size: var(--typo-lg);
+        font-weight: normal;
+        text-align: center;
+        color: var(--bg-white-color);
+        margin-bottom: var(--container-lg);
+    }
+
+/* LOGIN / REGISTER */
+
+    .login-container{
+        padding: var(--container-lg);
+    }
+
+    /* LOGO */
+    .login-logo-container{
+        margin-top: var(--container-lg);
+        margin-bottom: var(--container-lg);
+    }
+
+    .login-logo-image-container{
+        text-align: center;
+    }
+
+    .login-logo-image{
+        height: 100px;
+        width: 100px;
+    }
+
+    .login-logo-title{
+        text-align: center;
+        font-weight: bold;
+        font-size: var(--typo-xl);
+    }
+
+    .login-form-container{
+        max-width: 500px;
+        width: 100%;
+    }
+
 /* CARD */
 
     .custom-card-container{
@@ -47,20 +203,23 @@ p, h1, h2, h3, h4, h5, h6, a{
         margin-top: var(--container-sm);
         margin-bottom: var(--container-sm);
         padding: 0px;
+        width: 300px
     }
 
     .custom-card{
-        box-shadow: 0px 0px 3px var(--bg-black-color);
         border: var(--border-weight) solid var(--bg-black-color);
-        border-radius: var(--container-sm);
+        border-radius: var(--border-radius);
     }
 
-    .card-avatar{
+    .custom-card-avatar{
         height: 100px; 
         width: 100px; 
-        align-self: center;
         margin: var(--container-sm);
-        border-radius: var(--container-sm);
+        border-radius: var(--border-radius);
+    }
+
+    .custom-card-avatar-container{
+        text-align: center;
     }
 
     .custom-card-body{
@@ -88,7 +247,7 @@ p, h1, h2, h3, h4, h5, h6, a{
     }
 
     .card-button{
-        width: 100%;
+        width: 95%;
         height: 100%;
 
         padding-top: var(--container-sm);
@@ -96,12 +255,10 @@ p, h1, h2, h3, h4, h5, h6, a{
         padding-right: var(--container-md);
         padding-left: var(--container-md);
 
-        margin-bottom: var(--container-sm);
-
         background-color: var(--bg-red-color);
         color: var(--bg-white-color);
 
-        border-radius: var(--container-sm);
+        border-radius: var(--border-radius);
         
         border: 0px;
 
@@ -114,6 +271,38 @@ p, h1, h2, h3, h4, h5, h6, a{
 
     .card-button:active{
         background-color: var(--bg-black-color);
+    }
+
+    .card-button-outline{
+        width: 95%;
+        height: 100%;
+
+        padding-top: var(--container-sm);
+        padding-bottom: var(--container-sm);
+        padding-right: var(--container-md);
+        padding-left: var(--container-md);
+
+        color: var(--bg-red-color);
+
+        border-radius: var(--border-radius);
+        
+        border: var(--border-weight) solid var(--bg-red-color);
+
+        font-size: var(--typo-md);
+    }
+
+    .card-button-outline:hover{
+        border: var(--border-weight) solid var(--bg-darkRed-color);
+        color: var(--bg-darkRed-color);
+
+
+    }
+
+    .card-button-outline:active{
+        border: var(--border-weight) solid var(--bg-black-color);
+        color: var(--bg-black-color);
+
+
     }
 
 /* LIST */
@@ -173,7 +362,7 @@ p, h1, h2, h3, h4, h5, h6, a{
         max-width: 50px;
         max-height: 50px;
         margin-right: var(--container-sm);
-        border-radius: var(--container-sm);
+        border-radius: var(--border-radius);
     }
 
     .chat-nickname{
@@ -239,11 +428,11 @@ p, h1, h2, h3, h4, h5, h6, a{
         font-size: var(--typo-md);
     }
 
-    .input-field-left, .input-field:hover{
+    .input-field-left:hover, .input-field:hover{
         border: var(--border-weight) solid var(--bg-darkRed-color);
     }
 
-    .input-field-left:active, .input-field{
+    .input-field-left:active, .input-field:active{
         border: var(--border-weight) solid var(--bg-black-color);
     }
 

@@ -1,9 +1,9 @@
 <?php
 session_start();
-//  error_reporting (E_ALL ^ E_NOTICE); 
+ 
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
     "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
-
+ 
 require_once("./controllers/Toolbox.class.php");
 require_once("./controllers/Securite.class.php");
 require_once("./controllers/Visiteur/Visiteur.controller.php");
@@ -14,7 +14,7 @@ $visiteurController = new VisiteurController();
 $utilisateurController = new UtilisateurController();
 $partyController = new PartyController();
 $administrateurController = new AdministrateurController();
-
+ 
 try {
     if (empty($_GET['page'])) {
         $page = "accueil";
@@ -22,7 +22,7 @@ try {
         $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
         $page = $url[0];
     }
-
+ 
     switch ($page) {
         case "accueil":
             $visiteurController->accueil();
@@ -56,8 +56,8 @@ try {
                 $birthdate = $_POST['birthdate'];
                 $telephone = Securite::secureHTML($_POST['telephone']);
                 $country = $_POST['country'];
-
-
+ 
+ 
                 $utilisateurController->validation_creerCompte($login, $pseudoPlatform, $platform, $password, $mail, $birthdate, $telephone, $country);
             } else {
                 Toolbox::ajouterMessageAlerte("Les 7 informations sont obligatoires !", Toolbox::COULEUR_ROUGE);
@@ -83,12 +83,14 @@ try {
                 Securite::genererCookieConnexion(); //regénération du cookie
                 switch ($url[1]) {
                     case "profil":
-                        $utilisateurController->profil();
+                        if(!empty($_SESSION['profil']['login'])){
+                            $utilisateurController->profil();
+                        }
                         break;
                     case "myParties":
                         if ($_SESSION['profil']['login']) {
                             $login = $_SESSION['profil']['login'];
-
+ 
                             $partyController->getMyParties($login);
                             break;
                         }
@@ -157,7 +159,7 @@ try {
                 !empty($_POST['login']) && !empty($_POST['bet']) &&
                 !empty($_POST['platform']) && !empty($_POST['game'])
             ) {
-
+ 
                 $login = Securite::secureHTML($_POST['login']);
                 $bet =  intval(securite::secureHTML($_POST['bet']));
                 $platform = Securite::secureHTML($_POST['platform']);
@@ -175,38 +177,40 @@ try {
                 header("Location: " . URL . "creerPartie");
             }
             break;
-
+ 
         case "roomParty":
             $partyController->afficherPageRoomPartie($_GET['idParty']);
             break;
-        case "userJoin":
-            if (!empty($_POST['login_1'])) {
-                $login = Securite::secureHTML($_POST['login_1']);
-                $idParty = Securite::secureHTML($_POST['idParty']);
-
-                $partyJoinStatus =  $partyController->JoinParty($idParty, $login);
-
-                if ($partyJoinStatus == 3) {
-                    Toolbox::ajouterMessageAlerte("the room is full !", Toolbox::COULEUR_ROUGE);
-                    header("Location: " . URL . "roomParty&idParty=" . $idParty);
-                } else if ($partyJoinStatus == 2) {
-                    Toolbox::ajouterMessageAlerte(" You already join on this room !", Toolbox::COULEUR_ROUGE);
-                    header("Location: " . URL . "roomParty&idParty=" . $idParty);
-                } else if ($partyJoinStatus == 1) {
-
-                    Toolbox::ajouterMessageAlerte(" success !", Toolbox::COULEUR_VERTE);
-                    header("Location: " . URL . "roomParty&idParty=" . $idParty);
-                } else if ($partyJoinStatus === 4) {
-                    Toolbox::ajouterMessageAlerte("You are already on the party", Toolbox::COULEUR_ROUGE);
-                    header("Location: " . URL . "roomParty&idParty=" . $idParty);
-                }
-            }
-            break;
+         case "userJoin" :  if(!empty($_POST['login_1'])){
+            $login = Securite::secureHTML($_POST['login_1']);
+            $idParty = Securite::secureHTML($_POST['idParty']);
+            
+            $partyJoinStatus =  $partyController->JoinParty($idParty,$login);
+           
+           if($partyJoinStatus == 3){
+                Toolbox::ajouterMessageAlerte("the room is full !",Toolbox::COULEUR_ROUGE);
+                 header("Location: ".URL."roomParty&idParty=".$idParty);
+           }else if($partyJoinStatus == 2){
+                 Toolbox::ajouterMessageAlerte(" You already join on this room !",Toolbox::COULEUR_ROUGE);
+                 header("Location: ".URL."roomParty&idParty=".$idParty);
+           }else if($partyJoinStatus == 1){
+               
+                    Toolbox::ajouterMessageAlerte(" success !",Toolbox::COULEUR_VERTE);
+                 header("Location: ".URL."roomParty&idParty=".$idParty);
+           } else if($partyJoinStatus === 4) {
+               Toolbox::ajouterMessageAlerte("You are already on the party", Toolbox::COULEUR_ROUGE);
+               header("Location: ".URL."roomParty&idParty=".$idParty);
+           }else if($partyJoinStatus === 5){
+                Toolbox::ajouterMessageAlerte("You are already  on the party ", Toolbox::COULEUR_ROUGE);
+               header("Location: ".URL."roomParty&idParty=".$idParty);
+           }
+        }   
+          break;
         case "showGames":
             $partyController->afficherPageShowGames();
             break;
-
-
+ 
+ 
         case "administration":
             if (!Securite::estConnecte()) {
                 Toolbox::ajouterMessageAlerte("Veuillez vous connecter !", Toolbox::COULEUR_ROUGE);
@@ -225,13 +229,13 @@ try {
                     case "validation_modificationRole":
                         $administrateurController->validation_modificationRole($_POST['login'], $_POST['role']);
                         break;
-
+ 
                     default:
                         throw new Exception("La page n'existe pas");
                 }
             }
             break;
-
+ 
         default:
             throw new Exception("La page n'existe pas");
     }
