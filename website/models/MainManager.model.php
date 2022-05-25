@@ -1,5 +1,5 @@
 <?php
-require_once("Model.class.php");
+require_once("./models/Model.class.php");
 
 class MainManager extends Model
 {
@@ -36,7 +36,7 @@ class MainManager extends Model
         $stmt->closeCursor();
     }
 
-    
+
     public function bdGetLogs()
     {
         $req = "SELECT * FROM logs";

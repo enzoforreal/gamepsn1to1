@@ -1,0 +1,30 @@
+version: "3"
+services:
+  apache:
+    build: .
+    ports:
+      - "${APACHE_PORT}:80"
+    env_file:
+      - ".env"
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile_db
+    expose:
+      - "${DB_PORT}"
+    env_file:
+      - ".env"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: game1to1
+  websock:
+    build:
+      context: .
+      dockerfile: Dockerfile_websock
+    ports:
+      - "${WEBSOCK_PORT}:9000"
+    expose:
+      - "9000"
+    env_file:
+      - ".env"

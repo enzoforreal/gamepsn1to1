@@ -38,6 +38,17 @@ class VisiteurController extends MainController{
             "view" => "views/Visiteur/creerCompte.view.php",
             "template" => "views/common/template.php"
         ];
+       // Toolbox::sendMail('gamepsn1to1@gmail.com', 'test', 'body');
+        $this->genererPage($data_page);
+    }
+
+    public function afficherPageAPropos(){
+        $data_page = [
+            "page_description" => "Page à propos",
+            "page_title" => "Page à propos",
+            "view" => "views/Visiteur/about.view.php",
+            "template" => "views/common/template.php"
+        ];
         $this->genererPage($data_page);
     }
     

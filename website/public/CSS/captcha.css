@@ -28,18 +28,19 @@
 
 
 .i5 {
-  background: url(/public/Assets/images/manette.png) no-repeat left top;
+  background: url(../Assets/images/manette.png) no-repeat left top;
   border: 1px solid;
 }
 
-.i1 { background: url(/public/Assets/images/manette.png) no-repeat right top;
+.i1 { background: url(../Assets/images/manette.png) no-repeat right top;
   border: 1px solid;
  }
 
 
-.i2 { background: url(/public/Assets/images/manette.png) no-repeat right bottom;
+.i2 { background: url(../Assets/images/manette.png) no-repeat right bottom;
   border: 1px solid;
 }
-.i6 { background: url(/public/Assets/images/manette.png) no-repeat left bottom;
+.i6 { background: url(../Assets/images/manette.png) no-repeat left bottom;
   border: 1px solid;
 }
+
