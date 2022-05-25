@@ -121,17 +121,12 @@ class ComposerStaticInit2ba13d13edb2990d600e129ae732cfc9
         ),
     );
 
-    public static $classMap = array (
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit2ba13d13edb2990d600e129ae732cfc9::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit2ba13d13edb2990d600e129ae732cfc9::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit2ba13d13edb2990d600e129ae732cfc9::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit2ba13d13edb2990d600e129ae732cfc9::$classMap;
 
         }, null, ClassLoader::class);
     }
