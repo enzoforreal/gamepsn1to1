@@ -7,31 +7,9 @@
 
                         <!--Formulaire de message-->
                         <div class="col-lg-4 col-12 mb-5">
-                              <h5 class="text-center text-light fw-bold">Message</h5>
 
-                              <form action="" method="">
-                                    <div class="form-group">
-                                          <label class="text-light mb-1">Lastname</label>
-                                          <input type="text" class="form-control mb-3" name="lastname"
-                                                placeholder="Votre Nom">
-                                    </div>
 
-                                    <div class="form-group">
-                                          <label class="text-light mb-1">Email</label>
-                                          <input type="email" class="form-control mb-3" name="email"
-                                                placeholder="Votre Adresse mail">
-                                    </div>
 
-                                    <div class="form-group">
-                                          <label class="text-light mb-1">Message</label>
-                                          <textarea class="form-control mb-3" name="message" rows="3"
-                                                placeholder="Votre Message"></textarea>
-                                    </div>
-
-                                    <div class="text-center">
-                                          <button type="submit" class="btn btn-danger custom-button">Submit</button>
-                                    </div>
-                              </form>
                         </div>
 
                         <!--Liens de navigation-->
