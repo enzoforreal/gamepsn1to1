@@ -1,6 +1,6 @@
 <?php
 session_start();
-//  error_reporting (E_ALL ^ E_NOTICE); 
+ 
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
     "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
  
