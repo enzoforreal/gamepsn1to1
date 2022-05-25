@@ -38,13 +38,232 @@
 
     <div>
         <a href="<?= URL ?>compte/modificationPassword" class="btn btn-warning">Changer le mot de passe</a>
-        <button id="btnSupCompte" class="btn btn-danger">Supprimer son compte</button>
     </div>
-    <div id="suppressionCompte" class="d-none m-2">
-        <div class="alert alert-danger">
-            Veuillez confirmer la suppression du compte.
-            <br />
-            <a href="<?= URL ?>compte/suppressionCompte" class="btn btn-danger">Je Souhaite supprimer mon compte définitivement !</a>
+    
+</div>
+
+
+
+
+
+
+
+<div class="row custom-container-fluid-grey">
+    
+    <aside class="profil-sidebar-container d-flex flex-column">
+        <div style="position: fixed;">
+            <ul class="profil-sidebar-list-group">
+                <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/profil">Settings</a></li>
+                <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/profilFriends">Friends</a></li>
+            </ul>
         </div>
-    </div>
+    </aside>
+
+    <main class="col">
+        <div class="d-flex flex-column align-items-center mx-auto" style="margin: 96px; max-width: 700px">
+
+            <div class="card">
+                <img class="profil-avatar-full" src="<?= URL; ?>public/Assets/images/<?= $utilisateur['image'] ?>" alt="Avatar">
+                <p class="profil-nickname"><?= $utilisateur['pseudoPlatform'] ?></p>
+
+            </div>
+
+            <!--
+            <form method="POST" action="<?= URL ?>compte/validation_modificationImage" enctype="multipart/form-data">
+                
+            </form>-->
+            
+
+
+            <div class="w-100 mb-3">
+
+                
+
+                <div class="mb-3">
+                    <form method="POST" action="<?= URL ?>compte/validation_modificationImage" enctype="multipart/form-data">
+                        <label for="image" class="label">Profil Picture</label><br />
+                        <input accept=".jpg,.jpeg" type="file" class="form-control" id="image" name="image" onchange="submit();" />
+                    </form>
+                </div>
+
+                <div class="mb-3">
+                    <a href="<?= URL ?>compte/modificationPassword">
+                        <button class="card-button">Change password</button>
+                    </a>             
+                </div>
+
+
+                <hr class="mb-3">
+                <h3 class="mb-3">Performances</h3>
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4 justify-content-center ">
+
+                    <!--Template compteur-->
+                    <div class="col custom-counter-item">
+                        <div class="custom-counter" >
+                            <div class="custom-counter-avatar-container">
+                                <img class="custom-counter-avatar" src="https://picsum.photos/1000" alt="image game">
+                            </div>
+                            <div class="custom-counter-body">
+                                <h5 class="custom-counter-subtitle text-center">VICTOIRE</h5>
+                                <p class="custom-counter-title text-center"><?= $utilisateur['numberOfWins'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col custom-counter-item">
+                        <div class="custom-counter" >
+                            <div class="custom-counter-avatar-container">
+                                <img class="custom-counter-avatar" src="https://picsum.photos/1000" alt="image game">
+                            </div>
+                            <div class="custom-counter-body">
+                                <h5 class="custom-counter-subtitle text-center">DEFAITE</h5>
+                                <p class="custom-counter-title text-center"><?= $utilisateur['numberOfDefeats'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col custom-counter-item">
+                        <div class="custom-counter" >
+                            <div class="custom-counter-avatar-container">
+                                <img class="custom-counter-avatar" src="https://picsum.photos/1000" alt="image game">
+                            </div>
+                            <div class="custom-counter-body">
+                                <h5 class="custom-counter-subtitle text-center">EGALITE</h5>
+                                <p class="custom-counter-title text-center"><?= $utilisateur['numberOfDraws'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Rajouter colonne ratio dans la BDD ou calculer directement avec php-->
+                    <div class="col custom-counter-item">
+                        <div class="custom-counter" >
+                            <div class="custom-counter-avatar-container">
+                                <img class="custom-counter-avatar" src="https://picsum.photos/1000" alt="image game">
+                            </div>
+                            <div class="custom-counter-body">
+                                <h5 class="custom-counter-subtitle text-center">RATIO</h5>
+                                <p class="custom-counter-title text-center">1.28</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Rajouter colonne rang dans la BDD-->
+                    <div class="col custom-counter-item">
+                        <div class="custom-counter" >
+                            <div class="custom-counter-avatar-container">
+                                <img class="custom-counter-avatar" src="https://picsum.photos/1000" alt="image game">
+                            </div>
+                            <div class="custom-counter-body">
+                                <h5 class="custom-counter-subtitle text-center">RANG</h5>
+                                <p class="custom-counter-title text-center">592</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col custom-counter-item">
+                        <div class="custom-counter" >
+                            <div class="custom-counter-avatar-container">
+                                <img class="custom-counter-avatar" src="https://picsum.photos/1000" alt="image game">
+                            </div>
+                            <div class="custom-counter-body">
+                                <h5 class="custom-counter-subtitle text-center">POINTS</h5>
+                                <p class="custom-counter-title text-center"><?= $utilisateur['totalPoints'] ?></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                          
+            </div>
+
+            <!--RENAUD doit mettre l'action du formulaire-->
+            <form class="w-100" action="<?= URL ?>compte/modificationProfil" id="profilForm" method="POST">
+
+                <div class="w-100 mb-4">
+                    <hr class="mb-3">
+                    <h3 class="mb-3">Profil</h3>
+                    
+                    <div class="mb-3">
+                        <label for="pseudoPlatform" class="label">Nickname</label>
+                        <input class="input-field" type="text" placeholder="Your nickname" 
+                        value="<?= $utilisateur['pseudoPlatform'] ?>" id="pseudoPlatform" name="pseudoPlatform">
+                    </div>
+
+                </div>
+
+                <div class="w-100 mb-4">
+                    <hr class="mb-3">
+                    <h3 class="mb-3">Utilisateur</h3>
+                    <div class="mb-3">
+                        <label class="label" for="login">Login</label>
+                        <input type="text" name="login" id="login" readonly class="input-field" placeholder="Your login"
+                            value="<?= $utilisateur['login'] ?>" require="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label" for="platform">Platform</label>
+                        <select name="platform" class="input-field">
+                            <option value="ps5" selected>ps5</option>
+                            <option value="ps4">ps4</option>
+                            <option value="xbox">xbox</option>
+                            <option value="pc">pc</option>
+                            <option value="switch">switch</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label" for="mail">Email</label>
+                        <input type="mail" name="mail" id="mail" class="input-field" placeholder="Your email address"
+                            value="<?= $utilisateur['mail'] ?>" require="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label" for="birthdate">Birthdate</label>
+                        <input type="date" name="birthdate" id="birthdate" class="input-field"
+                            placeholder="Birthdate" value="<?= $utilisateur['birthdate'] ?>" require="required">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label" for="telephone">Telephone</label>
+                        <input type="phone" name="telephone" id="telephone" class="input-field"
+                                placeholder="Your Phone number" value="<?= $utilisateur['telephone'] ?>" require="required">
+                    </div>
+                </div>
+
+                <div class="w-100 mb-4">
+                    <hr class="mb-3">
+                    <h3 class="mb-3">Cordonnées</h3>
+                    <div class="mb-3">
+                        <label class="label" for="country">Country</label>
+                        <input type="Text" name="country" id="country" class="input-field" value="<?= $utilisateur['country'] ?>"
+                            placeholder="Your Country" require="required">
+                    </div>
+                </div>
+
+                <div class="w-100 mb-4">
+                    <hr class="mb-3">
+                    <h3 class="mb-3">Paiement</h3>
+                    
+                    <div class="mb-3">
+                        <label class="label" for="wallet">Wallet</label>
+                        <input type="Text" name="wallet" id="wallet" class="input-field"
+                                placeholder="Your wallet" require="required">
+                    </div>
+
+                </div>
+
+                <div class="w-100 mb-4">
+                    <hr class="mb-3">
+                    <h3 class="mb-3">Save and Delete</h3>
+
+                    <div class="">
+                        <button class="card-button mb-3" type="submit" form="profilForm">Save the Changes</button>
+                    </div>
+                    
+                    <a href="<?= URL ?>compte/suppressionCompte" class="card-button-outline w-100">Supprimer son compte</a>
+                </div>
+            </form>
+        </div>
+    </main>
 </div>
