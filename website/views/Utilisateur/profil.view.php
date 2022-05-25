@@ -38,7 +38,6 @@
 
     <div>
         <a href="<?= URL ?>compte/modificationPassword" class="btn btn-warning">Changer le mot de passe</a>
-        <button id="btnSupCompte" class="btn btn-danger">Supprimer son compte</button>
     </div>
     
 </div>
@@ -63,7 +62,11 @@
     <main class="col">
         <div class="d-flex flex-column align-items-center mx-auto" style="margin: 96px; max-width: 700px">
 
-            <img class="profil-avatar-full" src="<?= URL; ?>public/Assets/images/<?= $utilisateur['image'] ?>" alt="Avatar">
+            <div class="card">
+                <img class="profil-avatar-full" src="<?= URL; ?>public/Assets/images/<?= $utilisateur['image'] ?>" alt="Avatar">
+                <p class="profil-nickname"><?= $utilisateur['pseudoPlatform'] ?></p>
+
+            </div>
 
             <!--
             <form method="POST" action="<?= URL ?>compte/validation_modificationImage" enctype="multipart/form-data">
@@ -71,7 +74,6 @@
             </form>-->
             
 
-            <p class="profil-nickname"><?= $utilisateur['pseudoPlatform'] ?></p>
 
             <div class="w-100 mb-3">
 
@@ -182,18 +184,12 @@
                     <hr class="mb-3">
                     <h3 class="mb-3">Profil</h3>
                     
-                    <!--Rajouter colonne Wallet dans BDD-->
                     <div class="mb-3">
                         <label for="pseudoPlatform" class="label">Nickname</label>
                         <input class="input-field" type="text" placeholder="Your nickname" 
                         value="<?= $utilisateur['pseudoPlatform'] ?>" id="pseudoPlatform" name="pseudoPlatform">
                     </div>
 
-                    <!--Rajouter colonne Banking Card dans BDD-->
-                    <div class="mb-3">
-                        <label for="image" class="label">Avatar</label>
-                        <input accept=".jpg,.jpeg" class="form-control" type="file" id="image" name="image">
-                    </div>
                 </div>
 
                 <div class="w-100 mb-4">
@@ -255,40 +251,17 @@
                                 placeholder="Your wallet" require="required">
                     </div>
 
-                    <!--
-                    Rajouter colonne Banking Card dans BDD
-                    <div class="mb-3">
-                        <label class="label" for="bk">Banking card</label>
-                        <input type="Text" name="bk" id="bk" class="input-field"
-                                placeholder="Your banking card" require="required">
-                    </div>-->
                 </div>
 
                 <div class="w-100 mb-4">
                     <hr class="mb-3">
                     <h3 class="mb-3">Save and Delete</h3>
 
-                    <!--
-                    <div class="mb-3">
-                        <label class="label" for="password">Password</label>
-                        <input type="password" name="password" id="password" class="input-field"
-                                placeholder="Your password" require="required">
-                    </div>
-                    -->
-
-
                     <div class="">
                         <button class="card-button mb-3" type="submit" form="profilForm">Save the Changes</button>
                     </div>
-
-                    <button id="btnSupCompte" class="card-button-outline">Supprimer son compte</button>
-                    <div id="suppressionCompte" class="d-none m-2">
-                        <div class="alert alert-danger">
-                            Veuillez confirmer la suppression du compte.
-                            <br />
-                            <a href="<?= URL ?>compte/suppressionCompte" class="btn btn-danger">Je Souhaite supprimer mon compte définitivement !</a>
-                        </div>
-                    </div>
+                    
+                    <a href="<?= URL ?>compte/suppressionCompte" class="card-button-outline w-100">Supprimer son compte</a>
                 </div>
             </form>
         </div>

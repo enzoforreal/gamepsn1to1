@@ -56,7 +56,10 @@ function clickImage(id) {
 
 function changeImage() {
   clicks = 0;
-  var imageSrc = ["../Assets/images/manette.png"];
+  var imageSrc = [
+    "../public/Assets/images/manette.png",
+    "../public/Assets/images/controller cartoon.png",
+  ];
   var newImage = imageSrc[Math.floor(Math.random() * imageSrc.length)];
   lastImage = newImage;
 

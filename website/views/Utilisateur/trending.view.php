@@ -1,10 +1,12 @@
 <div class="row">
 
     <!--Chat privée-->
-    <aside class="chat-container d-flex flex-column">  
+    <aside class="chat-container d-flex flex-column">
         <h3 class="chat-title">CHAT PUBLIQUE</h3>
 
-        <div class="d-flex flex-column">
+        
+        <div classt="d-flex flex-column">
+            <!--
             <div class="speech-bubble speech-other">
                 <div class="d-flex flex-row">
                     <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
@@ -13,8 +15,8 @@
                         <p class="chat-date">11:22</p>
                     </div>
                 </div>
-                <p class="chat-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate voluptatibus laboriosam ex 
-                    officia excepturi magni, explicabo magnam. Similique odit maxime exercitationem aliquid reiciendis 
+                <p class="chat-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate voluptatibus laboriosam ex
+                    officia excepuri magni, explicabo magnam. Similique odit maxime exercitationem aliquid reiciendis
                     atque, consequatur aut ipsa possimus suscipit eaque!</p>
             </div>
 
@@ -26,26 +28,25 @@
                         <p class="chat-date">11:22</p>
                     </div>
                 </div>
-                <p class="chat-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate voluptatibus laboriosam ex 
-                    officia excepturi magni, explicabo magnam. Similique odit maxime exercitationem aliquid reiciendis 
+                <p class="chat-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate voluptatibus laboriosam ex
+                    officia excepturi magni, explicabo magnam. Similique odit maxime exercitationem aliquid reiciendis
                     atque, consequatur aut ipsa possimus suscipit eaque!</p>
-            </div>
+            </div>-->
+            <input class="input-field-left justify-content-end align-self-end" id="chatMsg" type="text" placeholder="Your message">
+            <button onClick="sendMsg()" class="button-right-red">Send</button>
         </div>
 
-        <form class="d-flex flex-row chat-input-container">
-            <input class="input-field-left" type="text" placeholder="Your message">
-            <button class="button-right-red">Send</button>
-        </form>
+        
     </aside>
 
 
     <!--Profil-->
     <div class="col custom-card-container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4 justify-content-center ">
-            
+
             <!--Template profil-->
             <div class="col custom-card-item" style="width: 300px">
-                <div class="card" >
+                <div class="card">
                     <img class="card-avatar" src="https://picsum.photos/1000" alt="image game">
                     <div class="custom-card-body">
                         <h5 class="custom-card-title text-center">Nom site: Marie</h5>

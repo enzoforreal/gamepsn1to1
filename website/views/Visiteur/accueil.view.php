@@ -40,8 +40,9 @@
                                alt="Responsive image">
                    </div>
 
+                   
                    <div class="col-12 text-center">
-                         <button class="btn btn-outline-dark rounded-pill btn-lg">Subscribe now</button>
+                         <a href="<?= URL; ?>login" class="btn btn-outline-dark rounded-pill btn-lg">Subscribe now</a>
                    </div>
              </div>
        </div>
@@ -64,8 +65,17 @@
                                Why don't you use some of your skills to earn some crypto while playing your
                                favorite video game ? Seem like a good deal
                          </p>
-                         <button class="btn btn-outline-dark align-self-center rounded-pill btn-lg">Check available
-                               parties</button>
+
+                        <?php if(Securite::estConnecte()) : ?>
+                              <a href="<?= URL; ?>partie" class="btn btn-outline-dark align-self-center rounded-pill btn-lg">
+                                    Check available parties
+                              </a>
+                        <?php else : ?>
+                              <a href="<?= URL; ?>login" class="btn btn-outline-dark align-self-center rounded-pill btn-lg">
+                                    Connect to see
+                              </a>
+                        <?php endif; ?>
+                        
                    </div>
 
                    <div class="col-xl-5 text-center">
@@ -91,8 +101,16 @@
                                the
                                month
                          </p>
-                         <button class="btn btn-outline-dark align-self-center rounded-pill btn-lg">Check others
-                               profile</button>
+
+                        <?php if(Securite::estConnecte()) : ?>
+                              <a href="<?= URL; ?>trending" class="btn btn-outline-dark align-self-center rounded-pill btn-lg">
+                                    Check others profile
+                              </a>
+                        <?php else : ?>
+                              <a href="<?= URL; ?>login" class="btn btn-outline-dark align-self-center rounded-pill btn-lg">
+                                    Connect to see
+                              </a>
+                        <?php endif; ?>
                    </div>
 
                    <div class="col-xl-5 text-center">
@@ -119,8 +137,9 @@
                                goals
                                and for what we stand for
                          </p>
-                         <button class="btn btn-outline-dark align-self-center rounded-pill btn-lg">Check who
-                               we're</button>
+                        <a href="<?= URL; ?>apropos" class="btn btn-outline-dark align-self-center rounded-pill btn-lg">
+                              Check who we're
+                        </a>
                    </div>
 
                    <div class="col-xl-5 text-center">
@@ -150,7 +169,7 @@
                    </div>
 
                    <div class="col-12 text-center">
-                         <button class="btn btn-outline-danger rounded-pill btn-lg">Subscribe now</button>
+                        <a href="<?= URL; ?>login" class="btn btn-outline-dark rounded-pill btn-lg">Subscribe now</a>
                    </div>
 
              </div>
