@@ -32,8 +32,10 @@ class Room
         foreach ($this->users as $user) {
             $user->getCon()->send(json_encode(array(
                 "command" => "msg",
-                "content" => $msg,
-                "from" => $from->getLogin(),
+                "content_other" => $msg,
+                "content_myself" => $msg,
+                "from_myself" => $from->getLogin(),
+                "from_other" => $from->getLogin()
             )));
         }
     }

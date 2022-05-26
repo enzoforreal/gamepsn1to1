@@ -45,9 +45,68 @@ conn.addEventListener("message", function (event) {
   if (data["command"] == "auth" && data["status"] == 1) {
     console.log("Successfully connected");
   } else if (data["command"] == "msg") {
-    var msg = data["content"];
-    var from = data["from"];
-    console.log("New message from " + from + " : " + msg);
+    var msg_other = data["content_other"];
+    var msg_myself = data['content_myself'];
+    var from_other = data["from_other"];
+    var from_myself = data['from_myself'];
+    //console.log("New message from " + from + " : " + msg);
+
+    var publicChatContainer = document.getElementById("public-chat-container");
+    var myNewMessage = document.createElement("div");
+
+    if(from_myself){
+      myNewMessage.innerHTML +=  
+      `<div class="speech-bubble speech-user">
+          <div class="d-flex flex-row">
+              <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
+              <div class="d-flex flex-column">
+                  <p class="chat-nickname">${from_myself}</p>
+                  <p class="chat-date">11:22</p>
+              </div>
+          </div>
+          <p class="chat-text">${msg_myself}</p>
+      </div>`;
+    }
+    else{
+      myNewMessage.innerHTML +=
+      `<div class="speech-bubble speech-other">
+        <div class="d-flex flex-row">
+            <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
+            <div class="d-flex flex-column">
+                <p class="chat-nickname">${from_other}</p>
+                <p class="chat-date">11:22</p>
+            </div>
+        </div>
+        <p class="chat-text">${msg_other}</p>
+      </div>`;
+    }
+    
+
+    publicChatContainer.appendChild(myNewMessage);
+
+    /*
+    document.getElementById("public-chat-container").innerHTML +=
+          `<div class="speech-bubble speech-other">
+                <div class="d-flex flex-row">
+                    <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
+                    <div class="d-flex flex-column">
+                        <p class="chat-nickname">${from["from"]}</p>
+                        <p class="chat-date">11:22</p>
+                    </div>
+                </div>
+                <p class="chat-text">${msg["content"]}</p>
+            </div>
+
+            <div class="speech-bubble speech-user">
+                <div class="d-flex flex-row">
+                    <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
+                    <div class="d-flex flex-column">
+                        <p class="chat-nickname">${from["from"]}</p>
+                        <p class="chat-date">11:22</p>
+                    </div>
+                </div>
+                <p class="chat-text">${msg["content"]}</p>
+            </div>-->`;*/
   }
 });
 
