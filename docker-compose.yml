@@ -29,8 +29,6 @@ services:
       dockerfile: Dockerfile_websock
     ports:
       - "${WEBSOCK_PORT}:9000"
-    expose:
-      - "9000"
     volumes:
       - /etc/letsencrypt:/etc/letsencrypt
     env_file:
