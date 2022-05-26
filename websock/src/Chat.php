@@ -90,7 +90,7 @@ class Chat implements MessageComponentInterface
                 if (!$user) {
                     $from->send(json_encode(array(
                         "command" => "auth",
-                        "status" => 1
+                        "status" => 0
                     )));
                     return;
                 }
@@ -102,7 +102,7 @@ class Chat implements MessageComponentInterface
                 if (!$user) {
                     $from->send(json_encode(array(
                         "command" => "auth",
-                        "status" => 1
+                        "status" => 0
                     )));
                     return;
                 }
@@ -112,7 +112,7 @@ class Chat implements MessageComponentInterface
                 echo "Message received from {$user->getLogin()} for room {$room->getName()} : {$msg}\n";
             }
         } catch (\Exception $e) {
-            echo "Could not decode incoming message from client({$from->resourceId}) : " . $e->getMessage() . "\n";
+            echo "Could not decode incoming message from client{$from->resourceId} : " . $e->getMessage() . "\n";
             $from->send(json_encode(array(
                 "command" => "auth",
                 "status" => 0
