@@ -12,11 +12,11 @@ require dirname(__DIR__) . '/websock/vendor/autoload.php';
 
 $loop = React\EventLoop\Loop::get();
 
-$server = new SocketServer('127.0.0.1:9000', array(), $loop);
+$server = new SocketServer('0.0.0.0:9000', array(), $loop);
 
 $secureServer = new SecureServer($server, $loop, [
-    'local_cert'  => 'bundled.crt',
-    'local_pk' => 'privkey.pem',
+    'local_cert'  => '/etc/letsencrypt/live/gamepsn1to1.com/bundled.crt',
+    'local_pk' => '/etc/letsencrypt/live/gamepsn1to1.com/privkey.pem',
     'verify_peer' => false,
 ]);
 
