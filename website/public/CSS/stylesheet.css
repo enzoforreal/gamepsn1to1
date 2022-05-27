@@ -60,6 +60,11 @@
 }
 
 
+#logsTable {
+    max-width: 50%;
+}
+
+
     
 h1 {
 font-family: 'lt_energybold', Arial, sans-serif;
