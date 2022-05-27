@@ -5,7 +5,10 @@
         <h3 class="chat-title">CHAT PUBLIQUE</h3>
 
         
-        <div classt="d-flex flex-column">
+        <div class="d-flex flex-column">
+            <div class="mb-3" id="public-chat-container" style="height: 500px; overflow: scroll;">
+
+            </div>
             <!--
             <div class="speech-bubble speech-other">
                 <div class="d-flex flex-row">

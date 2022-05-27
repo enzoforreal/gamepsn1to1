@@ -31,7 +31,9 @@ class Room
             $user->getCon()->send(json_encode(array(
                 "command" => "msg",
                 "content" => $msg,
-                "from" => $from->getLogin(),
+                "from" => $from->getLogin()
+                "from_myself" => $from->getLogin(),
+                "from_other" => $from->getLogin()
             )));
         }
     }

@@ -8,7 +8,6 @@ RUN pecl install yaml \
 RUN a2enmod rewrite
 WORKDIR /var/www/gamepsn1to1/website
 COPY  /website .
-RUN composer install --prefer-dist
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 RUN a2enmod ssl
 RUN service apache2 restart
