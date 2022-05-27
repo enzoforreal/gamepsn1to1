@@ -52,7 +52,7 @@ class Chat implements MessageComponentInterface
     {
         $this->clients->attach($conn);
 
-        echo "New connection ({$conn->remoteAddress}), id : {$conn->resourceId} from\n";
+        echo "New connection ({$conn->remoteAddress}), id : {$conn->resourceId}\n";
     }
 
     public function onMessage(ConnectionInterface $from, $msg)
@@ -83,7 +83,8 @@ class Chat implements MessageComponentInterface
                 echo "User " . $decodedArray['login'] . " logged in from connection {$from->resourceId}\n";
                 $from->send(json_encode(array(
                     "command" => "auth",
-                    "status" => 1
+                    "status" => 1,
+                    "self" => $decodedArray['login']
                 )));
             } else  if ($data['command'] == "join") {
                 $user = $this->isConnected($from);
