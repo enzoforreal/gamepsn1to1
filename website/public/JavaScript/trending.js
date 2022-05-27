@@ -1,5 +1,6 @@
 var token = "";
 var conn = new WebSocket("wss://gamepsn1to1.com:9000");
+var username = "";
 
 window.onload = function () {
   console.log("Connecting to chat");
@@ -43,7 +44,8 @@ function sendMsg() {
 conn.addEventListener("message", function (event) {
   var data = JSON.parse(event.data);
   if (data["command"] == "auth" && data["status"] == 1) {
-    console.log("Successfully connected");
+    console.log("Successfully connected as " + data["self"]);
+    username = data["self"];
   } else if (data["command"] == "msg") {
     var msg = data["content"];
     var from = data["from"];
