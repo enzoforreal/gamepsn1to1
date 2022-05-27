@@ -47,8 +47,8 @@ conn.addEventListener("message", function (event) {
     console.log("Successfully connected as " + data["self"]);
     username = data["self"];
   } else if (data["command"] == "msg") {
-    var msg_other = data["content_other"];
-    var msg_myself = data['content_myself'];
+    var content = data["content"];
+    var from = data['from'];
     var from_other = data["from_other"];
     var from_myself = data['from_myself'];
     //console.log("New message from " + from + " : " + msg);
@@ -56,17 +56,19 @@ conn.addEventListener("message", function (event) {
     var publicChatContainer = document.getElementById("public-chat-container");
     var myNewMessage = document.createElement("div");
 
-    if(from_myself){
+    //Dans cette condition je dois pouvoir savoir si je suis celui qui envoie un message
+    //ou si c'est qqn d'autre
+    if(from == username){
       myNewMessage.innerHTML +=  
       `<div class="speech-bubble speech-user">
           <div class="d-flex flex-row">
               <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
               <div class="d-flex flex-column">
-                  <p class="chat-nickname">${from_myself}</p>
+                  <p class="chat-nickname">${from}</p>
                   <p class="chat-date">11:22</p>
               </div>
           </div>
-          <p class="chat-text">${msg_myself}</p>
+          <p class="chat-text">${content}</p>
       </div>`;
     }
     else{
@@ -75,11 +77,11 @@ conn.addEventListener("message", function (event) {
         <div class="d-flex flex-row">
             <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
             <div class="d-flex flex-column">
-                <p class="chat-nickname">${from_other}</p>
+                <p class="chat-nickname">${from}</p>
                 <p class="chat-date">11:22</p>
             </div>
         </div>
-        <p class="chat-text">${msg_other}</p>
+        <p class="chat-text">${content}</p>
       </div>`;
     }
     
