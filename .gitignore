@@ -5,3 +5,5 @@ websock/vendor/
 
 ./vscode
 .vscode/
+
+websock/composer.lock
