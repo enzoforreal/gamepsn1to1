@@ -1,5 +1,6 @@
 var token = "";
 var conn = new WebSocket("wss://gamepsn1to1.com:9000");
+var chatMsg = document.getElementById("chatMsg");
 var username = "";
 
 window.onload = function () {
@@ -27,8 +28,8 @@ conn.onopen = function (e) {
 };
 
 function sendMsg() {
-  var chat = document.getElementById("chatMsg");
-  var msg = chat.value;
+  var msg = chatMsg.value;
+  chatMsg.value = "";
   chat.value = "";
 
   console.log("Sending msg to server");
@@ -41,14 +42,24 @@ function sendMsg() {
   );
 }
 
+chatMsg.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    sendMsg();
+  }
+});
+
 conn.addEventListener("message", function (event) {
   var data = JSON.parse(event.data);
   if (data["command"] == "auth" && data["status"] == 1) {
     console.log("Successfully connected as " + data["self"]);
     username = data["self"];
+    document.getElementById("buttonSend").disabled = false;
+    chatMsg.disabled = false;
+    chatMsg.placeholder = "Your message";
   } else if (data["command"] == "msg") {
     var content = data["content"];
-    var from = data['from'];
+    var from = data["from"];
     var from_other = data["from_other"];
     var from_myself = data['from_myself'];
     //console.log("New message from " + from + " : " + msg);
@@ -56,8 +67,8 @@ conn.addEventListener("message", function (event) {
     var publicChatContainer = document.getElementById("public-chat-container");
     var myNewMessage = document.createElement("div");
 
-    //Dans cette condition je dois pouvoir savoir si je suis celui qui envoie un message
-    //ou si c'est qqn d'autre
+    if (from == username) {
+      myNewMessage.innerHTML += `<div class="speech-bubble speech-user">
     if(from == username){
       myNewMessage.innerHTML +=  
       `<div class="speech-bubble speech-user">
@@ -70,8 +81,8 @@ conn.addEventListener("message", function (event) {
           </div>
           <p class="chat-text">${content}</p>
       </div>`;
-    }
-    else{
+    } else {
+      myNewMessage.innerHTML += `<div class="speech-bubble speech-other">
       myNewMessage.innerHTML +=
       `<div class="speech-bubble speech-other">
         <div class="d-flex flex-row">
