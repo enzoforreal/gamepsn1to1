@@ -1,3 +1,7 @@
-Generate self signed cert
+Generate self signed certs
 
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout server.key -out server.cert
+
+Allow self signed cert
+
+'allow_self_signed' => true,
