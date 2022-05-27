@@ -6,6 +6,7 @@
   },
   "require": {
     "cboden/ratchet": "^0.4.4",
-    "firebase/php-jwt": "^6.2"
+    "firebase/php-jwt": "^6.2",
+    "react/react": "1.2"
   }
 }

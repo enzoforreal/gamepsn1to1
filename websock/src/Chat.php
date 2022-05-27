@@ -52,7 +52,7 @@ class Chat implements MessageComponentInterface
     {
         $this->clients->attach($conn);
 
-        echo "New connection, id : {$conn->resourceId}\n";
+        echo "New connection ({$conn->remoteAddress}), id : {$conn->resourceId} from\n";
     }
 
     public function onMessage(ConnectionInterface $from, $msg)
@@ -76,7 +76,7 @@ class Chat implements MessageComponentInterface
                 $decodedArray = (array) $decoded;
                 $date = new \DateTime();
                 if ($date->getTimestamp() - $decodedArray['issuedat'] > 60 * 60 * 24) {
-                    echo "Connection {$from->resourceId} issued an expired token\n";
+                    echo "Connection ($from->remoteAddress) {$from->resourceId} issued an expired token\n";
                     return;
                 }
                 $this->users->attach(new User($decodedArray['login'], $from));
@@ -90,7 +90,7 @@ class Chat implements MessageComponentInterface
                 if (!$user) {
                     $from->send(json_encode(array(
                         "command" => "auth",
-                        "status" => 1
+                        "status" => 0
                     )));
                     return;
                 }
@@ -102,7 +102,7 @@ class Chat implements MessageComponentInterface
                 if (!$user) {
                     $from->send(json_encode(array(
                         "command" => "auth",
-                        "status" => 1
+                        "status" => 0
                     )));
                     return;
                 }
@@ -112,7 +112,7 @@ class Chat implements MessageComponentInterface
                 echo "Message received from {$user->getLogin()} for room {$room->getName()} : {$msg}\n";
             }
         } catch (\Exception $e) {
-            echo "Could not decode incoming message from client({$from->resourceId}) : " . $e->getMessage() . "\n";
+            echo "Could not decode incoming message from client{$from->resourceId} : " . $e->getMessage() . "\n";
             $from->send(json_encode(array(
                 "command" => "auth",
                 "status" => 0
@@ -123,7 +123,7 @@ class Chat implements MessageComponentInterface
     public function onClose(ConnectionInterface $conn)
     {
         $this->clients->detach($conn);
-        echo "Connection {$conn->resourceId} has disconnected\n";
+        echo "Connection ($conn->remoteAddress) {$conn->resourceId} has disconnected\n";
         foreach ($this->users as $user) {
             if ($user->getCon() == $conn) {
                 $this->users->detach($user);

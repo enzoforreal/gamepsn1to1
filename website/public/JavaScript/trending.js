@@ -1,5 +1,5 @@
 var token = "";
-var conn = new WebSocket("ws://localhost:9000");
+var conn = new WebSocket("wss://gamepsn1to1.com:9000");
 
 window.onload = function () {
   console.log("Connecting to chat");
