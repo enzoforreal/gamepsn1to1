@@ -30,11 +30,11 @@ abstract class MainController
         $this->logTraffic($data);
     }
 
-    protected function pageErreur($msg, $statusCode){
+    protected function pageErreur($message, $statusCode){
         $data_page = [
             "page_description" => "Page permettant de gérer les erreurs",
             "page_title" => "Page d'erreur",
-            "msg" => $msg,
+            "msg" => $message,
             "view" => "./views/erreur.view.php",
             "template" => "views/common/template.php"
         ];

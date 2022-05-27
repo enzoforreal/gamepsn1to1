@@ -1,5 +1,5 @@
 <?php
-require_once("Model.class.php");
+require_once("./models/Model.class.php");
 
 class MainManager extends Model
 {
@@ -11,7 +11,7 @@ class MainManager extends Model
         $stmt->execute();
         $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
-        return ($resultat['COUNT(1)'] === 1);
+        return ($resultat['COUNT(1)'] === "1");
     }
 
     public function bdInsertLog($route)

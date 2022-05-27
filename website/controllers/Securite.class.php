@@ -38,7 +38,8 @@ class Securite
         $config = yaml_parse_file($pathConf);
         $key = $config['JWTSecret'];
         $payload = [
-            'login' => $_SESSION['profil']['login']
+            'login' => $_SESSION['profil']['login'],
+            'issuedat' => time()
         ];
 
         $jwt = JWT::encode($payload, $key, 'HS256');
