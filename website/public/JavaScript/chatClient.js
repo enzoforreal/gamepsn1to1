@@ -87,7 +87,7 @@ export class chatClient {
             console.log(
               `[chatClient][DEBUG] msg received from server from ${author} : ${msg}`
             );
-          this.onmessage(msg, author);
+          this.onMessage(msg, author);
           break;
         default:
           console.warn(

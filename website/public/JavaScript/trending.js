@@ -49,11 +49,11 @@ window.onload = async function () {
   };
 };
 
-function sendMsg() {
+window.sendMsg = function sendMsg() {
   var msg = chatMsg.value;
   client.sendMsg(msg);
   chatMsg.value = "";
-}
+};
 
 chatMsg.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
