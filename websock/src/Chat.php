@@ -16,27 +16,6 @@ class Chat implements MessageComponentInterface
     private $pathConf = "config.yml";
     private $dbCon;
 
-    private function initDb($config)
-    {
-        echo "Connecting to the database\n";
-        $this->dbCon = new \PDO("mysql:host=" . $config['dbHost'] . ":" . $config['dbPort'] . ";dbname=" . $config['dbName'] .
-            ";charset=utf8", $config['dbLogin'], $config['dbPassword']);
-        $this->dbCon->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        echo "Database OK\n";
-    }
-
-    private function dbLogMsg(string $msg, User $from, Room $room): bool
-    {
-        $req = "INSERT INTO messagepublic (message, authorLogin, room) VALUES(:message, :authorLogin, :room);";
-        $stmt = $this->dbCon->prepare($req);
-        $stmt->bindValue(":message", $msg, \PDO::PARAM_STR);
-        $stmt->bindValue(":authorLogin", $from->getLogin(), \PDO::PARAM_STR);
-        $stmt->bindValue(":room", $room->getName(), \PDO::PARAM_STR);
-        $stmt->execute();
-        $estcrée = ($stmt->rowCount() > 0);
-        $stmt->closeCursor();
-        return $estcrée;
-    }
 
     public function __construct()
     {
@@ -51,6 +30,39 @@ class Chat implements MessageComponentInterface
         $this->rooms = new \SplObjectStorage;
         $this->rooms->attach(new Room("public")); //Public chatroom available to all users
         echo "Server up and waiting for connections\n";
+    }
+
+    private function initDb($config)
+    {
+        echo "Connecting to the database\n";
+        $this->dbCon = new \PDO("mysql:host=" . $config['dbHost'] . ":" . $config['dbPort'] . ";dbname=" . $config['dbName'] .
+            ";charset=utf8", $config['dbLogin'], $config['dbPassword']);
+        $this->dbCon->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        echo "Database OK\n";
+    }
+
+    private function dbGetRoomHistory(Room $room)
+    {
+        $req = "SELECT * FROM messagepublic WHERE room= :room ORDER BY TIMESTAMP DESC LIMIT 50;";
+        $stmt = $this->dbCon->prepare($req);
+        $stmt->bindValue(":room", $room->getName(), \PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
+
+    private function dbLogMsg(string $msg, User $from, Room $room): bool
+    {
+        $req = "INSERT INTO messagepublic (message, authorLogin, room) VALUES(:message, :authorLogin, :room);";
+        $stmt = $this->dbCon->prepare($req);
+        $stmt->bindValue(":message", $msg, \PDO::PARAM_STR);
+        $stmt->bindValue(":authorLogin", $from->getLogin(), \PDO::PARAM_STR);
+        $stmt->bindValue(":room", $room->getName(), \PDO::PARAM_STR);
+        $stmt->execute();
+        $estcrée = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estcrée;
     }
 
     private function isConnected(ConnectionInterface $conn): User | false
@@ -121,6 +133,11 @@ class Chat implements MessageComponentInterface
                 $room = $this->getRoom($data['name']);
                 echo "User {$user->getLogin()} requested to join room {$room->getName()}\n";
                 $room->addUser($user);
+                $history = array_reverse($this->dbGetRoomHistory($room));
+                $from->send(json_encode(array(
+                    "command" => "history",
+                    "data" => $history
+                )));
             } else  if ($data['command'] == "msg") {
                 $user = $this->isConnected($from);
                 if (!$user) {

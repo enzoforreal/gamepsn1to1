@@ -68,7 +68,7 @@
 
                                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                                 <li>
-                                                      <a class="dropdown-item" href="<?= URL; ?>administration/droits">Right management</a>
+                                                      <a class="dropdown-item" href="<?= URL; ?>administration/droits">Rights management</a>
                                                 </li>
                                           </ul>
                                     </li>
