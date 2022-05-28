@@ -2,8 +2,6 @@
 
 namespace MyApp;
 
-use Ratchet\ConnectionInterface;
-use MyApp\Chat;
 
 class Room
 {

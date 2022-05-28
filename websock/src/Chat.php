@@ -13,17 +13,59 @@ class Chat implements MessageComponentInterface
     protected $users;
     private $rooms;
     private $key = "ThisIsAVeryVeryLongsecret1234";
+    private $pathConf = "config.yml";
+    private $dbCon;
+
 
     public function __construct()
     {
         echo "Starting websocket server game1to1\n";
+        echo "Reading configuration file...\n";
+
+        $config = yaml_parse_file($this->pathConf);
+        $this->initdb($config);
+
         $this->clients = new \SplObjectStorage;
         $this->users = new \SplObjectStorage;
         $this->rooms = new \SplObjectStorage;
         $this->rooms->attach(new Room("public")); //Public chatroom available to all users
+        echo "Server up and waiting for connections\n";
     }
 
-    private function isConnected(ConnectionInterface $conn)
+    private function initDb($config)
+    {
+        echo "Connecting to the database\n";
+        $this->dbCon = new \PDO("mysql:host=" . $config['dbHost'] . ":" . $config['dbPort'] . ";dbname=" . $config['dbName'] .
+            ";charset=utf8", $config['dbLogin'], $config['dbPassword']);
+        $this->dbCon->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        echo "Database OK\n";
+    }
+
+    private function dbGetRoomHistory(Room $room)
+    {
+        $req = "SELECT * FROM messagepublic WHERE room= :room ORDER BY TIMESTAMP DESC LIMIT 50;";
+        $stmt = $this->dbCon->prepare($req);
+        $stmt->bindValue(":room", $room->getName(), \PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
+
+    private function dbLogMsg(string $msg, User $from, Room $room): bool
+    {
+        $req = "INSERT INTO messagepublic (message, authorLogin, room) VALUES(:message, :authorLogin, :room);";
+        $stmt = $this->dbCon->prepare($req);
+        $stmt->bindValue(":message", $msg, \PDO::PARAM_STR);
+        $stmt->bindValue(":authorLogin", $from->getLogin(), \PDO::PARAM_STR);
+        $stmt->bindValue(":room", $room->getName(), \PDO::PARAM_STR);
+        $stmt->execute();
+        $estcrée = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estcrée;
+    }
+
+    private function isConnected(ConnectionInterface $conn): User | false
     {
         $logged = false;
         $curUser = null;
@@ -37,7 +79,7 @@ class Chat implements MessageComponentInterface
     }
 
 
-    private function getRoom(string $name)
+    private function getRoom(string $name): Room | false
     {
         foreach ($this->rooms as $room) {
             if ($room->getName() == $name) {
@@ -59,16 +101,9 @@ class Chat implements MessageComponentInterface
     {
         try {
             $data = json_decode($msg, true);
-            $logged = false;
-            $curUser = null;
-            foreach ($this->users as $user) {
-                if ($user->getCon() == $from) {
-                    $logged = true;
-                    $curUser = $user;
-                }
-            }
+            $curUser = $this->isConnected($from);
             if ($data['command'] == "connect") {
-                if ($logged) {
+                if ($curUser) {
                     echo "User " . $curUser->getLogin() . " Tried to login again\n";
                     return;
                 }
@@ -98,6 +133,11 @@ class Chat implements MessageComponentInterface
                 $room = $this->getRoom($data['name']);
                 echo "User {$user->getLogin()} requested to join room {$room->getName()}\n";
                 $room->addUser($user);
+                $history = array_reverse($this->dbGetRoomHistory($room));
+                $from->send(json_encode(array(
+                    "command" => "history",
+                    "data" => $history
+                )));
             } else  if ($data['command'] == "msg") {
                 $user = $this->isConnected($from);
                 if (!$user) {
@@ -110,6 +150,7 @@ class Chat implements MessageComponentInterface
                 $room = $this->getRoom($data['room']);
                 $msg = $data['content'];
                 $room->sendMsgToall($msg, $user);
+                $this->dbLogMsg($msg, $user, $room);
                 echo "Message received from {$user->getLogin()} for room {$room->getName()} : {$msg}\n";
             }
         } catch (\Exception $e) {

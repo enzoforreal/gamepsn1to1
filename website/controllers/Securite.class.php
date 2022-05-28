@@ -28,7 +28,7 @@ class Securite
     {
         $ticket = session_id() . microtime() . rand(0, 999999);
         $ticket = hash("sha512", $ticket);
-        setcookie(self::COOKIE_NAME, $ticket, time() + (60 * 20));
+        setcookie(self::COOKIE_NAME, $ticket, time() + (60 * 60 * 24 * 1));
         $_SESSION['profil'][self::COOKIE_NAME] = $ticket;
     }
     public static function genererTokenJWT()
