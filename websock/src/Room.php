@@ -2,8 +2,6 @@
 
 namespace MyApp;
 
-use Ratchet\ConnectionInterface;
-use MyApp\Chat;
 
 class Room
 {
@@ -33,7 +31,7 @@ class Room
             $user->getCon()->send(json_encode(array(
                 "command" => "msg",
                 "content" => $msg,
-                "from" => $from->getLogin(),
+                "from" => $from->getLogin()
             )));
         }
     }

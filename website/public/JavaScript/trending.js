@@ -1,68 +1,63 @@
-var token = "";
-var conn = new WebSocket("wss://gamepsn1to1.com:9000");
+import { chatClient } from "./chatClient.js";
 
-window.onload = function () {
-  console.log("Connecting to chat");
-  var xmlhttp = new XMLHttpRequest();
+let client;
+let chatMsg = document.getElementById("chatMsg");
 
-  xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-      // XMLHttpRequest.DONE == 4
-      if (xmlhttp.status == 200) {
-        token = xmlhttp.responseText;
-        login();
-      } else {
-        alert("Could not connect to the server");
-      }
-    }
+window.onload = async function () {
+  const response = await fetch("/compte/token", {
+    method: "GET",
+  });
+
+  let token = await response.text();
+  client = new chatClient("wss://game1to1.local:9000", "public", token, true);
+  let username = client.getUsername();
+  client.onConnected = () => {
+    chatMsg.disabled = false;
+    document.getElementById("buttonSend").disabled = false;
+    chatMsg.disabled = false;
+    chatMsg.placeholder = "Your message";
   };
+  client.onMessage = (msg, from) => {
+    var publicChatContainer = document.getElementById("public-chat-container");
+    var myNewMessage = document.createElement("div");
 
-  xmlhttp.open("GET", "/compte/token", true);
-  xmlhttp.send();
+    if (from == username) {
+      myNewMessage.innerHTML += `<div class="speech-bubble speech-user">
+          <div class="d-flex flex-row">
+              <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
+              <div class="d-flex flex-column">
+                  <p class="chat-nickname">${from}</p>
+                  <p class="chat-date">11:22</p>
+              </div>
+          </div>
+          <p class="chat-text">${msg}</p>
+      </div>`;
+    } else {
+      myNewMessage.innerHTML += `<div class="speech-bubble speech-other">
+        <div class="d-flex flex-row">
+            <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
+            <div class="d-flex flex-column">
+                <p class="chat-nickname">${from}</p>
+                <p class="chat-date">11:22</p>
+            </div>
+        </div>
+        <p class="chat-text">${msg}</p>
+      </div>`;
+    }
+
+    publicChatContainer.appendChild(myNewMessage);
+  };
 };
 
-conn.onopen = function (e) {
-  console.log("Websocket connection established");
+window.sendMsg = function sendMsg() {
+  var msg = chatMsg.value;
+  client.sendMsg(msg);
+  chatMsg.value = "";
 };
 
-function sendMsg() {
-  var chat = document.getElementById("chatMsg");
-  var msg = chat.value;
-  chat.value = "";
-
-  console.log("Sending msg to server");
-  conn.send(
-    JSON.stringify({
-      command: "msg",
-      room: "public",
-      content: msg,
-    })
-  );
-}
-
-conn.addEventListener("message", function (event) {
-  var data = JSON.parse(event.data);
-  if (data["command"] == "auth" && data["status"] == 1) {
-    console.log("Successfully connected");
-  } else if (data["command"] == "msg") {
-    var msg = data["content"];
-    var from = data["from"];
-    console.log("New message from " + from + " : " + msg);
+chatMsg.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    sendMsg();
   }
 });
-
-function login() {
-  conn.send(
-    JSON.stringify({
-      command: "connect",
-      token: token,
-    })
-  );
-
-  conn.send(
-    JSON.stringify({
-      command: "join",
-      name: "public",
-    })
-  );
-}

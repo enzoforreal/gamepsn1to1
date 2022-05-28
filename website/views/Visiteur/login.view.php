@@ -12,7 +12,7 @@
                   </div>
 
                   <form method="POST" action="<?= URL ?>validation_login" class="d-flew flew-column"
-                        style="width: 400px">
+                        style="max-width: 400px">
                         <div class="mb-3">
                               <label for="login">Login</label>
                               <input type="text" name="login" id="login" class="form-control" placeholder="Your login"

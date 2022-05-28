@@ -1,7 +1,10 @@
-FROM ubuntu:latest
+FROM php:latest
 ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /websock
-RUN apt update && apt install php zip unzip php-zip -y
+RUN apt update && apt install zip libyaml-dev unzip -y
+RUN docker-php-ext-install pdo pdo_mysql
+RUN pecl install yaml \
+        && docker-php-ext-enable yaml pdo pdo_mysql
 COPY  /websock .
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 RUN composer install

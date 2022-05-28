@@ -4,8 +4,11 @@
     <aside class="chat-container d-flex flex-column">
         <h3 class="chat-title">CHAT PUBLIQUE</h3>
 
-        
-        <div classt="d-flex flex-column">
+
+        <div class="d-flex flex-column">
+            <div class="mb-3" id="public-chat-container" style="height: 500px; overflow: scroll;">
+
+            </div>
             <!--
             <div class="speech-bubble speech-other">
                 <div class="d-flex flex-row">
@@ -32,11 +35,11 @@
                     officia excepturi magni, explicabo magnam. Similique odit maxime exercitationem aliquid reiciendis
                     atque, consequatur aut ipsa possimus suscipit eaque!</p>
             </div>-->
-            <input class="input-field-left justify-content-end align-self-end" id="chatMsg" type="text" placeholder="Your message">
-            <button onClick="sendMsg()" class="button-right-red">Send</button>
+            <input disabled class="input-field-left justify-content-end align-self-end" id="chatMsg" type="text" placeholder="Connecting to chatroom">
+            <button id="buttonSend" disabled onClick="sendMsg()" class="button-right-red">Send</button>
         </div>
 
-        
+
     </aside>
 
 

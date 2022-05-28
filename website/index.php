@@ -148,6 +148,9 @@ try {
         case "trending":
             $utilisateurController->afficherPageTrending();
             break;
+        case "apropos":
+            $visiteurController->afficherPageAPropos();
+            break;
         case "ranking":
             $utilisateurController->afficherPageRanking();
             break;
