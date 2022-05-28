@@ -1,6 +1,6 @@
-dbHost: 127.0.0.1
+dbHost: db
 dbLogin: root
-dbPassword: root
-dbName: game1to1bis
+dbPassword: test
+dbName: game1to1
 dbPort: 3306
 JWTSecret: ThisIsAVeryVeryLongsecret1234
