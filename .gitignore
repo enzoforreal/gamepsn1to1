@@ -1,0 +1,13 @@
+/vendor/*
+
+website/vendor/
+
+
+
+websock/vendor/
+
+
+
+./vscode
+
+.vscode/
