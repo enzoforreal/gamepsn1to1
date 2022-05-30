@@ -78,7 +78,7 @@ class UtilisateurController extends MainController
 }
 
 public function errorAndDie($error_msg) {
-        global $cp_debug_email;
+        $cp_debug_email = 'enzoforreal@gmail.com';
         if (!empty($cp_debug_email)) {
             $report = 'Error: '.$error_msg."\n\n";
             $report .= "POST Data\n\n";
@@ -97,10 +97,10 @@ public function ipnHandler()
     // Fill these in with the information from your CoinPayments.net account.
     $cp_merchant_id = '8b6143dd4d812bb5f7312d46239b110a';
     $cp_ipn_secret = 'pQrualVvv7';
-    $cp_debug_email = 'enzoforreal@gmail.com';
+    
 
      $payment = new PaymentsManager();
-     echo "ok";
+     die("ok");
 
      $payment->debug("dans l'ipn");
 
