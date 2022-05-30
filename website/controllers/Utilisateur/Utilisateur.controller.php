@@ -100,6 +100,7 @@ public function ipnHandler()
     $cp_debug_email = 'enzoforreal@gmail.com';
 
      $payment = new PaymentsManager();
+     echo "ok";
 
      $payment->debug("dans l'ipn");
 
