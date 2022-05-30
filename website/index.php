@@ -12,6 +12,9 @@ require_once("./controllers/Utilisateur/Utilisateur.controller.php");
 require_once("./controllers/Utilisateur/Party.controller.php");
 require_once("./controllers/Administrateur/Administrateur.controller.php");
 $visiteurController = new VisiteurController();
+$private_key = '633d6A7c43E845ddC2fA124eCdd3a1578689DD512B70c021239DB63dE1397146';
+$public_key = '9ad706ac6e25c819e6e253dd4cfab34f8aa3cdf177671dccc9d4bb9664410065';
+$format = 'json';
 $utilisateurController = new UtilisateurController();
 $partyController = new PartyController();
 $administrateurController = new AdministrateurController();
@@ -88,7 +91,20 @@ try {
                             $utilisateurController->profil();
                         }
                         break;
-                    case "myParties":
+                        case"pageTransfer": $utilisateurController->createTransfer();
+                            break;
+                        case "deposit_money" : 
+                            if(isset($_POST['amount']) && !empty($_POST['amount'])) {
+                                $utilisateurController->callApiPayment($private_key,$public_key,$format,floatval($_POST['amount']), $_SESSION['profil']['login']);
+
+                            } else {
+                                //
+                            }
+                            break;
+                        case "ipn":
+                            $utilisateurController->ipnHandler();
+                            break;
+                        case "myParties":
                         if ($_SESSION['profil']['login']) {
                             $login = $_SESSION['profil']['login'];
  

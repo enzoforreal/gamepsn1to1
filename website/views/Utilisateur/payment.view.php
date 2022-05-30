@@ -3,19 +3,25 @@
                   style="margin:auto; background: white; padding: 20px; box-shadow: 10px 10px 5px #888;">
                   <div class="panel-heading">
                         <h1>Deposit with cryptocurrency</h1>
-                        <p style="font-style: italic;">to account of <strong><?= $utilisateur['login']; ?></strong></p>
+                        <p style="font-style: italic;">to account of <strong></strong></p>
                   </div>
                   <hr>
-                  <form action="process.php" method="post" autocomplete="off">
+
+                  <form action="<?= URL ?>compte/deposit_money" method="POST" autocomplete="off">
                         <label for="amount">Amount (EUR)</label>
                         <input type="text" name="amount" class="form-control">
                         <br>
-                        <label for="email">Email Address</label>
-                        <input type="email" name="email" class="form-control">
-                        <br>
-                        <a href="compte/validationDeposit" type="submit" style="border-radius: 0px;"
+
+
+                        <button type="submit" style="border-radius: 0px;"
                               class="btn btn-lg btn-block btn-success">deposit
-                              to my account</a>
+                              to my account</button>
                   </form>
+                  <?php if(isset($datas) && !empty($datas)) : ?>
+                  <img width="300" src="<?= $datas["result"]["qrcode_url"]; ?>">
+                  <h3>Adresse destinataire: <?= $datas["result"]["address"]; ?></h3>
+                  <h3>Somme à payer: <?= $datas["result"]["amount"]; ?></h3>
+                  </h3>
+                  <?php endif; ?>
             </div>
       </div>

@@ -60,6 +60,8 @@
             <div>
                   <ul class="profil-sidebar-list-group">
                         <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/profil">Settings</a></li>
+                        <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/pageTransfer">deposit money</a>
+                        </li>
                         <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/profilFriends">Friends</a></li>
                   </ul>
             </div>
