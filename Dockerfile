@@ -10,5 +10,6 @@ WORKDIR /var/www/gamepsn1to1/website
 COPY  /website .
 RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 RUN a2enmod ssl
+RUN composer install
 RUN service apache2 restart
 CMD apachectl -D FOREGROUND

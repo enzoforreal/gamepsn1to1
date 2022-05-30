@@ -9,7 +9,7 @@ window.onload = async function () {
   });
 
   let token = await response.text();
-  client = new chatClient("wss://game1to1.local:9000", "public", token, true);
+  client = new chatClient("wss://gamepsn1to1.com:9000", "public", token, true);
   let username = client.getUsername();
   client.onConnected = () => {
     chatMsg.disabled = false;

@@ -1,4 +1,4 @@
-dbHost: 127.0.0.1
+dbHost: db
 dbLogin: root
 dbPassword: root
 dbName: game1to1
