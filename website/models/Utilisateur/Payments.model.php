@@ -23,25 +23,23 @@ class PaymentsManager extends MainManager{
             
       }
 
-      public function getTransactionById($txn_id, $login)
+      public function getTransactionById($txn_id)
       {
-            $req = $this->getBdd()->prepare("SELECT * FROM payments WHERE id_transaction = ? AND login = ?");
+            $req = $this->getBdd()->prepare("SELECT * FROM payments WHERE id_transaction = ?");
             $req->execute([
                   $txn_id,
-                  $login
             ]);
 
             return $req->fetch();
       }
 
 
-      public function updatePayementByTxnId($txn_id, $login, $status)
+      public function updatePayementByTxnId($txn_id, $status)
       {
-            $req = $this->getBdd()->prepare("UPDATE payments SET status = ? WHERE id_transaction = ? AND login = ?");
+            $req = $this->getBdd()->prepare("UPDATE payments SET status = ? WHERE id_transaction = ?");
             $req->execute([
                   $status,
                   $txn_id,
-                  $login
             ]);
       }
 }

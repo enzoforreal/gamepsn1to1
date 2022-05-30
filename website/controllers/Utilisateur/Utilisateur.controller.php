@@ -148,7 +148,7 @@ public function ipnHandler()
     // Check the original currency to make sure the buyer didn't change it.
     $payment = new PaymentsManager();
 
-    $transaction = $payment->getTransactionById($txn_id, $_SESSION['profil']['login']);
+    $transaction = $payment->getTransactionById($txn_id);
     if ($currency1 != $transaction['from_currency']) {
         $this->errorAndDie('Original currency mismatch!');
     }
@@ -159,11 +159,11 @@ public function ipnHandler()
     }
  
     if ($status >= 100 || $status == 2) {
-        $payment->updatePayementByTxnId($txn_id, $_SESSION['profil']['login'], "success");
+        $payment->updatePayementByTxnId($txn_id, "success");
     } else if ($status < 0) {
-        $payment->updatePayementByTxnId($txn_id, $_SESSION['profil']['login'], "error");
+        $payment->updatePayementByTxnId($txn_id,"error");
     } else {
-        $payment->updatePayementByTxnId($txn_id, $_SESSION['profil']['login'], "pending1");
+        $payment->updatePayementByTxnId($txn_id, "pending1");
     }
     die('IPN OK');
 }
