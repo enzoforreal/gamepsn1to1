@@ -35,10 +35,11 @@ class PaymentsManager extends MainManager{
       }
 
 
-      public function updatePayementByTxnId($txn_id, $login)
+      public function updatePayementByTxnId($txn_id, $login, $status)
       {
-            $req = $this->getBdd()->prepare("UPDATE payments SET status = 'success' WHERE id_transaction = ? AND login = ?");
+            $req = $this->getBdd()->prepare("UPDATE payments SET status = ? WHERE id_transaction = ? AND login = ?");
             $req->execute([
+                  $status,
                   $txn_id,
                   $login
             ]);
