@@ -1,4 +1,4 @@
-dbHost: db
+dbHost: localhost
 dbLogin: root
 dbPassword: test
 dbName: game1to1

@@ -114,6 +114,23 @@ CREATE TABLE IF NOT EXISTS `party` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 
+-- Listage de la structure de la table game1to1. payments
+CREATE TABLE IF NOT EXISTS `payments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_transaction` varchar(255) NOT NULL DEFAULT '0',
+  `login` varchar(50) NOT NULL,
+  `from_currency` char(3) DEFAULT 'EUR',
+  `enterred_amount` float NOT NULL,
+  `to_currency` varchar(10) DEFAULT NULL,
+  `amount` float NOT NULL,
+  `status` varchar(30) NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+
 -- Listage de la structure de la table game1to1. plateform
 CREATE TABLE IF NOT EXISTS `plateform` (
   `idPlatforme` varchar(50) NOT NULL,
@@ -154,6 +171,7 @@ CREATE TABLE IF NOT EXISTS `recompenseutilisateur` (
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `login` varchar(50) NOT NULL,
   `pseudoPlatform` varchar(50) NOT NULL,
+  `balance` float NOT NULL,
   `platform` char(10) NOT NULL,
   `password` varchar(100) NOT NULL,
   `mail` varchar(255) NOT NULL,
