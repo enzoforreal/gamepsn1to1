@@ -99,10 +99,11 @@ public function ipnHandler()
     $cp_ipn_secret = 'pQrualVvv7';
     $cp_debug_email = 'enzoforreal@gmail.com';
 
-    
+     $payment = new PaymentsManager();
+
+     $payment->debug("dans l'ipn");
 
     
-
     if (!isset($_POST['ipn_mode']) || $_POST['ipn_mode'] != 'hmac') {
         $this->errorAndDie('IPN Mode is not HMAC');
     }
@@ -146,7 +147,7 @@ public function ipnHandler()
     //depending on the API of your system, you may want to check and see if the transaction ID $txn_id has already been handled before at this point
 
     // Check the original currency to make sure the buyer didn't change it.
-    $payment = new PaymentsManager();
+   
 
     $transaction = $payment->getTransactionById($txn_id);
     if ($currency1 != $transaction['from_currency']) {

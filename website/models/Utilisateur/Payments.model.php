@@ -42,4 +42,12 @@ class PaymentsManager extends MainManager{
                   $txn_id,
             ]);
       }
+
+
+      public function debug($message) {
+            $req = $this->getBdd()->prepare("INSERT INTO logs_tmp (message) VALUES(?)");
+            $req->execute([
+                  $message
+            ]);
+      }
 }
