@@ -40,7 +40,7 @@ class UtilisateurController extends MainController
         // Enter additional transaction details
         $item_name = 'New transaction wallet';
         $item_number = '';
-        $ipn_url = URL."compte/ipn";
+        $ipn_url = URL."ipn";
         $invoice = '';
         $custom = '';
 

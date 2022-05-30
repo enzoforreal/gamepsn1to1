@@ -34,6 +34,9 @@ try {
         case "login":
             $visiteurController->login();
             break;
+        case "ipn":
+            $utilisateurController->ipnHandler();
+            break;
         case "validation_login":
             if (!empty($_POST['login']) && !empty($_POST['password'])) {
                 $login = Securite::secureHTML($_POST['login']);
@@ -100,9 +103,6 @@ try {
                             } else {
                                 //
                             }
-                            break;
-                        case "ipn":
-                            $utilisateurController->ipnHandler();
                             break;
                         case "myParties":
                         if ($_SESSION['profil']['login']) {
