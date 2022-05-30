@@ -18,7 +18,7 @@ myRange.oninput = function () {
   myValue.parentElement.style.left = px + "px";
 };
 
-function getPartyList(e) {
+window.getPartyList = function getPartyList(e) {
   let url = document
     .getElementById("gm-partie-v-container")
     .getAttribute("gm-data-url");
@@ -66,4 +66,4 @@ function getPartyList(e) {
   };
   req.open("POST", "/roomFilter");
   req.send(formData);
-}
+};
