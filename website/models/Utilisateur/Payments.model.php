@@ -45,7 +45,7 @@ class PaymentsManager extends MainManager{
 
 
       public function debug($message) {
-            $req = $this->getBdd()->prepare("INSERT INTO logs_tmp (message) VALUES(?)");
+            $req = $this->getBdd()->prepare("INSERT INTO logs_tmp (logs_message) VALUES(?)");
             $req->execute([
                   $message
             ]);
