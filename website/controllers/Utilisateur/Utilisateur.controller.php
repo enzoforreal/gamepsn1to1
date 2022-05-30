@@ -100,9 +100,8 @@ public function ipnHandler()
     
 
      $payment = new PaymentsManager();
-     die("ok");
 
-     $payment->debug("dans l'ipn");
+     $payment->debug("dans l'ipn ".$_SERVER['HTTP_USER_AGENT']." ip:".$_SERVER['REMOTE_ADDR']);
 
     
     if (!isset($_POST['ipn_mode']) || $_POST['ipn_mode'] != 'hmac') {
