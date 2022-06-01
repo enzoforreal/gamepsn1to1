@@ -77,10 +77,6 @@
 
                   </div>
 
-                  <!--
-            <form method="POST" action="<?= URL ?>compte/validation_modificationImage" enctype="multipart/form-data">
-                
-            </form>-->
 
 
 
@@ -199,14 +195,14 @@
                   </div>
 
                   <!--RENAUD doit mettre l'action du formulaire-->
-                  <form class="w-100" action="<?= URL ?>compte/modificationProfil" id="profilForm" method="POST">
+                  <form class="w-100" action="<?= URL ?>validation_modificationImage" id="profilForm" method="POST">
 
                         <div class="w-100 mb-4">
                               <hr class="mb-3">
                               <h3 class="mb-3">Profil</h3>
 
                               <div class="mb-3">
-                                    <label for="pseudoPlatform" class="label">Nickname</label>
+                                    <label for="pseudoPlatform" class="label">pseudoPlatform</label>
                                     <input class="input-field" type="text" placeholder="Your nickname"
                                           value="<?= $utilisateur['pseudoPlatform'] ?>" id="pseudoPlatform"
                                           name="pseudoPlatform">
