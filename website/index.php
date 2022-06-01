@@ -1,10 +1,7 @@
 <?php
-
-session_start();
- 
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
     "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
- 
+ session_start();
 require_once("./controllers/Toolbox.class.php");
 require_once("./controllers/Securite.class.php");
 require_once("./controllers/Visiteur/Visiteur.controller.php");
@@ -44,7 +41,7 @@ try {
                 $utilisateurController->validation_login($login, $password);
             } else {
                 Toolbox::ajouterMessageAlerte("Login ou mot de passe non renseigné", Toolbox::COULEUR_ROUGE);
-                header('Location: ' . URL . "login");
+                //header('Location: ' . URL . "login");
             }
             break;
         case "creerCompte":
