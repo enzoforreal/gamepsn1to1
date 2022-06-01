@@ -449,40 +449,38 @@ header("Location: " . URL . "compte/profil");
 }
 }
 
-public function validation_modificationImage($file)
-{
-try {
-$repertoire = "public/Assets/images/profils/" . $_SESSION['profil']['login'] . "/"; //TODO: Add support for png and gif
+  public function validation_modificationImage($file)
+    {
+        try {
+            $repertoire = "public/Assets/images/profils/" . $_SESSION['profil']['login'] . "/"; //TODO: Add support for png and gif 15/05/22
+            $logo = imagecreatefrompng('public/Assets/images/logo.png');
+            $modifiedImage = imagecreatefromjpeg($file['tmp_name']);
 
-$logo = imagecreatefrompng('public/Assets/images/logo.png');
-$modifiedImage = imagecreatefromjpeg($file['tmp_name']);
+            $marge_right = 10;
+            $marge_bottom = 10;
+            $sx = imagesx($logo);
+            $sy = imagesy($modifiedImage);
 
-$marge_right = 10;
-$marge_bottom = 10;
-$sx = imagesx($logo);
-$sy = imagesy($modifiedImage);
+            // Copie le cachet sur la photo en utilisant les marges et la largeur de la
+            // photo originale  afin de calculer la position du cachet 
+            imagecopy($modifiedImage, $logo, imagesx($modifiedImage) - $sx - $marge_right, imagesy($modifiedImage) - $sy - $marge_bottom, 0, 0, imagesx($logo), imagesy($logo));
 
-// Copie le cachet sur la photo en utilisant les marges et la largeur de la
-// photo originale afin de calculer la position du cachet
-imagecopy($modifiedImage, $logo, imagesx($modifiedImage) - $sx - $marge_right, imagesy($modifiedImage) - $sy -
-$marge_bottom, 0, 0, imagesx($logo), imagesy($logo));
+            $nomImage = Toolbox::ajoutImage($file, $modifiedImage, $repertoire); //ajout image dans le répertoire
+            //Supression de l'ancienne image
+            $this->dossierSuppressionImageUtilisateur($_SESSION['profil']['login']);
+            //Ajout de la nouvelle image dans la BD
+            $nomImageBD = "profils/" . $_SESSION['profil']['login'] . "/" . $nomImage;
+            if ($this->utilisateurManager->bdAjoutImage($_SESSION['profil']['login'], $nomImageBD)) {
+                Toolbox::ajouterMessageAlerte("La modification de l'image est effectuée", Toolbox::COULEUR_VERTE);
+            } else {
+                Toolbox::ajouterMessageAlerte("La modification de l'image n'a pas été effectuée", Toolbox::COULEUR_ROUGE);
+            }
+        } catch (Exception $e) {
+            Toolbox::ajouterMessageAlerte($e->getMessage(), Toolbox::COULEUR_ROUGE);
+        }
 
-$nomImage = Toolbox::ajoutImage($file, $modifiedImage, $repertoire); //ajout image dans le répertoire
-//Supression de l'ancienne image
-$this->dossierSuppressionImageUtilisateur($_SESSION['profil']['login']);
-//Ajout de la nouvelle image dans la BD
-$nomImageBD = "profils/" . $_SESSION['profil']['login'] . "/" . $nomImage;
-if ($this->utilisateurManager->bdAjoutImage($_SESSION['profil']['login'], $nomImageBD)) {
-Toolbox::ajouterMessageAlerte("La modification de l'image est effectuée", Toolbox::COULEUR_VERTE);
-} else {
-Toolbox::ajouterMessageAlerte("La modification de l'image n'a pas été effectuée", Toolbox::COULEUR_ROUGE);
-}
-} catch (Exception $e) {
-Toolbox::ajouterMessageAlerte($e->getMessage(), Toolbox::COULEUR_ROUGE);
-}
-
-header("Location: " . URL . "compte/profil");
-}
+        header("Location: " . URL . "compte/profil");
+    }
 
 private function dossierSuppressionImageUtilisateur($login)
 {
