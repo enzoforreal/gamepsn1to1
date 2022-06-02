@@ -20,66 +20,76 @@
                         </li>
 
                         <?php if (!Securite::estConnecte()) : ?>
-                              <li>
-                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>login">Login</a>
-                              </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>login">Login</a>
+                        </li>
 
-                              <li>
-                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>creerCompte">Sign
-                                          up</a>
-                              </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>creerCompte">Sign
+                                    up</a>
+                        </li>
                         <?php else : ?>
-                              <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
 
-                                    <a class="nav-link text-light dropdown-toggle" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="v-link text-light" aria-current="page" href="#">Account
-                                    </a>
+                              <a class="nav-link text-light dropdown-toggle" href="" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false" href="v-link text-light"
+                                    aria-current="page" href="#">Account
+                              </a>
 
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                          <li>
-                                                <a class="dropdown-item" href="<?= URL; ?>compte/profil">Profil</a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>compte/profil">Profil</a>
 
-                                          </li>
-                                          <li>
-                                                <a class="dropdown-item" href="<?= URL; ?>compte/myParties">My parties</a>
+                                    </li>
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>compte/myParties">My parties</a>
 
-                                          </li>
-                                    </ul>
-                              </li>
+                                    </li>
+                              </ul>
+                        </li>
 
-                              <li>
-                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>partie">Party</a>
-                              </li>
-                              <li>
-                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>trending">Social</a>
-                              </li>
-                              <li>
-                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>ranking">Ranking</a>
-                              </li>
-                              <li>
-                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>showGames">Show
-                                          games</a>
-                              </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>partie">Party</a>
+                        </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>trending">Social</a>
+                        </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>ranking">Ranking</a>
+                        </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>showGames">Show
+                                    games</a>
+                        </li>
 
-                              <li>
-                                    <a class="nav-link text-light" aria-current="page" href="<?= URL; ?>compte/deconnexion">Logout</a>
-                              </li>
+                        <li>
+                              <a class="nav-link text-light" aria-current="page"
+                                    href="<?= URL; ?>compte/deconnexion">Logout</a>
+                        </li>
                         <?php endif; ?>
 
                         <?php if (Securite::estConnecte() && Securite::estAdministrateur()) : ?>
-                              <li class="nav-item dropdown">
-                                    <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administration
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                          <li>
-                                                <a class="dropdown-item" href="<?= URL; ?>administration/droits">Rights management</a>
+                        <li class="nav-item dropdown">
+                              <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Administration
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>administration/droits">Rights
+                                                management</a>
 
-                                          </li>
-                                          <li>
-                                                <a class="dropdown-item" href="<?= URL; ?>administration/logs">Logs</a>
+                                    </li>
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>administration/logs">Logs</a>
 
-                                          </li>
-                                    </ul>
-                              </li>
+                                    </li>
+                                    <li>
+                                          <a class="dropdown-item"
+                                                href="<?= URL; ?>administration/payments">payments</a>
+
+                                    </li>
+                              </ul>
+                        </li>
                         <?php endif; ?>
                   </ul>
 
