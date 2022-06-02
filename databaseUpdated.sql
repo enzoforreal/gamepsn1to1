@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `recompenseutilisateur` (
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `login` varchar(50) NOT NULL,
   `pseudoPlatform` varchar(50) NOT NULL,
-  `balance` float NOT NULL,
+  `balance` float DEFAULT '0',
   `platform` char(10) NOT NULL,
   `password` varchar(100) NOT NULL,
   `mail` varchar(255) NOT NULL,
