@@ -24,7 +24,13 @@
                                                 <option value="FAR CRY 6">FAR CRY 6</option>
                                                 <option value="SPLATOON 2">SPLATOON 2</option>
                                                 <option value="E-FOOTBALL 2022">E-FOOTBALL 2022</option>
-                                                <option value="LEAGUE OF LEGENDS">LEAGUE OF LEGENDS</option>
+                                                <option value="Fall guys">Fall guys</option>
+                                                <option value="Battlefield V">Battlefield V</option>
+                                                <option value="Borderlands">Borderlands</option>
+                                                <option value=" Fortnite"> Fortnite</option>
+                                                <option value="Destiny 2">Destiny 2</option>
+                                                <option value="Rimbow six siège">Rimbow six siège</option>
+                                                <option value="Tom Clancy Ghost Recon">Tom Clancy Ghost Recon</option>
                                           </select>
                                     </div>
                               </div>
