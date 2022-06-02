@@ -1,5 +1,24 @@
  <div class="row custom-container-fluid-grey">
+       <aside class="profil-sidebar-container d-flex flex-column">
 
+
+             <div class="badge bg-success rounded-pill">
+                   <div class="custom-counter-body">
+                         <h5 class="custom-counter-title text-center">BALANCE</h5>
+                         <p class="custom-counter-title text-center"><?= $utilisateur['balance'] ?> €</p>
+                   </div>
+             </div>
+
+
+
+             <div>
+                   <ul class="profil-sidebar-list-group">
+                         <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/pageTransfer">Deposit money</a>
+                         </li>
+                         <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/profilFriends">Friends</a></li>
+                   </ul>
+             </div>
+       </aside>
        <main class="col">
 
 
