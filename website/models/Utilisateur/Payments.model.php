@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once("./models/MainManager.model.php");
 require_once("./models/Utilisateur/Utilisateur.model.php");
 
@@ -8,9 +8,9 @@ class PaymentsManager extends MainManager{
 
 
       public function createTransaction($login,$id_transaction,$from_currency,$enterred_amount,$to_currency,$amount,$status){
-    
+
             $req = "INSERT INTO payments (login,id_transaction,from_currency,enterred_amount,to_currency,amount,status) VALUES(?, ?, ?, ?, ?, ?, ?);";
-                  $stmt = $this->getBdd()->prepare($req); 
+                  $stmt = $this->getBdd()->prepare($req);
                   $stmt->execute([
                         $login,
                         $id_transaction,
@@ -19,8 +19,8 @@ class PaymentsManager extends MainManager{
                         $to_currency,
                         $amount,
                         $status,
-                  ]);     
-            
+                  ]);
+
       }
 
       public function getTransactionById($txn_id)
