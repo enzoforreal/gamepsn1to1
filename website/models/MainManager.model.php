@@ -46,4 +46,15 @@ class MainManager extends Model
         $stmt->closeCursor();
         return $resultat;
     }
+
+    public function bdGetPayments()
+    {
+        $req = "SELECT * FROM payments";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->execute();
+        $resultat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
+
 }
