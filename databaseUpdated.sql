@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `plateform` (
 
 -- Listage de la structure de la table game1to1. logs_tmp
 CREATE TABLE IF NOT EXISTS `logs_tmp` (
-  logs_message TEXT
+logs_message TEXT 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Les données exportées n'étaient pas sélectionnées.

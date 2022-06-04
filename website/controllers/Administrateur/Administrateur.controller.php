@@ -47,4 +47,19 @@ class AdministrateurController extends MainController{
         $this->genererPage($data_page);
     }
 
+
+    public function payments(){
+
+        $payments = $this->MainManager->bdGetPayments();
+
+        $data_page = [
+            "page_description" => "history of payments",
+            "page_title" => "history of payments",
+            "payments" => $payments,
+            "view" => "views/Administrateur/payments.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
 }

@@ -161,10 +161,14 @@ public function ipnHandler()
  
     if ($status >= 100 || $status == 2) {
         $payment->updatePayementByTxnId($txn_id, "success");
+        $payment->addMoreBalance($transaction["enterred_amount"],$transaction["login"]);
+        $payment->debug("success"); // for debug on production
     } else if ($status < 0) {
         $payment->updatePayementByTxnId($txn_id,"error");
+        $payment->debug("error"); // for debug on production
     } else {
         $payment->updatePayementByTxnId($txn_id, "pending1");
+        $payment->debug("pending1"); // for debug on production
     }
     die('IPN OK');
 }

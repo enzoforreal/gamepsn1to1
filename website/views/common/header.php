@@ -36,10 +36,13 @@
                                     aria-current="page" href="#">Account
                               </a>
 
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                                     <li>
                                           <a class="dropdown-item" href="<?= URL; ?>compte/profil">Profil</a>
 
+                                    </li>
+                                    <li>
+                                          <hr class="dropdown-divider">
                                     </li>
                                     <li>
                                           <a class="dropdown-item" href="<?= URL; ?>compte/myParties">My parties</a>
@@ -73,15 +76,21 @@
                               <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">Administration
                               </a>
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                                     <li>
                                           <a class="dropdown-item" href="<?= URL; ?>administration/droits">Rights
                                                 management</a>
 
                                     </li>
                                     <li>
+                                          <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
                                           <a class="dropdown-item" href="<?= URL; ?>administration/logs">Logs</a>
 
+                                    </li>
+                                    <li>
+                                          <hr class="dropdown-divider">
                                     </li>
                                     <li>
                                           <a class="dropdown-item"
