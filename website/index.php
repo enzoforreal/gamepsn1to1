@@ -244,6 +244,8 @@ try {
                     case "logs":
                         $administrateurController->logs();
                         break;
+                    case "payments" : $administrateurController->payments();
+                        break;
                     case "validation_modificationRole":
                         $administrateurController->validation_modificationRole($_POST['login'], $_POST['role']);
                         break;
