@@ -52,7 +52,7 @@ class PaymentsManager extends MainManager{
       }
 
       public function addMoreBalance($enterred_amount,$login){
-            $req = $this->getBdd()->prepare("UPDATE utilisateur SET balance += ? WHERE login = ? ");
+            $req = $this->getBdd()->prepare("UPDATE utilisateur SET balance = (balance + ?) WHERE login = ?");
             $req->execute([
                   $enterred_amount,
                   $login

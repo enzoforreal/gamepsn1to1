@@ -99,7 +99,7 @@ try {
                                 $utilisateurController->callApiPayment($private_key,$public_key,$format,floatval($_POST['amount']), $_SESSION['profil']['login']);
 
                             } else {
-                                //
+                                Toolbox::ajouterMessageAlerte("you have not define your amount",Toolbox::COULEUR_ROUGE);
                             }
                             break;
                         case "myParties":
