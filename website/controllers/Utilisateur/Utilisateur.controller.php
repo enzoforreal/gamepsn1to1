@@ -140,11 +140,7 @@ public function ipnHandler()
     $status = intval($_POST['status']);
     $status_text = $_POST['status_text'];
 
-    if ($ipn_type != 'button') { // Advanced Button payment
-        die("IPN OK: Not a button payment");
-    }
 
-    //depending on the API of your system, you may want to check and see if the transaction ID $txn_id has already been handled before at this point
 
     // Check the original currency to make sure the buyer didn't change it.
    
