@@ -1,6 +1,7 @@
 <?php
 require_once("./models/Model.class.php");
 
+
 class MainManager extends Model
 {
     public function bdIsRoutePresent($route)
@@ -56,5 +57,13 @@ class MainManager extends Model
         $stmt->closeCursor();
         return $resultat;
     }
+
+      public function getParties(){
+        $req = $this->getBdd()->prepare("SELECT * FROM party" );
+        $req->execute();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        return $datas;
+      }
 
 }
