@@ -224,6 +224,19 @@ try {
            }
         }   
           break;
+        case "userReadyFromParty" : 
+            if(!empty($_POST["idParty"]) && !empty($_POST["login_1"])){
+                $idParty = intval(securite::secureHTML($_POST["idParty"]));
+                $login = securite::secureHTML($_POST["login_1"]);
+                $statut = intval(securite::secureHTML($_POST["statut"]));
+                
+                $updateStatus = $partyController->updateStatusRoom($idParty,$login,$statut);
+                if($updateStatus === 6){
+                    Toolbox::ajouterMessageAlerte("greatful ,room is now complete, the game is in progress !",Toolbox::COULEUR_VERTE);
+                     header("Location: ".URL."roomParty&idParty=".$idParty);
+                }
+            }
+            break; 
         case "showGames":
             $partyController->afficherPageShowGames();
             break;
@@ -241,10 +254,14 @@ try {
                     case "droits":
                         $administrateurController->droits();
                         break;
+                    case "accountUsers" : $administrateurController->getAccountUsers();
+                        break;
                     case "logs":
                         $administrateurController->logs();
                         break;
                     case "payments" : $administrateurController->payments();
+                        break;
+                    case "roomParties" : $administrateurController->getRoomsParty();
                         break;
                     case "validation_modificationRole":
                         $administrateurController->validation_modificationRole($_POST['login'], $_POST['role']);

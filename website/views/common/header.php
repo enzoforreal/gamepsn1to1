@@ -86,6 +86,14 @@
                                           <hr class="dropdown-divider">
                                     </li>
                                     <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>administration/accountUsers">Account
+                                                users</a>
+
+                                    </li>
+                                    <li>
+                                          <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
                                           <a class="dropdown-item" href="<?= URL; ?>administration/logs">Logs</a>
 
                                     </li>
@@ -93,10 +101,20 @@
                                           <hr class="dropdown-divider">
                                     </li>
                                     <li>
-                                          <a class="dropdown-item"
-                                                href="<?= URL; ?>administration/payments">payments</a>
+                                          <a class="dropdown-item" href="<?= URL; ?>administration/payments">Payments
+                                          </a>
 
                                     </li>
+                                    <li>
+                                          <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                          <a class="dropdown-item" href="<?= URL; ?>administration/roomParties">Rooms
+                                                parties
+                                          </a>
+
+                                    </li>
+
                               </ul>
                         </li>
                         <?php endif; ?>

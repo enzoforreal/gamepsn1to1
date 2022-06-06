@@ -1,8 +1,8 @@
-<h1>history of payments</h1>
+<h1 class="text-center">Historical of payments</h1>
 
-<table class="table" id="paymentsTable">
+<table class="table table-success table-striped table-bordered" id="paymentsTable">
       <thead>
-            <tr>
+            <tr class="table-dark">
                   <th>id_transaction</th>
                   <th>login</th>
                   <th>from_currency</th>
@@ -14,7 +14,7 @@
                   <th>updated_at</th>
             </tr>
             <?php foreach ($payments as $payment) : ?>
-            <tr>
+            <tr class="table-info">
                   <td><?php echo $payment['id_transaction'] ?></td>
                   <td><?php echo $payment['login'] ?></td>
                   <td><?php echo $payment['from_currency'] ?></td>

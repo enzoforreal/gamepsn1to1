@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `party` (
   `idParty` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(50) DEFAULT NULL,
   `bet` double DEFAULT NULL,
-  `login_1` varchar(50) DEFAULT 'en_attente_joueur',
+  `login_1` varchar(50) DEFAULT 'player-waiting',
   `score` char(5) NOT NULL,
   `platform` varchar(50) DEFAULT NULL,
   `game` varchar(50) DEFAULT NULL,

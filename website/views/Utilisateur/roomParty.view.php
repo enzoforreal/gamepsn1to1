@@ -55,17 +55,23 @@
                                     <p class="chat-nickname-black"><?= $party["login"] ?></p>
                                     <p class="chat-date-black">Ready</p>
                               </div>
-
-                              <div class="ms-auto">
-                                    <button class="button-red">Ready</button>
-                              </div>
+                              <form method="POST" action="userReadyFromParty">
+                                    <div class="ms-auto">
+                                          <input name="idParty" type="hidden" value="<?= $party['idParty'] ?>"><br>
+                                          <input name="login_1" type="hidden" value="<?= $party['login_1'] ?>"><br>
+                                          <input name="statut" type="hidden" value="<?= $party['statut'] ?>"><br>
+                                          <button type="submit" class="button-red">Ready</button>
+                                    </div>
+                              </form>
                         </div>
 
                         <div class="d-flex flex-row custom-playerList-item">
                               <img class="chat-avatar" src="https://picsum.photos/800" alt="Avatar joueur 1">
                               <div class="d-flex flex-column">
                                     <p class="chat-nickname-black"><?= $party["login_1"] ?></p>
-                                    <p class="chat-date-black">Not ready</p>
+                                    <p class="chat-date-black">
+                                          <?= (int)$party['statut'] === 0 ? "Not ready" : "Ready" ?></p>
+
                               </div>
                               <form method="POST" action="userJoin">
                                     <div class="ms-auto">
@@ -87,7 +93,8 @@
                         <h4 class="custom-infoList-item">game: <?= $party['game'] ?></h4>
                         <h4 class="custom-infoList-item">bet : <?= $party['bet'] ?>€</h4>
                         <h4 class="custom-infoList-item">platform : <?= $party['platform'] ?></h4>
-                        <h4 class="custom-infoList-item">status : <?=  $party['statut'] ?></h4>
+                        <h4 class="custom-infoList-item">status :
+                              <?= (int)$party['statut'] === 0 ? "player-waiting" : "game in progress" ?></h4>
                         <h4 class="custom-infoList-item"> Room Id : #<?= $party['idParty'] ?></h4>
                   </div>
 

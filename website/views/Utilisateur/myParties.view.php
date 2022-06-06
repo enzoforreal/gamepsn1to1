@@ -13,9 +13,10 @@
                               <p class="card-text fw-bold">Create by: <?php echo $datas['login']; ?></p>
                               <p class="card-text">Plateform : <?php echo $datas['platform']; ?></p>
                               <p class="card-text">Score : <?php echo $datas['score']; ?></p>
-                              <p class="card-text"> Number of room : <?php echo $datas['idParty']; ?>
+                              <p class="card-text"> ROOM Id : <?php echo $datas['idParty']; ?>
                               </p>
-                              <p class="card-text">Statut : <?php echo $datas['statut']; ?></p>
+                              <p class="card-text">Statut :
+                                    <?= (int)$datas['statut'] === 0 ? "player-waiting" : "game in progress" ?></p>
 
                               <a class="btn btn-danger"
                                     href="<?= URL ?>roomParty&idParty=<?= $datas['idParty'] ?>">Join</a>
