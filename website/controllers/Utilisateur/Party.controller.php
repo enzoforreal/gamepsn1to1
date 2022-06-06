@@ -114,6 +114,13 @@ public function afficherPageRoomPartie($idParty){
     }
 
 
+    public function updateStatusRoom($idParty,$login,$statut){
+          $status = $this->partyManager->updateStatusParty($idParty,$login,$statut);
+
+          return $status;
+    }
+
+
  
 
 public function afficherPageShowGames(){
