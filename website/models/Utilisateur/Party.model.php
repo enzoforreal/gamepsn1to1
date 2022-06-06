@@ -60,6 +60,7 @@ class PartyManager extends MainManager {
                   return 3 ;
             }
             if($datas['login_1'] === $login){
+                  
                   return 2 ;
             }
             $update = $this->getBdd()->prepare("UPDATE party  SET login_1 = ? WHERE idParty= ?");
@@ -69,8 +70,33 @@ class PartyManager extends MainManager {
 
             ]);
             return 1;
+
            
            
+      }
+
+      public function updateStatusParty($idParty,$login){
+                  $verifyParty = $this->getBdd()->prepare('SELECT  * FROM party WHERE idParty = ? ');
+                  $verifyParty->execute([
+                  $idParty
+            ]);
+            $datas = $verifyParty->fetch(PDO::FETCH_ASSOC);
+
+                  if($datas['statut'] === 0 && $datas['login_1'] === $login){
+                  
+                  $update = $this->getBdd()->prepare("UPDATE party  SET statut = 1 WHERE idParty= ?");
+                  $update->execute([
+
+                
+                  $idParty
+
+            ]);
+            
+            }
+
+            return 6;
+           
+            
       }
 
     
