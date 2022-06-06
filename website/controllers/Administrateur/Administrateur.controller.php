@@ -1,6 +1,8 @@
 <?php
 require_once("./controllers/MainController.controller.php");
 require_once("./models/Administrateur/Administrateur.model.php");
+require_once("./models/Administrateur/Administrateur.model.php");
+
 
 class AdministrateurController extends MainController{
     private $administrateurManager;
@@ -19,6 +21,19 @@ class AdministrateurController extends MainController{
             "page_title" => "Gestion des droits",
             "utilisateurs" => $utilisateurs,
             "view" => "views/Administrateur/droits.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function getAccountUsers(){
+        $utilisateurs = $this->administrateurManager->getUtilisateurs();
+
+        $data_page = [
+            "page_description" => "Account users",
+            "page_title" => "Account users",
+            "utilisateurs" => $utilisateurs,
+            "view" => "views/Administrateur/accountUsers.view.php",
             "template" => "views/common/template.php"
         ];
         $this->genererPage($data_page);
@@ -60,6 +75,21 @@ class AdministrateurController extends MainController{
             "template" => "views/common/template.php"
         ];
         $this->genererPage($data_page);
+    }
+
+    public function getRoomsParty(){
+
+         $parties = $this->MainManager->getParties();
+
+        $data_page = [
+            "page_description" => "historical of parties",
+            "page_title" => "historical of parties",
+            "parties" => $parties,
+            "view" => "views/Administrateur/parties.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+
     }
 
 }
