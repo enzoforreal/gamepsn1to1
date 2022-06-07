@@ -12,7 +12,7 @@ window.getPartyList = function getPartyList(e) {
       if (response["error"] === false) {
         document.getElementById("listParty").innerHTML = "";
         if (response["msg"] != "") {
-          for (data of response["msg"]) {
+          for (let data of response["msg"]) {
             document.getElementById("listParty").innerHTML += `
               <div class="col custom-card-item" style="width: 300px" id="party-list">
                   <div class="card">
@@ -20,7 +20,7 @@ window.getPartyList = function getPartyList(e) {
                               alt="image game">
                         <div class="custom-card-body">
                               <h5 class="card-title fw-bold">${data["game"]}</h5>
-                              <p class="card-text fw-bold">Bet: 20$</p>
+                              <p class="card-text fw-bold">Bet: ${data["bet"]} $</p>
                                <p class="card-text fw-bold">Create by: ${data["login"]}</p>
                               <p class="card-text">Plateform : ${data["platform"]}</p>
                               <p class="card-text">Score : ${data["score"]}</p>

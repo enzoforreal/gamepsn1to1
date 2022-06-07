@@ -231,10 +231,14 @@ try {
                 $statut = intval(securite::secureHTML($_POST["statut"]));
                 
                 $updateStatus = $partyController->updateStatusRoom($idParty,$login,$statut);
+                
                 if($updateStatus === 6){
                     Toolbox::ajouterMessageAlerte("greatful ,room is now complete, the game is in progress !",Toolbox::COULEUR_VERTE);
                      header("Location: ".URL."roomParty&idParty=".$idParty);
-                }
+                 }else if($updateStatus === 7 ){
+                     Toolbox::ajouterMessageAlerte("you cannot do this action, already finish your current bet ",Toolbox::COULEUR_ORANGE);
+                     header("Location: ".URL."roomParty&idParty=".$idParty);
+                 }
             }
             break; 
         case "showGames":

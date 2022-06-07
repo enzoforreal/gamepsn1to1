@@ -76,6 +76,15 @@ class PartyManager extends MainManager {
       }
 
       public function updateStatusParty($idParty,$login){
+
+
+             $user_1 = $this->getBdd()->prepare("SELECT * FROM party WHERE   login_1 = ?  ");
+            $user_1->execute([
+                  $login
+            ]);
+            if($user_1->rowCount() > 0) {
+                  return 7;
+            }
                   $verifyParty = $this->getBdd()->prepare('SELECT  * FROM party WHERE idParty = ? ');
                   $verifyParty->execute([
                   $idParty
@@ -85,18 +94,12 @@ class PartyManager extends MainManager {
                   if($datas['statut'] === 0 && $datas['login_1'] === $login){
                   
                   $update = $this->getBdd()->prepare("UPDATE party  SET statut = 1 WHERE idParty= ?");
-                  $update->execute([
-
-                
-                  $idParty
-
-            ]);
-            
+                  $update->execute([ $idParty]);
             }
-
             return 6;
+
            
-            
+              
       }
 
     

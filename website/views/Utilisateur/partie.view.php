@@ -21,16 +21,16 @@
                                                 <option value="forza_horizon">FORZA HORIZON</option>
                                                 <option value="wwe_2k22">WWE 2K22</option>
                                                 <option value="moto_gp_22">MOTO GP 22</option>
-                                                <option value="FAR CRY 6">FAR CRY 6</option>
-                                                <option value="SPLATOON 2">SPLATOON 2</option>
-                                                <option value="E-FOOTBALL 2022">E-FOOTBALL 2022</option>
+                                                <option value="FAR_CRY_6">FAR CRY 6</option>
+                                                <option value="SPLATOON_2">SPLATOON 2</option>
+                                                <option value="E-FOOTBALL_2022">E-FOOTBALL 2022</option>
                                                 <option value="Fall guys">Fall guys</option>
-                                                <option value="Battlefield V">Battlefield V</option>
+                                                <option value="Battlefield_V">Battlefield V</option>
                                                 <option value="Borderlands">Borderlands</option>
-                                                <option value=" Fortnite"> Fortnite</option>
-                                                <option value="Destiny 2">Destiny 2</option>
-                                                <option value="Rimbow six siège">Rimbow six siège</option>
-                                                <option value="Tom Clancy Ghost Recon">Tom Clancy Ghost Recon</option>
+                                                <option value="Fortnite"> Fortnite</option>
+                                                <option value="Destiny_2">Destiny 2</option>
+                                                <option value="Rimbow_six_siège">Rimbow six siège</option>
+                                                <option value="Tom_Clancy_Ghost_Recon">Tom Clancy Ghost Recon</option>
                                           </select>
                                     </div>
                               </div>
