@@ -91,7 +91,9 @@
                                           <p class="card-text">Score : <?php echo $datas['score']; ?></p>
                                           <p class="card-text"> ROOM Id : <?php echo $datas['idParty']; ?>
                                           </p>
-                                          <p class="card-text">Statut :
+                                          <p class="card-text" id="gm-statut-v-row"
+                                                gm-data-statut="<?php echo (int)$datas['statut'] === 0 ? "player-waiting" : "game in progress" ?>">
+                                                Statut :
                                                 <?php echo (int)$datas['statut'] === 0 ? "player-waiting" : "game in progress" ?>
                                           </p>
 
