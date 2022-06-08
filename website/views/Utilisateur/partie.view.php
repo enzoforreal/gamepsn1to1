@@ -13,7 +13,7 @@
                               <div class="collapse" id="collapseGames">
                                     <div class="card card-body">
                                           <select id="gameFilter" onInput='getPartyList(this)' name="game">
-                                                <option value="fifa22" selected>FIFA 22</option>
+                                                <option value="fifa 22" selected>FIFA 22</option>
                                                 <option value="call_of_duty">CALL OF DUTY</option>
                                                 <option value="warzone">WARZONE</option>
                                                 <option value="nba2k22">NBA2K22</option>
