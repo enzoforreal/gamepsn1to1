@@ -1,4 +1,5 @@
-<div id="gm-partie-v-container" class="col custom-card-container" gm-data-url="<?=URL?>">
+<div id="gm-partie-v-container" class="col custom-card-container" gm-data-url="<?=URL?>"
+      gm-data-statut="<?php echo (int)isset($datas['statut']) === 0 ? "player-waiting" : "game in progress" ?>">
       <div class="row">
 
             <!--Zone dédié aux filtres-->
@@ -13,7 +14,7 @@
                               <div class="collapse" id="collapseGames">
                                     <div class="card card-body">
                                           <select id="gameFilter" onInput='getPartyList(this)' name="game">
-                                                <option value="fifa22" selected>FIFA 22</option>
+                                                <option value="fifa 22" selected>FIFA 22</option>
                                                 <option value="call_of_duty">CALL OF DUTY</option>
                                                 <option value="warzone">WARZONE</option>
                                                 <option value="nba2k22">NBA2K22</option>
@@ -91,8 +92,7 @@
                                           <p class="card-text">Score : <?php echo $datas['score']; ?></p>
                                           <p class="card-text"> ROOM Id : <?php echo $datas['idParty']; ?>
                                           </p>
-                                          <p class="card-text" id="gm-statut-v-row"
-                                                gm-data-statut="<?php echo (int)$datas['statut'] === 0 ? "player-waiting" : "game in progress" ?>">
+                                          <p class="card-text">
                                                 Statut :
                                                 <?php echo (int)$datas['statut'] === 0 ? "player-waiting" : "game in progress" ?>
                                           </p>
