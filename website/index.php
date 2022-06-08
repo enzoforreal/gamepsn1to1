@@ -236,7 +236,7 @@ try {
                     Toolbox::ajouterMessageAlerte("greatful ,room is now complete, the game is in progress !",Toolbox::COULEUR_VERTE);
                      header("Location: ".URL."roomParty&idParty=".$idParty);
                  }else if($updateStatus === 7 ){
-                     Toolbox::ajouterMessageAlerte("you cannot do this action, already finish your current bet ",Toolbox::COULEUR_ORANGE);
+                     Toolbox::ajouterMessageAlerte("you cannot do this action, already finish your current bet ",Toolbox::COULEUR_ROUGE);
                      header("Location: ".URL."roomParty&idParty=".$idParty);
                  }
             }
