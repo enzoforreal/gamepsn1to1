@@ -1,4 +1,5 @@
-<div id="gm-partie-v-container" class="col custom-card-container" gm-data-url="<?=URL?>">
+<div id="gm-partie-v-container" class="col custom-card-container" gm-data-url="<?=URL?>"
+      gm-data-statut="<?php echo (int)isset($datas['statut']) === 0 ? "player-waiting" : "game in progress" ?>">
       <div class="row">
 
             <!--Zone dédié aux filtres-->
@@ -91,8 +92,7 @@
                                           <p class="card-text">Score : <?php echo $datas['score']; ?></p>
                                           <p class="card-text"> ROOM Id : <?php echo $datas['idParty']; ?>
                                           </p>
-                                          <p class="card-text" id="gm-statut-v-row"
-                                                gm-data-statut="<?php echo (int)$datas['statut'] === 0 ? "player-waiting" : "game in progress" ?>">
+                                          <p class="card-text">
                                                 Statut :
                                                 <?php echo (int)$datas['statut'] === 0 ? "player-waiting" : "game in progress" ?>
                                           </p>

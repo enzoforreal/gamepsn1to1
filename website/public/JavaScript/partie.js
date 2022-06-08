@@ -3,7 +3,7 @@ window.getPartyList = function getPartyList(e) {
     .getElementById("gm-partie-v-container")
     .getAttribute("gm-data-url");
   let status = document
-    .getElementById("gm-statut-v-row")
+    .getElementById("gm-partie-v-container")
     .getAttribute("gm-data-statut");
   const req = new XMLHttpRequest();
   let formData = new FormData();
