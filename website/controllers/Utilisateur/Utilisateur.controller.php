@@ -227,10 +227,6 @@ $this->genererPage($data_page);
 }
 
 
-public function validationDeposit(){
-
-}
-
 
 public function afficherPageTrending()
 {

@@ -1,16 +1,11 @@
  <div class="row custom-container-fluid-grey">
        <aside class="profil-sidebar-container d-flex flex-column">
+             <div class="border border-5">
+                   <h5 class="custom-counter-title text-center">Balance</h5>
 
-
-             <div class="badge bg-success rounded-pill">
-                   <div class="custom-counter-body">
-                         <h5 class="custom-counter-title text-center">BALANCE</h5>
-                         <p class="custom-counter-title text-center"><?= $utilisateur['balance'] ?> €</p>
-                   </div>
+                   <p class="custom-counter-title text-center"><span
+                               class="badge  bg-dark"><?= $utilisateur['balance'] ?> €</span></p>
              </div>
-
-
-
              <div>
                    <ul class="profil-sidebar-list-group">
                          <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/pageTransfer">Deposit money</a>
@@ -20,25 +15,20 @@
              </div>
        </aside>
        <main class="col">
+             <div class="d-flex flex-column align-items-center mx-auto" style="margin: 100px; max-width: 700px">
+                   <span class="border border-danger">
+                         <div class="rounded-0">
+                               <div class="text-center">
+                                     <img style="height: 350px; width:250px;" class="border border-5"
+                                           src="<?= URL; ?>public/Assets/images/<?= $utilisateur['image'] ?>"
+                                           alt="Avatar">
 
+                                     <p class="profil-nickname"><?= $utilisateur['pseudoPlatform'] ?></p>
+                               </div>
 
-
-             <div class="d-flex flex-column align-items-center mx-auto" style="margin: 96px; max-width: 700px">
-
-                   <div class="card">
-                         <img class="profil-avatar-full"
-                               src="<?= URL; ?>public/Assets/images/<?= $utilisateur['image'] ?>" alt="Avatar">
-                         <p class="profil-nickname"><?= $utilisateur['pseudoPlatform'] ?></p>
-
-                   </div>
-
-
-
-
+                         </div>
+                   </span>
                    <div class="w-100 mb-3">
-
-
-
                          <div class="mb-3">
                                <form method="POST" action="<?= URL ?>compte/validation_modificationImage"
                                      enctype="multipart/form-data">
@@ -47,10 +37,6 @@
                                            onchange="submit();" />
                                </form>
                          </div>
-
-
-
-
                          <hr class="mb-3">
                          <h3 class="mb-3">Performances</h3>
 

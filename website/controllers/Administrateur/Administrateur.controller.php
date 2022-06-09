@@ -1,7 +1,7 @@
 <?php
 require_once("./controllers/MainController.controller.php");
 require_once("./models/Administrateur/Administrateur.model.php");
-require_once("./models/Administrateur/Administrateur.model.php");
+
 
 
 class AdministrateurController extends MainController{
@@ -91,5 +91,9 @@ class AdministrateurController extends MainController{
         $this->genererPage($data_page);
 
     }
+
+
+  
+
 
 }

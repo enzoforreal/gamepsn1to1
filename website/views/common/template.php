@@ -26,6 +26,11 @@
       <link rel="icon" type="image/png" sizes="32x32" href="../../public/Assets/images/favicon-32x32.png">
       <link rel="icon" type="image/png" sizes="96x96" href="../../public/Assets/images/favicon-96x96.png">
       <link rel="icon" type="image/png" sizes="16x16" href="../../public/Assets/images/favicon-16x16.png">
+      <!-- load all Font Awesome styles + include all v5 backwards compatibility by default -->
+      <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+
+
+
       <link rel="manifest" href="/manifest.json">
 
       <?php if (!empty($page_css)) : ?>

@@ -1,15 +1,4 @@
         <aside class="profil-sidebar-container d-flex flex-column">
-
-
-              <div class="badge bg-success rounded-pill">
-                    <div class="custom-counter-body">
-                          <h1 class="custom-counter-title text-center">BALANCE</h1>
-                          <p class="custom-counter-title text-center"><?= $utilisateur['balance'] ?>€</p>
-                    </div>
-              </div>
-
-
-
               <div>
                     <ul class="profil-sidebar-list-group">
                           <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/profil">My profile</a></li>
