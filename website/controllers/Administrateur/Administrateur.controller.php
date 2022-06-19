@@ -77,6 +77,22 @@ class AdministrateurController extends MainController{
         $this->genererPage($data_page);
     }
 
+    public function getWithdrwals(){
+
+        $withdraw = $this->MainManager->bdGetWithdrawals();
+
+        $data_page = [
+            "page_description" => "history of wihtdrawals",
+            "page_title" => "history of wihtdrawals",
+            "withdraws" => $withdraw,
+            "view" => "views/Administrateur/withdrawal.view.php",
+            "template" => "views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+
+
     public function getRoomsParty(){
 
          $parties = $this->MainManager->getParties();

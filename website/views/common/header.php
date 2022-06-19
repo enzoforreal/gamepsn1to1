@@ -109,6 +109,16 @@
                                           <hr class="dropdown-divider">
                                     </li>
                                     <li>
+                                          <a class="dropdown-item"
+                                                href="<?= URL; ?>administration/withdrawUsers">Withdraws
+                                          </a>
+
+                                    </li>
+                                    <li>
+                                          <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li>
                                           <a class="dropdown-item" href="<?= URL; ?>administration/roomParties">Rooms
                                                 parties
                                           </a>

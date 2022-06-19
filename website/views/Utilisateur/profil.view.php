@@ -10,6 +10,8 @@
                    <ul class="profil-sidebar-list-group">
                          <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/pageTransfer">Deposit money</a>
                          </li>
+                         <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/withdrawal">Withdrawal</a>
+                         </li>
                          <li><a class="profil-sidebar-list-item" href="<?= URL; ?>compte/profilFriends">Friends</a></li>
                    </ul>
              </div>
@@ -187,7 +189,7 @@
 
                    <div class="w-100 mb-4">
                          <hr class="mb-3">
-                         <h3 class="mb-3">Payment</h3>
+                         <h3 class="mb-3">Info of Withdrawal</h3>
                          <div class="mb-3">
                                <label class="label" for="cryptocurrency">cryptocurrency</label>
                                <select name="cryptocurrency" class="input-field">

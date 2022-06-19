@@ -117,7 +117,7 @@ public function afficherPageRoomPartie($idParty){
     public function updateStatusRoom($idParty,$login,$statut){
           $status = $this->partyManager->updateStatusParty($idParty,$login,$statut);
 
-          return $status;
+          return $status; 
     }
 
 
@@ -128,7 +128,7 @@ public function afficherPageShowGames(){
         $_SESSION['profil']["role"] = $datas['role'];
 
          $data_page = [
-            "page_description" => "Page des jeux",
+            "page_description" => "Page of games",
             "page_title" => "Page des jeux",
             "party" => $datas,
             "page_javascript" => ['showGames.js'],

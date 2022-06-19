@@ -43,6 +43,20 @@ class UtilisateurManager extends MainManager
         return $resultat;
     }
 
+
+    public function getUserWalletInformation($login){
+        $query = "SELECT * FROM wallet WHERE login = ?";
+        $wallet = $this->getBdd()->prepare($query);
+        $wallet->execute(["login" => $_SESSION['login'].$login]);
+
+        $results = $wallet->fetch(PDO::FETCH_ASSOC);
+        
+
+        return $results;
+
+
+    }
+
     public function bdCreerCompte($login,$pseudoPlatform,$platform, $passwordCrypte, $mail, $clef, $image, $role, $birthdate, $telephone, $country)
     {
         $req = "INSERT INTO utilisateur (login,pseudoPlatform,platform, password, mail, est_valide, role, clef, image, 
