@@ -1,21 +1,24 @@
 <?php
+
+//use React\Socket\SecureConnector;
+
  session_start();
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") .
     "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
-require_once("./controllers/Toolbox.class.php");
-require_once("./controllers/Securite.class.php");
-require_once("./controllers/Visiteur/Visiteur.controller.php");
-require_once("./controllers/Utilisateur/Utilisateur.controller.php");
-require_once("./controllers/Utilisateur/Party.controller.php");
-require_once("./controllers/Administrateur/Administrateur.controller.php");
-$visiteurController = new VisiteurController();
-$private_key = '633d6A7c43E845ddC2fA124eCdd3a1578689DD512B70c021239DB63dE1397146';
-$public_key = '9ad706ac6e25c819e6e253dd4cfab34f8aa3cdf177671dccc9d4bb9664410065';
-$format = 'json';
-$utilisateurController = new UtilisateurController();
-$partyController = new PartyController();
-$administrateurController = new AdministrateurController();
+        require_once("./controllers/Toolbox.class.php");
+        require_once("./controllers/Securite.class.php");
+        require_once("./controllers/Visiteur/Visiteur.controller.php");
+        require_once("./controllers/Utilisateur/Utilisateur.controller.php");
+        require_once("./controllers/Utilisateur/Party.controller.php");
+        require_once("./controllers/Administrateur/Administrateur.controller.php");
+        $visiteurController = new VisiteurController();
+        $private_key = '633d6A7c43E845ddC2fA124eCdd3a1578689DD512B70c021239DB63dE1397146';
+        $public_key = '9ad706ac6e25c819e6e253dd4cfab34f8aa3cdf177671dccc9d4bb9664410065';
+        $format = 'json';
+        $utilisateurController = new UtilisateurController();
+        $partyController = new PartyController();
+        $administrateurController = new AdministrateurController();
  
 try {
     if (empty($_GET['page'])) {
@@ -34,6 +37,8 @@ try {
             break;
         case "ipn":
             $utilisateurController->ipnHandler();
+            break;
+        case "ipnWithdraw" : $utilisateurController->ipnWithdrawHandler();
             break;
         case "validation_login":
             if (!empty($_POST['login']) && !empty($_POST['password'])) {
@@ -102,6 +107,18 @@ try {
                                 Toolbox::ajouterMessageAlerte("you have not define your amount",Toolbox::COULEUR_ROUGE);
                             }
                             break;
+                         case"withdrawal" : 
+                                $utilisateurController->makeWithdrawal();
+                            break;   
+                         case "createWithdraw" : if(isset($_POST['enterred_amount']) && !empty($_POST['enterred_amount']) && isset($_POST['address']) && !empty($_POST['address'])){
+                                $enterred_amount = $_POST['enterred_amount'];
+                                $address = securite::secureHTML($_POST['address']);
+                                $utilisateurController->createWithdraw($private_key,$public_key,$format,$enterred_amount,$_SESSION['profil']['login'],$address);
+                                
+                         }else{
+                            Toolbox::ajouterMessageAlerte("Error's withdrawal",Toolbox::COULEUR_ROUGE);
+                         }
+                         break;
                         case "myParties":
                         if ($_SESSION['profil']['login']) {
                             $login = $_SESSION['profil']['login'];
@@ -265,6 +282,8 @@ try {
                         break;
                     case "payments" : $administrateurController->payments();
                         break;
+                    case "withdrawUsers" : $administrateurController->getWithdrwals();
+                        break;   
                     case "roomParties" : $administrateurController->getRoomsParty();
                         break;
                     case "validation_modificationRole":

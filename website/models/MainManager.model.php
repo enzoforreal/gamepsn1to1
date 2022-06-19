@@ -58,6 +58,17 @@ class MainManager extends Model
         return $resultat;
     }
 
+    public function bdGetWithdrawals()
+    {
+        $req = "SELECT * FROM withdrawal";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->execute();
+        $resultat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
+
+
       public function getParties(){
         $req = $this->getBdd()->prepare("SELECT * FROM party" );
         $req->execute();
@@ -65,5 +76,8 @@ class MainManager extends Model
         $req->closeCursor();
         return $datas;
       }
+
+
+   
 
 }

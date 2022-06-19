@@ -74,6 +74,15 @@ CREATE TABLE IF NOT EXISTS `logs` (
 
 -- Les données exportées n'étaient pas sélectionnées.
 
+-- Listage de la structure de la table game1to1. logs_tmp
+CREATE TABLE IF NOT EXISTS `logs_tmp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `logs_message` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+
 -- Listage de la structure de la table game1to1. messageprive
 CREATE TABLE IF NOT EXISTS `messageprive` (
   `login` varchar(50) NOT NULL,
@@ -127,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- Les données exportées n'étaient pas sélectionnées.
 
@@ -139,15 +148,6 @@ CREATE TABLE IF NOT EXISTS `plateform` (
   PRIMARY KEY (`idPlatforme`),
   UNIQUE KEY `namePlatform` (`namePlatform`),
   UNIQUE KEY `nameOfGame` (`nameOfGame`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
--- Les données exportées n'étaient pas sélectionnées.
-
--- Listage de la structure de la table game1to1. logs_tmp
-CREATE TABLE IF NOT EXISTS `logs_tmp` (
-logs_message TEXT 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Les données exportées n'étaient pas sélectionnées.
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `recompenseutilisateur` (
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `login` varchar(50) NOT NULL,
   `pseudoPlatform` varchar(50) NOT NULL,
-  `balance` float DEFAULT '0',
+  `balance` float NOT NULL  DEFAULT '0',
   `platform` char(10) NOT NULL,
   `password` varchar(100) NOT NULL,
   `mail` varchar(255) NOT NULL,
@@ -232,6 +232,24 @@ CREATE TABLE IF NOT EXISTS `utimessagepublic` (
   CONSTRAINT `utimessagepublic_ibfk_1` FOREIGN KEY (`login`) REFERENCES `utilisateur` (`login`),
   CONSTRAINT `utimessagepublic_ibfk_2` FOREIGN KEY (`idMessage`) REFERENCES `messagepublic` (`idMessage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Les données exportées n'étaient pas sélectionnées.
+
+-- Listage de la structure de la table game1to1. withdrawal
+CREATE TABLE IF NOT EXISTS `withdrawal` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `txn_id` varchar(255) NOT NULL,
+  `login` varchar(50) NOT NULL,
+  `from_currency` char(3) DEFAULT 'EUR',
+  `enterred_amount` float NOT NULL,
+  `address` varchar(100) NOT NULL ,
+  `to_currency` varchar(10) NOT NULL,
+  `amount` float NOT NULL,
+  `status` varchar(30) NOT NULL DEFAULT 'pending',
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Les données exportées n'étaient pas sélectionnées.
 

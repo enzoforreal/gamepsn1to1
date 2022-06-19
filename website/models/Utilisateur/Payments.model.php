@@ -55,7 +55,53 @@ class PaymentsManager extends MainManager{
             $req = $this->getBdd()->prepare("UPDATE utilisateur SET balance = (balance + ?) WHERE login = ?");
             $req->execute([
                   $enterred_amount,
-                  $login
+                  $login,
+            ]);
+      }
+
+
+      public function dbCreate_withdraw($txn_id,$login,$from_currency,$enterred_amount,$address,$to_currency,$amount,$status){
+            $req = $this->getBdd()->prepare("INSERT INTO withdrawal (txn_id ,login,from_currency
+             , enterred_amount , address ,to_currency,amount,status)  VALUES (?,?,?,?,?,?,?,?)");
+            $req->execute([
+
+                  $txn_id,
+                  $login,
+                  $from_currency,
+                  $enterred_amount,
+                  $address,
+                  $to_currency,
+                  $amount,
+                  $status
+            
+            ]); 
+      }
+
+       public function getWithdrawById($txn_id)
+      {
+            $req = $this->getBdd()->prepare("SELECT * FROM withdrawal WHERE txn_id = ?");
+            $req->execute([
+                  $txn_id,
+            ]);
+
+            return $req->fetch();
+      }
+
+      public function updateWithdrawByTxnId($txn_id, $status)
+      {
+            $req = $this->getBdd()->prepare("UPDATE withdrawal SET status = ? WHERE txn_id = ?");
+            $req->execute([
+                  $status,
+                  $txn_id,
+            ]);
+      }
+
+
+       public function deductBalance($enterred_amount,$login){
+            $req = $this->getBdd()->prepare("UPDATE utilisateur SET balance = (balance - ?) WHERE login = ?");
+            $req->execute([
+                  $enterred_amount,
+                  $login,
             ]);
       }
 }
