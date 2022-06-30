@@ -34,3 +34,13 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
     env_file:
       - ".env"
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/var/www/gamepsn1to1/website
+    extra_hosts:
+      - host.docker.internal:host-gateway    

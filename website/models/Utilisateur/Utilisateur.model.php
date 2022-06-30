@@ -4,6 +4,20 @@ require_once("./models/MainManager.model.php");
 class UtilisateurManager extends MainManager
 {
 
+    public function checkBalance($login, $amount){
+        $r = $this->getBdd()->prepare("SELECT * FROM utilisateur WHERE login = ?");
+        $r->execute([
+            $login
+        ]);
+
+        $d = $r->fetch();
+        if($d["balance"] >= $amount) {
+            return true;
+        }
+
+        return false;
+    }
+
     private function getPasswordUser($login)
     {
         $req = "SELECT password FROM utilisateur WHERE login = :login";

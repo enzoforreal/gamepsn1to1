@@ -4,8 +4,71 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2bdb41da111a542da33262e827f3137b",
+    "content-hash": "45d4b02c6cdb50984591f8852e70e965",
     "packages": [
+        {
+            "name": "coinpaymentsnet/coinpayments-php",
+            "version": "v1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CoinPaymentsNet/coinpayments-php.git",
+                "reference": "e7e9f8820c2179f49605aa861d7c7bd485b3c88c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CoinPaymentsNet/coinpayments-php/zipball/e7e9f8820c2179f49605aa861d7c7bd485b3c88c",
+                "reference": "e7e9f8820c2179f49605aa861d7c7bd485b3c88c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "/src"
+                ],
+                "exclude-from-classmap": [
+                    "/tests"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cole",
+                    "email": "cole@coinpayments.net",
+                    "homepage": "https://www.coinpayments.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP wrapper for the CoinPayments.net v1 API.",
+            "homepage": "https://www.coinpayments.net/apidoc-intro",
+            "keywords": [
+                "api",
+                "bitcoin",
+                "btc",
+                "coinpayments",
+                "crypto",
+                "cryptocurrency",
+                "currency",
+                "ethereum",
+                "litecoin",
+                "merchant",
+                "payment gateway",
+                "payment method",
+                "payment processor",
+                "paypal",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/CoinPaymentsNet/coinpayments-php/issues",
+                "source": "https://github.com/CoinPaymentsNet/coinpayments-php/tree/master"
+            },
+            "time": "2018-09-15T00:00:00+00:00"
+        },
         {
             "name": "firebase/php-jwt",
             "version": "v6.2.0",
@@ -73,5 +136,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

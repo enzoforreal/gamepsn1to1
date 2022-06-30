@@ -60,7 +60,7 @@ class MainManager extends Model
 
     public function bdGetWithdrawals()
     {
-        $req = "SELECT * FROM withdrawal";
+        $req = "SELECT * FROM withdrawal ORDER BY id DESC";
         $stmt = $this->getBdd()->prepare($req);
         $stmt->execute();
         $resultat = $stmt->fetchAll(PDO::FETCH_ASSOC);

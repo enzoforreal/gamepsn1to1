@@ -170,59 +170,61 @@ class UtilisateurController extends MainController
     }
 
     public function createWithdraw($private_key,$public_key, $format,$enterred_amount,$login,$address){
-        
-    // Create a new API wrapper instance
-    $withdrawal = new CoinpaymentsAPI($private_key, $public_key,$format);
-
-    $currency = 'LTCT' ;
-
-    $currency2 = 'EUR' ;
-
-        $buyer_name = $login;
-        $buyer_email = 'test@gmail.com';
-        $address = $address;
        
-        // Enter additional transaction details
-        $item_name = 'Withdrawal';
-        $item_number = '';
-        $ipn_url = URL."ipnWithdraw";
-        $invoice = '';
-        $custom = '';
 
-        try{
-            $withdrawal_response = $withdrawal->createWithdrawal([
-                "address" => $address,
-                "currency" => $currency,
-                "currency2" => $currency2,
-                "ipn_url" => $ipn_url,
-                "amount" => intval($enterred_amount),
-                "note" => "withdraw test ".$login." adress : ".$address
-            ]);
-        }catch(Exception $e){
-            
-            echo 'Error: ' . $e->getMessage();
-            exit();
+        $validBalance = $this->utilisateurManager->checkBalance($login, $enterred_amount);
+        if($validBalance) {
+                // Create a new API wrapper instance
+            $withdrawal = new CoinpaymentsAPI($private_key, $public_key,$format);
 
-        }
-    if ($withdrawal_response["error"] == "ok") {
-        // die(print_r($withdrawal_response));
-            $withdraw = new PaymentsManager();
-            $withdraw->dbCreate_withdraw($withdrawal_response['result']['id'],$login,$currency2,$enterred_amount,$address,$currency,$withdrawal_response['result']['amount'],$withdrawal_response['result']['status']);
-            $data_page = [
-            "page_description" => "Page of withdraw",
-            "page_title" => "Page of withdraw",
-            "datas" => $withdrawal_response,
-            "page_javascript" => ['withdraw.js'],
-            "view" => "views/Utilisateur/withdrawal.view.php",
-            "template" => "views/common/template.php"
-            ];
-            return $this->genererPage($data_page);
+            $currency = 'LTCT' ;
+
+            $currency2 = 'EUR' ;
+
+            $buyer_name = $login;
+            $buyer_email = 'test@gmail.com';
+            $address = $address;
+        
+            // Enter additional transaction details
+            $item_name = 'Withdrawal';
+            $item_number = '';
+            $ipn_url = URL."ipnWithdraw";
+            $invoice = '';
+            $custom = '';
+
+            try{
+                $withdrawal_response = $withdrawal->createWithdrawal([
+                    "address" => $address,
+                    "currency" => $currency,
+                    "currency2" => $currency2,
+                    "ipn_url" => $ipn_url,
+                    "amount" => intval($enterred_amount),
+                    "note" => "withdraw test ".$login." adress : ".$address
+                ]);
+            }catch(Exception $e){
+                
+                echo 'Error: ' . $e->getMessage();
+                exit();
+
+            }
+        if ($withdrawal_response["error"] == "ok") {
+            // die(print_r($withdrawal_response));
+        
+                $withdraw = new PaymentsManager();
+                $withdraw->dbCreate_withdraw($withdrawal_response['result']['id'],$login,$currency2,$enterred_amount,$address,$currency,$withdrawal_response['result']['amount'],"pending");
+                
+                toolbox::ajouterMessageAlerte("Transaction completed",Toolbox::COULEUR_VERTE);
+                header("Location: ".URL."compte/withdrawal");
+            } else {
+                toolbox::ajouterMessageAlerte($withdrawal_response['error'],Toolbox::COULEUR_ROUGE);
+                header("Location: ".URL."compte/withdrawal");
+            }
 
         } else {
-         toolbox::ajouterMessageAlerte($withdrawal_response['error'],Toolbox::COULEUR_ROUGE);
-         header("Location: ".URL."withdrawal");
+            toolbox::ajouterMessageAlerte("Buy more money !!!",Toolbox::COULEUR_ROUGE);
+            header("Location: ".URL."compte/withdrawal");
         }
-
+    
     }
 
        public function ipnWithdrawHandler()
@@ -234,7 +236,7 @@ class UtilisateurController extends MainController
 
         $withdraw = new PaymentsManager();
 
-        $withdraw->debug("dans l'ipn ".$_SERVER['HTTP_USER_AGENT']." ip:".$_SERVER['REMOTE_ADDR']);
+        $withdraw->debug("dans l'ipn 2 ".$_SERVER['HTTP_USER_AGENT']." ip:".$_SERVER['REMOTE_ADDR']);
 
         
         if (!isset($_POST['ipn_mode']) || $_POST['ipn_mode'] != 'hmac') {
@@ -260,12 +262,12 @@ class UtilisateurController extends MainController
         }
 
        // HMAC Signature verified at this point, load some variables.
-
+        //$withdraw->debug(implode(", ", $_POST)."||".implode(", ", array_keys($_POST)));
         $currency = $_POST['currency'] ;
         $txn_id = $_POST['txn_id'];
         $enterred_amount = $_POST['amount_enterred'];
         $currency2 = $_POST['currency2'] ;
-        $amount = floatval($_POST['amount1']);
+        $amount = floatval($_POST['amount']);
         $buyer_name = $_POST['buyer_name'] ;
         $buyer_email = $_POST['buyer_email'] ;
         $address = $_POST['address'] ;
@@ -280,25 +282,22 @@ class UtilisateurController extends MainController
         // Check the original currency to make sure the buyer didn't change it.
     
 
-        $transaction = $withdraw->getWithdrawById($txn_id);
-        if ($currency2 != $transaction['from_currency']) {
-            $this->errorAndDie('Original currency mismatch!');
+        $transaction = $withdraw->getWithdrawById($_POST['id']);
+        if ($currency != $transaction['to_currency']) {
+            $withdraw->debug("Probleme currency");
+            $this->errorAnsdDie('Original currency mismatch!');
         }
 
-        // Check amount against order total
-        if ($amount < $transaction["enterred_amount"]) {
-            $this->errorAndDie('Amount is less than order total!');
-        }
-    
+        //$withdraw->debug("Le mec est arrivé jusqu'ici lol");
         if ($status >= 100 || $status == 2) {
-            $withdraw->updateWithdrawByTxnId($txn_id, "success"); // adebug en prod probleme de nomage remettre a jour docker 
-            $withdraw->deductBalance($transaction["enterred_amount"],$transaction["login"]); //adebug en prod probleme de nomage remettre a jour docker 
-            $withdraw->debug("success"); // for debug on production
+            $withdraw->updateWithdrawByTxnId($_POST['id'], "success"); // adebug en prod probleme de nomage remettre a jour docker 
+            $withdraw->deductBalance($transaction["enterred_amount"], $transaction["login"]); //adebug en prod probleme de nomage remettre a jour docker 
+            $withdraw->debug("success = ".$_POST['id']); // for debug on production
         } else if ($status < 0) {
-            $withdraw->updateWithdrawByTxnId($txn_id,"error");
+            $withdraw->updateWithdrawByTxnId($_POST['id'],"error");
             $withdraw->debug("error"); // for debug on production
         } else {
-            $withdraw->updateWithdrawByTxnId($txn_id, "pending1");
+            $withdraw->updateWithdrawByTxnId($_POST['id'], "pending1");
             $withdraw->debug("pending1"); // for debug on production
         }
         die('IPN OK');
@@ -314,11 +313,9 @@ class UtilisateurController extends MainController
                 ];
                 Securite::genererCookieConnexion();
                 Securite::genererTokenJWT();
-                echo $_SESSION['profil'][Securite::COOKIE_NAME];
-                echo "<br />";
-                echo $_COOKIE[Securite::COOKIE_NAME];
+                
 
-            header("location: " . URL . "compte/profil");
+            header("Location: " . URL . "compte/profil");
     } else {
             $msg = "Le compte " . $login . " n'a pas été activé par mail. ";
             $msg .= "<a href='renvoyerMailValidation/" . $login . "'>Renvoyez le mail de validation</a>";

@@ -4,7 +4,7 @@
                    <h5 class="custom-counter-title text-center">Balance</h5>
 
                    <p class="custom-counter-title text-center"><span
-                               class="badge  bg-dark"><?= intval($utilisateur['balance']) ?>
+                               class="badge  bg-dark"><?= $utilisateur['balance'] ?>
                                €</span></p>
              </div>
              <div>
