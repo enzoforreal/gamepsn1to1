@@ -119,6 +119,8 @@ try {
                             Toolbox::ajouterMessageAlerte("Error's withdrawal",Toolbox::COULEUR_ROUGE);
                          }
                          break;
+                         case "profilFriends" : $utilisateurController->displayPageFriends();
+                            break;
                         case "myParties":
                         if ($_SESSION['profil']['login']) {
                             $login = $_SESSION['profil']['login'];

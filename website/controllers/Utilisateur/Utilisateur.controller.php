@@ -376,6 +376,23 @@ class UtilisateurController extends MainController
 
     } 
 
+    public function displayPageFriends(){
+        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
+        $_SESSION['profil']["role"] = $datas['role'];
+
+
+
+            $data_page = [
+            "page_description" => "Page of friends ",
+            "page_title" => "Page of friends",
+            "utilisateur" => $datas,
+            "page_javascript" => ['friends.js'],
+            "view" => "views/Utilisateur/friends.view.php",
+            "template" => "views/common/template.php"
+            ];
+            $this->genererPage($data_page);
+    }
+
 
 
     public function afficherPageTrending()
