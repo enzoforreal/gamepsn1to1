@@ -314,11 +314,8 @@ class UtilisateurController extends MainController
                 ];
                 Securite::genererCookieConnexion();
                 Securite::genererTokenJWT();
-                echo $_SESSION['profil'][Securite::COOKIE_NAME];
-                echo "<br />";
-                echo $_COOKIE[Securite::COOKIE_NAME];
 
-            header("location: " . URL . "compte/profil");
+            header("Location: " . URL . "compte/profil");
     } else {
             $msg = "Le compte " . $login . " n'a pas été activé par mail. ";
             $msg .= "<a href='renvoyerMailValidation/" . $login . "'>Renvoyez le mail de validation</a>";
