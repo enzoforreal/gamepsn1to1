@@ -15,10 +15,9 @@ $loop = React\EventLoop\Loop::get();
 $server = new SocketServer('0.0.0.0:9000', array(), $loop);
 
 $secureServer = new SecureServer($server, $loop, [
-    'local_cert'  => 'server.crt',
-    'local_pk' => 'server.key',
+    'local_cert'  => '/etc/letsencrypt/live/gamepsn1to1.com/fullchain.pem',
+    'local_pk' => '/etc/letsencrypt/live/gamepsn1to1.com/privkey.pem',
     'verify_peer' => false,
-    'allow_self_signed' => true
 ]);
 
 $secureServer->on('error', function (Exception $e) {
