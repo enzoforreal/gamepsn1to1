@@ -43,6 +43,35 @@ class UtilisateurManager extends MainManager
         return $resultat;
     }
 
+    public function getAllUsers(){
+            $u = "SELECT * FROM utilisateur ORDER BY rank";
+            $users = $this->getBdd()->prepare($u);
+            $users->execute();
+            $results = $users->fetchAll();
+
+            return $results;
+
+        
+
+    }
+
+    public function getFollowersByLogin($login) {
+        $d = $this->getBdd()->prepare("SELECT * FROM followers INNER JOIN utilisateur ON utilisateur.login = followers.ownLogin WHERE followers.followerLogin = ?");
+        $d->execute([
+            $login
+        ]);
+        
+        return $d->fetchAll();
+    }
+
+    public function addFollowerByLogin($ownLogin, $followerLogin) {
+        $d = $this->getBdd()->prepare("INSERT INTO followers (followerLogin, ownLogin) VALUES(?, ?)");
+        $d->execute([
+            $followerLogin, 
+            $ownLogin
+        ]); 
+    }
+
 
     public function getUserWalletInformation($login){
         $query = "SELECT * FROM wallet WHERE login = ?";

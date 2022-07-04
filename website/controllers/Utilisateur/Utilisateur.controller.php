@@ -377,15 +377,11 @@ class UtilisateurController extends MainController
     } 
 
     public function displayPageFriends(){
-        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
-        $_SESSION['profil']["role"] = $datas['role'];
-
-
-
+            $datas = $this->utilisateurManager->getFollowersByLogin($_SESSION['profil']['login']);
             $data_page = [
             "page_description" => "Page of friends ",
             "page_title" => "Page of friends",
-            "utilisateur" => $datas,
+            "followers" => $datas,
             "page_javascript" => ['friends.js'],
             "view" => "views/Utilisateur/friends.view.php",
             "template" => "views/common/template.php"
@@ -413,13 +409,12 @@ class UtilisateurController extends MainController
 
     public function afficherPageRanking()
     {
-        $datas = $this->utilisateurManager->getUserInformation($_SESSION['profil']['login']);
-        $_SESSION['profil']["role"] = $datas['role'];
+        $utilisateurs = $this->utilisateurManager->getAllUsers();
 
             $data_page = [
             "page_description" => "Page classement",
             "page_title" => "Page classement",
-            "utilisateur" => $datas,
+            "utilisateurs" => $utilisateurs,
             "page_javascript" => ['ranking.js'],
             "view" => "views/Utilisateur/ranking.view.php",
             "template" => "views/common/template.php"
@@ -457,6 +452,12 @@ class UtilisateurController extends MainController
             "template" => "views/common/template.php"
             ];
             $this->genererPage($data_page);
+    }
+
+    public function addFollower($ownLogin) {
+        $up = $this->utilisateurManager->addFollowerByLogin($ownLogin, $_SESSION["profil"]["login"]);
+        echo json_encode(["error" => false, "message" => "ok"]);
+        return;
     }
 
     public function getToken()
