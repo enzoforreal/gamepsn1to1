@@ -108,7 +108,8 @@ try {
                             break;
                          case"withdrawal" : 
                                 $utilisateurController->makeWithdrawal();
-                            break;   
+                            break;  
+                             
                          case "createWithdraw" : if(isset($_POST['enterred_amount']) && !empty($_POST['enterred_amount']) && isset($_POST['address']) && !empty($_POST['address'])){
                                 $enterred_amount = $_POST['enterred_amount'];
                                 $address = securite::secureHTML($_POST['address']);
@@ -118,6 +119,11 @@ try {
                             Toolbox::ajouterMessageAlerte("Error's withdrawal",Toolbox::COULEUR_ROUGE);
                          }
                          break;
+                         case "profilFriends" : $utilisateurController->displayPageFriends();
+                            break;
+                        case "addFollowers":
+                            $utilisateurController->addFollower($_POST['ownLogin']);
+                            break;
                         case "myParties":
                         if ($_SESSION['profil']['login']) {
                             $login = $_SESSION['profil']['login'];
